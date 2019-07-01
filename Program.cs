@@ -40,8 +40,6 @@ namespace CadastroEscolar
                     Console.WriteLine(professor.Nome);
                 }
 
-
-
             }
 
         }
