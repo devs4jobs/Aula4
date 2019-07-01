@@ -10,40 +10,80 @@ namespace ProjetoEscola
     {
         static void Main(string[] args)
         {
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.Beep();
-            List<Turma> lstTurmas = new List<Turma>();
-            Turma turma = new Turma();
-            Console.WriteLine("\t\t============================== MENU ==============================\t\t\n");
-            Console.WriteLine("\t\t\t\t\tDigite um Opção a ser feita ! : \n\n");
-            Console.WriteLine("\t\t\t\t\t1 - Cadastrar Professores\n\t\t\t\t\t2 - Cadastrar Alunos\n\t\t\t\t\t3 - Cadastrar Turmas\n");
-            Console.WriteLine("\t\t============================== XXXX ==============================\t\t\n");
-            int op = Convert.ToInt32(Console.ReadLine());
-            if (op == 1)
+            int op;
+            do
             {
-                Console.Write("Digite quantos Professores  você deseja cadastrar :  ");
-                int N = Convert.ToInt32(Console.ReadLine());
-                for (int i = 0; i < N; i++)
-                {
-                    Professor prof = new Professor();
-                    prof.CadastrarProfessor();
-                    turma.lstProfessores.Add(prof);
-                }//Repetição Para Adicionar Professores a Lista !!
-            }
-            else if (op == 2)
-            {
-                Console.Write("Digite quantos Alunos  você deseja cadastrar :  ");
-                int N = Convert.ToInt32(Console.ReadLine());
-                for (int i = 0; i < N; i++)
-                {
-                    Aluno aluno = new Aluno();
-                    
-                    turma.lstAlunos.Add(aluno);
-                }//Repetição Para Adicionar Professores a Lista !!
-            }else if (op == 3){
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Beep();
+                List<Turma> lstTurmas = new List<Turma>();
+                
+                Turma turma = new Turma();
+                Console.WriteLine("\t\t============================== MENU ==============================\t\t\n");
+                Console.WriteLine("\t\t\t\t\tDigite um Opção a ser feita ! : \n\n");
+                Console.WriteLine("\t\t\t\t\t1 - Cadastrar Professores\n\t\t\t\t\t2 - Cadastrar Alunos\n\t\t\t\t\t3 - Cadastrar Turmas\n\t\t\t\t\t4 - Para Sair");
+                Console.WriteLine("\t\t============================== XXXX ==============================\t\t\n");
 
-            }
+                op = Convert.ToInt32(Console.ReadLine());
+                if (op == 1)
+                {
+                    Console.Clear();
+                    Console.Write("Digite quantos Professores  você deseja cadastrar :  ");
+                    int N = Convert.ToInt32(Console.ReadLine());
+                    for (int i = 0; i < N; i++)
+                    {
+                        Professor prof = new Professor();
+                        prof.CadastrarProfessor();
+                        turma.lstProfessores = new List<Professor>();
+                        turma.lstProfessores.Add(prof);
+                        lstTurmas.Add(turma);
+                    }//Repetição Para Adicionar Professores a Lista !!
+                }
+                else if (op == 2)
+                {
+                    Console.Write("Digite quantos Alunos  você deseja cadastrar :  ");
+                    int N = Convert.ToInt32(Console.ReadLine());
+                    for (int i = 0; i < N; i++)
+                    {
+                        Console.Clear();
+                        Aluno aluno = new Aluno();
+                        aluno.CadastrarAlunos();
+                        turma.lstAlunos = new List<Aluno>();
+                        turma.lstAlunos.Add(aluno);
+                    }//Repetição Para Adicionar Professores a Lista !!
+                }
+                else if (op == 3)
+                {
+
+
+                    Console.WriteLine("Quantas turmas desejas cadastrar");
+                    int qnt = Convert.ToInt32(Console.ReadLine());
+
+                    for (int i = 0; i < qnt; i++)
+                    {
+                        Turma trm = new Turma();
+
+                        Console.WriteLine("Insira o código da turma a ser cadastrado, Ex : A, B, C");
+                        trm.CodTurma = Convert.ToChar(Console.ReadLine());
+
+                        trm.CadastrarTurma(trm.CodTurma);
+
+                        lstTurmas.Add(trm);
+
+                    }
+
+                }
+
+                else if (op == 4)
+                {
+                    Console.WriteLine("RafaTheus agradece e volte sempre!");
+                }
+
+            } while (op != 4 || op > 4);
+
+         
+
+
         }//Main
     }//Class Programa
 }

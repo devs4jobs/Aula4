@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace ProjetoEscola
 {
-    class Professor : Turma
+     class Professor : Turma
     {
         private string Nome_ { get; set; }
         private double Salario_ { get; set; }
@@ -16,8 +16,30 @@ namespace ProjetoEscola
         public string Cidade;
         public int Idade;
         public List<string> lstMaterias;
+        public List<Turma> lstTurmas;
+        public Turma Turma;
 
-        public Professor(string nome, double salario, int id, char genero, string nacionalidade, string cidade, string dataNascimento, string pais, List<string> listamaterias, char codigoTurma)
+  
+
+//namespace Course.Entities
+//    {
+//        class Circle : Shape
+//        {
+//            public double Radius { get; set; }
+
+//            public Circle(double radius, Color color) : base(color)
+//            {
+//                Radius = radius;
+//            }
+
+//            public override double Area()
+//            {
+//                return Math.PI * Radius * Radius;
+//            }
+//        }
+//    }
+
+    public Professor(string nome, double salario, int id, char genero, string nacionalidade, string cidade, string dataNascimento, string pais, List<string> listamaterias, char codigoTurma, List<Turma> turmas,Turma turma)
         {
             Nome = nome;
             Salario_ = salario;
@@ -29,6 +51,9 @@ namespace ProjetoEscola
             Cidade = cidade;
             lstMaterias = listamaterias;
             CodTurma = codigoTurma;
+            lstTurmas = turmas;
+            Turma = turma;
+
         }
         public Professor() { }
 
@@ -65,9 +90,13 @@ namespace ProjetoEscola
 
         #endregion
 
+
+
         public object CadastrarProfessor()
         {
+            //         List<Turma> lstTurmas = new List<Turma>();
             Professor prof = new Professor();
+            Console.Beep();
             Console.Write("Digite o nome do professor(a) : ");
             prof.Nome = Console.ReadLine();
             Console.Write("\nDigite o Genero :  ");
@@ -88,20 +117,68 @@ namespace ProjetoEscola
             prof.Salario = Convert.ToDouble(Console.ReadLine().ToString(), CultureInfo.InvariantCulture);
             Console.Write("\nDigite quantas materias esse Professor(a)  terá :");
             int QuantidadeDeMaterias = Convert.ToInt32(Console.ReadLine());
-            for (int O = 0; O < QuantidadeDeMaterias; O++)
-            {
-                Console.WriteLine("Digite o nome da Matéria : ");
-                string diciplina = Console.ReadLine();
-                prof.lstMaterias.Add(diciplina);
+            prof.Cadastrarmaterias(QuantidadeDeMaterias);
 
-            }
             Console.WriteLine("Para quantas turmas você dará aula !");
             int quantidade = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i < quantidade; i++) { 
-                Console.WriteLine("Digite qual o cofigo da turma que vocÊ dara aula : EX: A, B, C.. ");
+            for (int i = 0; i < quantidade; i++)
+            {
+                Console.WriteLine("Digite qual o codigo da turma que vocÊ dara aula : EX: A, B, C.. ");
+
                 prof.CodTurma = Convert.ToChar(Console.ReadLine());
+
+                Turma turma = new Turma(CodTurma);
+                lstTurmas = new List<Turma>();
+                lstTurmas.Add(turma);
+
             }
-            return prof ;
+            return prof;
+        }
+
+        public void Cadastrarmaterias(int qntMaterias)
+        {
+
+            for (int i = 0; i < qntMaterias; i++)
+            {
+                Console.Clear();
+
+                Console.WriteLine("\t\t============================ MENU DE MATÉRIAS ============================\t\t\n");
+                Console.WriteLine("\t\t\t\t\tDigite um Opção a ser feita ! : \n\n");
+                Console.WriteLine("\t\t\t\t\t1 - Português\n\t\t\t\t\t2 - Matemática\n\t\t\t\t\t3 - Ciências\n\t\t\t\t\t4 - Geografia\n\t\t\t\t\t5 - Artes\n\t\t\t\t\t6 - História\n\t\t\t\t\t7 - Ed.Física");
+                int codMateria = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("\t\t============================== XXXX ==============================\t\t\n");
+                lstMaterias = new List<string>();
+
+                switch (codMateria)
+                {
+                    
+                    case 1: lstMaterias.Add("Português"); break;
+                    case 2: lstMaterias.Add("Matemática"); break;
+                    case 3: lstMaterias.Add("Ciências"); break;
+                    case 4: lstMaterias.Add("Geografia"); break;
+                    case 5: lstMaterias.Add("Artes"); break;
+                    case 6: lstMaterias.Add("História"); break;  
+                    case 7: lstMaterias.Add("Ed.Física"); break;
+                    default:
+                        Console.WriteLine("Opção inválida! Digite um inteiro entre 1 e 7");
+                        codMateria = Convert.ToInt32(Console.ReadLine());
+
+                        if (codMateria < 0 || codMateria > 7)
+                        {
+
+                            while (codMateria < 0 || codMateria > 7)
+                            {
+                                Console.WriteLine("Opção inválida! Digite um inteiro entre 1 e 7");
+                                codMateria = Convert.ToInt32(Console.ReadLine());
+
+                            }
+                        } 
+
+                        break;
+
+                }
+
+            }
         }
     }
 

@@ -9,9 +9,8 @@ namespace ProjetoEscola
     class Aluno : Professor
     {
         private int Matricula_ { get; set; }
-        public object Turma; 
 
-        public Aluno(string nome, char genero, string nacionalidade, int matricula, string dataNascimento, string pais, string cidade,object turma)
+        public Aluno(string nome, char genero, string nacionalidade, int matricula, string dataNascimento, string pais, string cidade)
         {
             Nome = nome;
             Sexo = genero;
@@ -20,7 +19,6 @@ namespace ProjetoEscola
             DataNasc = dataNascimento;
             Pais = pais;
             Cidade = cidade;
-            Turma = turma;
         }
 
         public Aluno() { }
@@ -46,14 +44,32 @@ namespace ProjetoEscola
             aluno.Nacionaliddade = Console.ReadLine();
             Console.Write("\nDigite o Pais : ");
             aluno.Pais = Console.ReadLine();
-            Console.Write("\t\tDigite a Cidade: ");
+            Console.Write("\nDigite a Cidade: ");
             aluno.Cidade = Console.ReadLine();
             Console.Write("\nDigite a Matricula(a), Ex : 1234 : ");
             aluno.Matricula = Convert.ToInt32(Console.ReadLine());
             Console.Write("\nDigite a idade : ");
             aluno.Idade = Convert.ToInt32(Console.ReadLine());
-            Console.Write("\t\tDigite a Data de Nascimento: ");
+            Console.Write("\nDigite a Data de Nascimento: ");
             aluno.DataNasc = Console.ReadLine();
+            Console.WriteLine("Digite qual o codigo da turma que vocÊ vai estar !! : EX: A, B, C.. ");
+            aluno.CodTurma = Convert.ToChar(Console.ReadLine());
+            List<Turma> lstTurmas = new List<Turma>();
+
+            for (int i = 0; i <lstTurmas.Count; i++)
+            {
+               Turma obj = new Turma();
+
+                if (obj.CodTurma == aluno.CodTurma)
+                {
+
+                    obj.lstAlunos.Add(aluno);
+                        
+                }   
+            }
+
+            //public abstract void exibir();
+
             return aluno;
         }
     }

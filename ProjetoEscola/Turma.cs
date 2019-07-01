@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using System;
 
 namespace ProjetoEscola
 {
-    class Turma 
-    {
+      class Turma 
+     {
         public List<Aluno> lstAlunos;
         public List<Professor> lstProfessores;
         public char CodTurma; 
@@ -14,10 +15,21 @@ namespace ProjetoEscola
             lstProfessores =  professores;
             CodTurma = codigoTurma;
         }
+
         public Turma(char codigoTurma) {
-            this.CodTurma = codigoTurma;
+            CodTurma = codigoTurma;
         }
 
         public Turma() { }
+
+        public object CadastrarTurma(char cod)
+        {
+
+            Turma trm = new Turma(cod);
+            Console.WriteLine($"Turma {cod} cadastrada com sucesso");
+            return trm;
+            
+        }
+
     }
 }
