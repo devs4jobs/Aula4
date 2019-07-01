@@ -1,0 +1,11 @@
+C:\Users\Treinamento 2\source\repos\aula04\aula04\bin\Debug\netcoreapp2.2\aula04.deps.json
+C:\Users\Treinamento 2\source\repos\aula04\aula04\bin\Debug\netcoreapp2.2\aula04.runtimeconfig.json
+C:\Users\Treinamento 2\source\repos\aula04\aula04\bin\Debug\netcoreapp2.2\aula04.runtimeconfig.dev.json
+C:\Users\Treinamento 2\source\repos\aula04\aula04\bin\Debug\netcoreapp2.2\aula04.dll
+C:\Users\Treinamento 2\source\repos\aula04\aula04\bin\Debug\netcoreapp2.2\aula04.pdb
+C:\Users\Treinamento 2\source\repos\aula04\aula04\obj\Debug\netcoreapp2.2\aula04.csprojAssemblyReference.cache
+C:\Users\Treinamento 2\source\repos\aula04\aula04\obj\Debug\netcoreapp2.2\aula04.csproj.CoreCompileInputs.cache
+C:\Users\Treinamento 2\source\repos\aula04\aula04\obj\Debug\netcoreapp2.2\aula04.AssemblyInfoInputs.cache
+C:\Users\Treinamento 2\source\repos\aula04\aula04\obj\Debug\netcoreapp2.2\aula04.AssemblyInfo.cs
+C:\Users\Treinamento 2\source\repos\aula04\aula04\obj\Debug\netcoreapp2.2\aula04.dll
+C:\Users\Treinamento 2\source\repos\aula04\aula04\obj\Debug\netcoreapp2.2\aula04.pdb
