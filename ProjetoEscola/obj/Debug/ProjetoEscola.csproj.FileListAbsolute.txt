@@ -1,7 +1,0 @@
-C:\Users\rafdev\Desktop\Sabados!!\Sabado2906\ProjetoEscola\ProjetoEscola\bin\Debug\ProjetoEscola.exe.config
-C:\Users\rafdev\Desktop\Sabados!!\Sabado2906\ProjetoEscola\ProjetoEscola\bin\Debug\ProjetoEscola.exe
-C:\Users\rafdev\Desktop\Sabados!!\Sabado2906\ProjetoEscola\ProjetoEscola\bin\Debug\ProjetoEscola.pdb
-C:\Users\rafdev\Desktop\Sabados!!\Sabado2906\ProjetoEscola\ProjetoEscola\obj\Debug\ProjetoEscola.csprojAssemblyReference.cache
-C:\Users\rafdev\Desktop\Sabados!!\Sabado2906\ProjetoEscola\ProjetoEscola\obj\Debug\ProjetoEscola.csproj.CoreCompileInputs.cache
-C:\Users\rafdev\Desktop\Sabados!!\Sabado2906\ProjetoEscola\ProjetoEscola\obj\Debug\ProjetoEscola.exe
-C:\Users\rafdev\Desktop\Sabados!!\Sabado2906\ProjetoEscola\ProjetoEscola\obj\Debug\ProjetoEscola.pdb
