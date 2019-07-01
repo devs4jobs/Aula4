@@ -7,12 +7,9 @@ namespace CadastroEscolar
     {
         static void Main(string[] args)
         {
-          
-
             Turma turma = new Turma();
 
             int decisao, i=0,N; 
-            
 
             Console.WriteLine("DIGITE 1 PARA ALUNO / DIGITE 2 PARA PROFESSOR");
             decisao = int.Parse(Console.ReadLine());
@@ -32,9 +29,9 @@ namespace CadastroEscolar
             if (decisao == 2)
             {
                 Console.WriteLine("QUANTOS PROFESSORES DESEJA CADASTRAR? ");
-                N = int.Parse(Console.ReadLine());
+                 N= int.Parse(Console.ReadLine());
 
-                for (i = 0; i < N; i++)
+                for (i = 0; i <N ; i++)
                 {
                     Professor professor = new Professor();
                     professor.CadastrarProfessor();
@@ -42,6 +39,9 @@ namespace CadastroEscolar
 
                     Console.WriteLine(professor.Nome);
                 }
+
+
+
             }
 
         }

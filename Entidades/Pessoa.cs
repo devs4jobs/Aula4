@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CadastroEscolar.Entidades
 {
-    class Pessoa
+   abstract class Pessoa
     {
         public string Nome { get; set; }
         public int Idade { get;  set; }
@@ -23,5 +23,7 @@ namespace CadastroEscolar.Entidades
             Sexo = sexo;
             Cpf = cpf;
         }
+
+       
     }
 }

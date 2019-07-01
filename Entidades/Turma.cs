@@ -9,8 +9,7 @@ namespace CadastroEscolar.Entidades
         public List<Turma> lstTurmas { get; set; } = new List<Turma>();
         public List<Aluno> lstAlunos { get; set; } = new List<Aluno>();
         public List<Professor> lstProfessors { get; set; } = new List<Professor>();
-       
-        //public string CodTurma { get; set; }
+
 
         public Turma()
         {

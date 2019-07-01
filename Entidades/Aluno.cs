@@ -42,8 +42,12 @@ namespace CadastroEscolar.Entidades
             aluno.Ra = int.Parse(Console.ReadLine());
 
             return aluno;
+
         }
+
     }
+
+
 
 
 }

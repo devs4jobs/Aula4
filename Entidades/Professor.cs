@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using CadastroEscolar.Entidades.Enums;
 namespace CadastroEscolar.Entidades
 {
     class Professor : Pessoa
@@ -9,7 +9,8 @@ namespace CadastroEscolar.Entidades
         public int Identificacao { get; private set; }
         public int Salario { get; set; }
         public List<Materias> lstMaterias { get; set; } = new List<Materias>();
-
+        public List<Classes> lstCodTurmas { get; set; } = new List<Classes>();
+        int i = 0;
         public Professor()
         {
 
@@ -41,11 +42,11 @@ namespace CadastroEscolar.Entidades
             p.Identificacao = int.Parse(Console.ReadLine());
 
 
-            Console.Write("CADASTRE AS MATERIAS QUE O PROFESSOR DA AULA");
+            Console.WriteLine("CADASTRE AS MATERIAS QUE O PROFESSOR DA AULA");
             Console.WriteLine("QUANTAS MATERIAS DESEJA CADASTRAR PARA ESTE PROFESSOR?");
             int num = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i < num; i++)
+            for ( i = 0; i < num; i++)
             {
                 Materias m = new Materias();
 
@@ -82,9 +83,18 @@ namespace CadastroEscolar.Entidades
                     default:
                         break;
 
-                }
+                }  
+             
             }
+            Console.WriteLine("ESSE PROFESSOR DA AULA PARA QUANTAS TURMAS?");
+            num = int.Parse(Console.ReadLine());
 
+            for (i = 0; i <num; i++)
+            {
+                Console.WriteLine("QUAL É A TURMA DO PROFESSOR? A,B,C,D ou E");
+                Classes C = Enum.Parse<Classes>(Console.ReadLine().ToUpper());
+                lstCodTurmas.Add(C);
+            }
             return p;
         }
 
