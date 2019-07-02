@@ -6,10 +6,10 @@ namespace CadastroEscolar.Entidades.Enums
 {
     enum Classes:byte
     {
-        A=0,
-        B=1,
-        C=2,
-        D=3,
-        E=4,
+        TurmaA=0,
+        TurmaB=1,
+        TurmaC=2,
+        TurmaD=3,
+        TurmaE=4,
     }
 }

@@ -7,8 +7,6 @@ namespace CadastroEscolar
     {
         static void Main(string[] args)
         {
-
-
             Turma turma = new Turma();
             Designs d = new Designs();
             d.MudarBack();
@@ -36,10 +34,8 @@ namespace CadastroEscolar
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
             #endregion
 
-
             #region "Lógica"
            int decisao, i = 0, N;
-
 
             Console.WriteLine("");
             d.MudarCores2();
@@ -53,7 +49,13 @@ namespace CadastroEscolar
             Console.WriteLine("");
             decisao = int.Parse(Console.ReadLine());
 
-
+            while (decisao != 2 && decisao != 1)
+            {
+                Console.WriteLine("Erro escolha uma opção válida!");
+                Console.WriteLine("");
+                decisao = int.Parse(Console.ReadLine());
+                Console.WriteLine("");
+            }
 
             if (decisao == 1)
             {
@@ -67,9 +69,20 @@ namespace CadastroEscolar
 
                 for (i = 0; i < N; i++)
                 {
-                    Aluno aluno = new Aluno();
-                    aluno.Cadastrar();
-                    turma.AddAlunos(aluno);
+                    try
+                    {
+                        Aluno aluno = new Aluno();
+                        aluno.Cadastrar();
+                        turma.AddAlunos(aluno);
+                    }
+                    catch (Exception)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Erro, insira informações validas!");
+                        i--;
+
+                    }
+                 
                 }
             }
             else if (decisao == 2)
@@ -82,21 +95,29 @@ namespace CadastroEscolar
 
                 for (i = 0; i < N; i++)
                 {
-                    Professor professor = new Professor();
-                    professor.Cadastrar();
+                    try
+                    {
+                        Professor professor = new Professor();
+                        professor.Cadastrar();
 
-                    turma.AddProfessores(professor);
+                        turma.AddProfessores(professor);
 
-                    Console.WriteLine(professor.Nome);
+                        Console.WriteLine(professor.Nome);
+                    }
+                    catch (Exception)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Erro, insira informações validas!");
+                        i--;
+                    }
+                  
                 }
 
             }
+
             #endregion
         }
 
-        private static void Timer()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
