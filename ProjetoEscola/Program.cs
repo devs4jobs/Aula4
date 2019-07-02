@@ -4,7 +4,7 @@ using System.Globalization;
 
 
 // 30/06/2019  Falta : jogar pro txt , pesquisar dicionary e implementar no Codigo , Relacionar as 3 classes  !! Por CodTurma !!
-namespace ProjetoEscola
+namespace ProjetoEscola.Clasees
 {
     class Program
     {
@@ -17,7 +17,7 @@ namespace ProjetoEscola
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Beep();
                 List<Turma> lstTurmas = new List<Turma>();
-                
+
                 Turma turma = new Turma();
                 Console.WriteLine("\t\t============================== MENU ==============================\t\t\n");
                 Console.WriteLine("\t\t\t\t\tDigite um Opção a ser feita ! : \n\n");

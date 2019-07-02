@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System;
 
-namespace ProjetoEscola
+namespace ProjetoEscola.Clasees
 {
       class Turma 
      {
         public List<Aluno> lstAlunos;
         public List<Professor> lstProfessores;
-        public char CodTurma; 
+        public char CodTurma;
 
+        #region Construtores
         public Turma (List<Professor> professores , List<Aluno> alunos, char codigoTurma)
         {
             lstAlunos = alunos;
@@ -22,6 +23,9 @@ namespace ProjetoEscola
 
         public Turma() { }
 
+        #endregion
+
+        #region MetodosDaClasse
         public object CadastrarTurma(char cod)
         {
 
@@ -30,6 +34,8 @@ namespace ProjetoEscola
             return trm;
             
         }
+
+        #endregion
 
     }
 }

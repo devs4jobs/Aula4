@@ -85,22 +85,7 @@ namespace ProjetoEscola.Clasees
 
         #region MetodosAbstratos
 
-        public override void ExibirListas(List<object> list)
-        {
-            List<Turma> list = new List<Turma>();
-            for (int i = 0; i < lstTurmas.Count; i++)
-            {
-                Turma obj = new Turma();
-
-                if (obj.CodTurma == aluno.CodTurma)
-                {
-
-                    obj.lstAlunos.Add(aluno);
-
-                }
-            }
-
-        }
         #endregion
     }
 }
+
