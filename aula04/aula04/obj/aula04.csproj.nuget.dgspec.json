@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Treinamento 2\\source\\repos\\aula04\\aula04\\aula04.csproj": {}
+    "C:\\Users\\Treinamento 2\\Desktop\\Aula4\\aula04\\aula04\\aula04.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Treinamento 2\\source\\repos\\aula04\\aula04\\aula04.csproj": {
+    "C:\\Users\\Treinamento 2\\Desktop\\Aula4\\aula04\\aula04\\aula04.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Treinamento 2\\source\\repos\\aula04\\aula04\\aula04.csproj",
+        "projectUniqueName": "C:\\Users\\Treinamento 2\\Desktop\\Aula4\\aula04\\aula04\\aula04.csproj",
         "projectName": "aula04",
-        "projectPath": "C:\\Users\\Treinamento 2\\source\\repos\\aula04\\aula04\\aula04.csproj",
+        "projectPath": "C:\\Users\\Treinamento 2\\Desktop\\Aula4\\aula04\\aula04\\aula04.csproj",
         "packagesPath": "C:\\Users\\Treinamento 2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Treinamento 2\\source\\repos\\aula04\\aula04\\obj\\",
+        "outputPath": "C:\\Users\\Treinamento 2\\Desktop\\Aula4\\aula04\\aula04\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )"
             }
           },
           "imports": [
