@@ -20,3 +20,14 @@ C:\Users\Treinamento 5\Desktop\Projeto Cadastro Escolar\Aula4\obj\Debug\netcorea
 C:\Users\Treinamento 5\Desktop\Projeto Cadastro Escolar\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfo.cs
 C:\Users\Treinamento 5\Desktop\Projeto Cadastro Escolar\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.dll
 C:\Users\Treinamento 5\Desktop\Projeto Cadastro Escolar\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.pdb
+C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.deps.json
+C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.runtimeconfig.json
+C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.runtimeconfig.dev.json
+C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.dll
+C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.pdb
+C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.csprojAssemblyReference.cache
+C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.csproj.CoreCompileInputs.cache
+C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfoInputs.cache
+C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfo.cs
+C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.dll
+C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.pdb

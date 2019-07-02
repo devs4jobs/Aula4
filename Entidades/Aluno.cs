@@ -21,7 +21,7 @@ namespace CadastroEscolar.Entidades
             Ra = ra;
         }
 
-        public object Cadastroalunos()
+       override public object Cadastrar()
         {
             Aluno aluno = new Aluno();
 
