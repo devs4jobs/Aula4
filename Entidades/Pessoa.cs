@@ -26,4 +26,5 @@ namespace CadastroEscolar.Entidades
         public abstract object Cadastrar();
 
     }
+    
 }

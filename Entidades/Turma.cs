@@ -30,9 +30,7 @@ namespace CadastroEscolar.Entidades
         public void AddProfessores(Professor professores)
         {
             lstProfessors.Add(professores);
-        }
-        
-      
+        } 
 
     }
 

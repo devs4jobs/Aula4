@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CadastroEscolar.Entidades.Enums
 {
-    enum Classes:int
+    enum Classes:byte
     {
         A=0,
         B=1,
