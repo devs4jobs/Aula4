@@ -4,19 +4,19 @@ using System.Globalization;
 
 namespace ProjetoEscola.Clasees
 {
-     class Professor : Pessoa
+    class Professor : Pessoa
     {
         private double Salario_ { get; set; }
         private int Id_ { get; set; }
-       
+
         public List<string> lstMaterias;
         public List<Turma> lstTurmas;
-        public Turma Turma;
+        
 
         #region MetodosConstrutores
 
 
-        public Professor(string nome, double salario, int id, char genero, string nacionalidade, string cidade, string dataNascimento, string pais, List<string> listamaterias, char codigoTurma, List<Turma> turmas,Turma turma)
+        public Professor(string nome, double salario, int id, char genero, string nacionalidade, string cidade, string dataNascimento, string pais, List<string> listamaterias, char codigoTurma, List<Turma> turmas, Turma turma)
         {
             Nome = nome;
             Salario_ = salario;
@@ -29,7 +29,7 @@ namespace ProjetoEscola.Clasees
             lstMaterias = listamaterias;
             CodTurma = codigoTurma;
             lstTurmas = turmas;
-            Turma = turma;
+           
 
         }
         public Professor() { }
@@ -93,15 +93,16 @@ namespace ProjetoEscola.Clasees
             int quantidade = Convert.ToInt32(Console.ReadLine());
             for (int i = 0; i < quantidade; i++)
             {
+                List<Turma> lstTurmas = new List<Turma>();
+
                 Console.WriteLine("Digite qual o codigo da turma que vocÊ dara aula : EX: A, B, C.. ");
 
                 prof.CodTurma = Convert.ToChar(Console.ReadLine());
-                
-                Turma turma = new Turma(CodTurma);
-               if(turmas.Exists(x => x.CodTurma == prof.CodTurma))
-                {
-                    prof.lstTurmas.Add(turma);
-                }
+
+                //Turma turma = new Turma(CodTurma);
+
+                if (lstTurmas.Exists(x => x.CodTurma == prof.CodTurma))
+                    lstTurmas.Add(prof);
             }
             return prof;
         }
@@ -123,13 +124,13 @@ namespace ProjetoEscola.Clasees
 
                 switch (codMateria)
                 {
-                    
+
                     case 1: lstMaterias.Add("Português"); break;
                     case 2: lstMaterias.Add("Matemática"); break;
                     case 3: lstMaterias.Add("Ciências"); break;
                     case 4: lstMaterias.Add("Geografia"); break;
                     case 5: lstMaterias.Add("Artes"); break;
-                    case 6: lstMaterias.Add("História"); break;  
+                    case 6: lstMaterias.Add("História"); break;
                     case 7: lstMaterias.Add("Ed.Física"); break;
                     default:
                         Console.WriteLine("Opção inválida! Digite um inteiro entre 1 e 7");
@@ -144,7 +145,7 @@ namespace ProjetoEscola.Clasees
                                 codMateria = Convert.ToInt32(Console.ReadLine());
 
                             }
-                        } 
+                        }
 
                         break;
 
@@ -163,9 +164,21 @@ namespace ProjetoEscola.Clasees
         #region MetodosAbstratos
         public override void ExibirListas(List<object> list)
         {
-                
-        }
-        #endregion
-    }
 
+            //Console.WriteLine("Digite o código da turma que deseja ");
+
+            Turma trm = new Turma();
+            Professor professor = new Professor();
+
+
+            foreach (Professor prof in lstProfessores)
+            {
+                Console.WriteLine(prof);
+            }
+
+            
+            #endregion
+        }
+    }
 }
+

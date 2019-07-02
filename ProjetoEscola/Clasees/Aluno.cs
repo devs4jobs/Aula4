@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjetoEscola.Clasees
 {
@@ -12,7 +9,7 @@ namespace ProjetoEscola.Clasees
         public Turma Turma;
 
         #region Construtores
-        public Aluno(string nome, char genero, string nacionalidade, int matricula, string dataNascimento, string pais, string cidade)
+        public Aluno(string nome, char genero, string nacionalidade, int matricula, string dataNascimento, string pais, string cidade , Turma turma)
         {
             Nome = nome;
             Sexo = genero;
@@ -21,6 +18,7 @@ namespace ProjetoEscola.Clasees
             DataNasc = dataNascimento;
             Pais = pais;
             Cidade = cidade;
+            Turma = turma;
         }
 
         public Aluno() { }
@@ -46,6 +44,7 @@ namespace ProjetoEscola.Clasees
 
         public override object Cadastrar()
         {
+
             Aluno aluno = new Aluno();
             Console.Beep();
             Console.Write("Digite o nome do Aluno(a) : ");
@@ -66,15 +65,18 @@ namespace ProjetoEscola.Clasees
             aluno.DataNasc = Console.ReadLine();
             Console.WriteLine("Digite qual o codigo da turma que vocÊ vai estar !! : EX: A, B, C.. ");
             aluno.CodTurma = Convert.ToChar(Console.ReadLine());
-            
+
+            if (Turma.lstAlunos.Exists(x => x.CodTurma == aluno.CodTurma)) { Turma.lstAlunos.Add(aluno); }
             return aluno;
+
         }
 
         public override string ToString()
         {
-            return $"Nome do Aluno: {Nome} , Idade: {Idade} , Matrícula: {Matricula}";
-        }
 
+            return $"Nome do Aluno: {Nome} , Idade: {Idade} , Matrícula: {Matricula}";
+
+        }
 
         #endregion
 
@@ -82,9 +84,13 @@ namespace ProjetoEscola.Clasees
 
         public override void ExibirListas(List<object> list)
         {
+            foreach (Aluno aluno in lstAlunos)
+            {
 
+                Console.WriteLine(aluno);
+
+            }
         }
-
 
         #endregion
     }

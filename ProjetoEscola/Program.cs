@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Globalization;
 
-
 // 30/06/2019  Falta : jogar pro txt , pesquisar dicionary e implementar no Codigo , Relacionar as 3 classes  !! Por CodTurma !!
 namespace ProjetoEscola.Clasees
 {
     class Program
     {
+
         static void Main(string[] args)
         {
+            
             int op;
             do
             {
@@ -17,7 +18,6 @@ namespace ProjetoEscola.Clasees
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Beep();
                
-
                 Turma turma = new Turma();
                 Console.WriteLine("\t\t============================== MENU DE REGISTRO ==============================\t\t\n");
                 Console.WriteLine("\t\t\t\t\tDigite um Opção a ser feita ! : \n\n");
@@ -61,6 +61,8 @@ namespace ProjetoEscola.Clasees
 
                     for (int i = 0; i < qnt; i++)
                     {
+                        List<Turma> lstTurmas = new List<Turma>();
+
                         Turma trm = new Turma();
 
                         Console.WriteLine("Insira o código da turma a ser cadastrado, Ex : A, B, C");
@@ -68,10 +70,9 @@ namespace ProjetoEscola.Clasees
 
                         trm.CadastrarTurma(trm.CodTurma);
 
-                        trm.turmas.Add(trm);
+                        lstTurmas.Add(trm);
 
                     }
-
                 }
 
                 else if (op == 4)

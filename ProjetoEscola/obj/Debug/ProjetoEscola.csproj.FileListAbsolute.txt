@@ -5,7 +5,6 @@ C:\Users\rafdev\Desktop\Sabados!!\Sabado2906\ProjetoEscola\ProjetoEscola\obj\Deb
 C:\Users\rafdev\Desktop\Sabados!!\Sabado2906\ProjetoEscola\ProjetoEscola\obj\Debug\ProjetoEscola.csproj.CoreCompileInputs.cache
 C:\Users\rafdev\Desktop\Sabados!!\Sabado2906\ProjetoEscola\ProjetoEscola\obj\Debug\ProjetoEscola.exe
 C:\Users\rafdev\Desktop\Sabados!!\Sabado2906\ProjetoEscola\ProjetoEscola\obj\Debug\ProjetoEscola.pdb
-C:\Users\Treinamento 6\Desktop\Sabados !\Sabado3006\Aula4\ProjetoEscola\bin\Debug\ProjetoEscola.exe.config
 C:\Users\Treinamento 6\Desktop\Sabados !\Sabado3006\Aula4\ProjetoEscola\bin\Debug\ProjetoEscola.exe
 C:\Users\Treinamento 6\Desktop\Sabados !\Sabado3006\Aula4\ProjetoEscola\bin\Debug\ProjetoEscola.pdb
 C:\Users\Treinamento 6\Desktop\Sabados !\Sabado3006\Aula4\ProjetoEscola\obj\Debug\ProjetoEscola.csprojAssemblyReference.cache

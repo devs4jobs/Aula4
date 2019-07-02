@@ -4,11 +4,11 @@ using System;
 namespace ProjetoEscola.Clasees
 {
       class Turma 
-     {
-        public List<Turma> turmas;
-        public List<Aluno> lstAlunos;
-        public List<Professor> lstProfessores;
-        public char CodTurma;
+      {
+      
+      public List<Aluno> lstAlunos = new List<Aluno>();
+      public List<Professor> lstProfessores;
+      public char CodTurma;
 
         #region Construtores
         public Turma (List<Professor> professores , List<Aluno> alunos, char codigoTurma)
@@ -30,15 +30,18 @@ namespace ProjetoEscola.Clasees
         public object CadastrarTurma(char cod)
         {
 
-            Turma trm = new Turma(cod);
+            List<Turma> lstTurmas = new List<Turma>();
+            Turma trm = new Turma();
             Console.WriteLine($"Turma {cod} cadastrada com sucesso");
-            return trm;
-            
+            lstTurmas.Add(trm);
+            return trm ;
+
         }
 
         public void AddAlunos(Aluno aluno)
         {
-            if (turmas.Exists(x => x.CodTurma == aluno.CodTurma)) { lstAlunos.Add(aluno); }
+            List<Turma> lstTurmas = new List<Turma>();
+            if (lstTurmas.Exists(x => x.CodTurma == aluno.CodTurma)) { lstAlunos.Add(aluno); }
         }
 
         public void AddProfessor(Professor prof)
@@ -53,7 +56,7 @@ namespace ProjetoEscola.Clasees
                     Console.WriteLine(alun);
                     lstAlunos.Exists(x => x.Matricula == matricula);
                     lstAlunos.Remove(alun);
-            }
+                }
         }
 
         public void RemoverProfessor(int id)
@@ -70,6 +73,5 @@ namespace ProjetoEscola.Clasees
            
         }
         #endregion
-
     }
 }
