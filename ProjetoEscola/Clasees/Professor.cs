@@ -63,9 +63,8 @@ namespace ProjetoEscola.Clasees
         #region MetodosDaClasse
 
 
-        public object CadastrarProfessor()
+        public override object Cadastrar()
         {
-            //         List<Turma> lstTurmas = new List<Turma>();
             Professor prof = new Professor();
             Console.Beep();
             Console.Write("Digite o nome do professor(a) : ");
@@ -97,11 +96,12 @@ namespace ProjetoEscola.Clasees
                 Console.WriteLine("Digite qual o codigo da turma que vocÊ dara aula : EX: A, B, C.. ");
 
                 prof.CodTurma = Convert.ToChar(Console.ReadLine());
-
+                
                 Turma turma = new Turma(CodTurma);
-                lstTurmas = new List<Turma>();
-                lstTurmas.Add(turma);
-
+               if(turmas.Exists(x => x.CodTurma == prof.CodTurma))
+                {
+                    prof.lstTurmas.Add(turma);
+                }
             }
             return prof;
         }
@@ -112,7 +112,8 @@ namespace ProjetoEscola.Clasees
             for (int i = 0; i < qntMaterias; i++)
             {
                 Console.Clear();
-
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.WriteLine("\t\t============================ MENU DE MATÉRIAS ============================\t\t\n");
                 Console.WriteLine("\t\t\t\t\tDigite um Opção a ser feita ! : \n\n");
                 Console.WriteLine("\t\t\t\t\t1 - Português\n\t\t\t\t\t2 - Matemática\n\t\t\t\t\t3 - Ciências\n\t\t\t\t\t4 - Geografia\n\t\t\t\t\t5 - Artes\n\t\t\t\t\t6 - História\n\t\t\t\t\t7 - Ed.Física");
@@ -152,10 +153,18 @@ namespace ProjetoEscola.Clasees
             }
         }
 
+        public override string ToString()
+        {
+            return $"Nome do Professor: {Nome} , Idade: {Idade} , ID: {ID}";
+        }
+
         #endregion
 
         #region MetodosAbstratos
-
+        public override void ExibirListas(List<object> list)
+        {
+                
+        }
         #endregion
     }
 

@@ -17,7 +17,7 @@ namespace ProjetoEscola.Clasees
         public string Cidade { get; set; }
         public int Idade { get; set; }
 
-        #region 
+        #region Construtores
         public Pessoa(string nome, char sexo, string nacionaliddade, string dataNasc, string pais, string cidade, int idade)
         {
             Nome = nome;
@@ -32,7 +32,11 @@ namespace ProjetoEscola.Clasees
 
         public Pessoa() { }
 
+        #endregion
+
         public abstract void ExibirListas( List<object> list);
+
+        public abstract object Cadastrar();
         
 
     }

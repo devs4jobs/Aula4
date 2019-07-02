@@ -9,6 +9,7 @@ namespace ProjetoEscola.Clasees
     class Aluno : Pessoa
     {
         private int Matricula_ { get; set; }
+        public Turma Turma;
 
         #region Construtores
         public Aluno(string nome, char genero, string nacionalidade, int matricula, string dataNascimento, string pais, string cidade)
@@ -24,6 +25,11 @@ namespace ProjetoEscola.Clasees
 
         public Aluno() { }
 
+        public Aluno (Turma turma, char codigoturma)
+        {
+            turma.CodTurma = codigoturma ;
+        }
+
         public int Matricula
         {
             get { return Matricula_; }
@@ -38,7 +44,7 @@ namespace ProjetoEscola.Clasees
         #region MetodosDaClasse
 
 
-        public object CadastrarAlunos()
+        public override object Cadastrar()
         {
             Aluno aluno = new Aluno();
             Console.Beep();
@@ -60,30 +66,25 @@ namespace ProjetoEscola.Clasees
             aluno.DataNasc = Console.ReadLine();
             Console.WriteLine("Digite qual o codigo da turma que vocÊ vai estar !! : EX: A, B, C.. ");
             aluno.CodTurma = Convert.ToChar(Console.ReadLine());
-            List<Turma> lstTurmas = new List<Turma>();
-
-            for (int i = 0; i <lstTurmas.Count; i++)
-            {
-               Turma obj = new Turma();
-
-                if (obj.CodTurma == aluno.CodTurma)
-                {
-
-                    obj.lstAlunos.Add(aluno);
-                        
-                }   
-            }
-
-           
-
-            //public abstract void exibir();
-
+            
             return aluno;
         }
+
+        public override string ToString()
+        {
+            return $"Nome do Aluno: {Nome} , Idade: {Idade} , Matrícula: {Matricula}";
+        }
+
 
         #endregion
 
         #region MetodosAbstratos
+
+        public override void ExibirListas(List<object> list)
+        {
+
+        }
+
 
         #endregion
     }

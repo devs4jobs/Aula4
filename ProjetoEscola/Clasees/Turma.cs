@@ -5,6 +5,7 @@ namespace ProjetoEscola.Clasees
 {
       class Turma 
      {
+        public List<Turma> turmas;
         public List<Aluno> lstAlunos;
         public List<Professor> lstProfessores;
         public char CodTurma;
@@ -35,6 +36,39 @@ namespace ProjetoEscola.Clasees
             
         }
 
+        public void AddAlunos(Aluno aluno)
+        {
+            if (turmas.Exists(x => x.CodTurma == aluno.CodTurma)) { lstAlunos.Add(aluno); }
+        }
+
+        public void AddProfessor(Professor prof)
+        {
+            lstProfessores.Add(prof);
+        }
+
+        public void RemoverAluno(int matricula)
+        {
+                foreach (Aluno alun in lstAlunos)
+                {
+                    Console.WriteLine(alun);
+                    lstAlunos.Exists(x => x.Matricula == matricula);
+                    lstAlunos.Remove(alun);
+            }
+        }
+
+        public void RemoverProfessor(int id)
+        {
+            foreach (Professor prof in lstProfessores)
+            {
+                // Console.WriteLine($"Qual Professor desseja remover? {prof.ID}");
+                //Esse Console Write vai ensima desse metodo ! o usuario informa qual id ele quer eliminar o foreach procura o professor e assim ja excluimos ele !! 
+
+                lstProfessores.Exists(x => x.ID == id);
+                lstProfessores.Remove(prof);
+
+            }
+           
+        }
         #endregion
 
     }
