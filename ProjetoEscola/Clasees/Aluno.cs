@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoEscola
+namespace ProjetoEscola.Clasees
 {
-    class Aluno : Professor
+    class Aluno : Pessoa
     {
         private int Matricula_ { get; set; }
 
+        #region Construtores
         public Aluno(string nome, char genero, string nacionalidade, int matricula, string dataNascimento, string pais, string cidade)
         {
             Nome = nome;
@@ -31,6 +32,11 @@ namespace ProjetoEscola
                     Matricula_ = value;
             }
         }
+
+        #endregion
+
+        #region MetodosDaClasse
+
 
         public object CadastrarAlunos()
         {
@@ -68,9 +74,33 @@ namespace ProjetoEscola
                 }   
             }
 
+           
+
             //public abstract void exibir();
 
             return aluno;
         }
+
+        #endregion
+
+        #region MetodosAbstratos
+
+        public override void ExibirListas(List<object> list)
+        {
+            List<Turma> list = new List<Turma>();
+            for (int i = 0; i < lstTurmas.Count; i++)
+            {
+                Turma obj = new Turma();
+
+                if (obj.CodTurma == aluno.CodTurma)
+                {
+
+                    obj.lstAlunos.Add(aluno);
+
+                }
+            }
+
+        }
+        #endregion
     }
 }

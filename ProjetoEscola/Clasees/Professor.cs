@@ -2,44 +2,21 @@
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace ProjetoEscola
+namespace ProjetoEscola.Clasees
 {
-     class Professor : Turma
+     class Professor : Pessoa
     {
-        private string Nome_ { get; set; }
         private double Salario_ { get; set; }
         private int Id_ { get; set; }
-        public char Sexo;
-        public string Nacionaliddade;
-        public string DataNasc;
-        public string Pais;
-        public string Cidade;
-        public int Idade;
+       
         public List<string> lstMaterias;
         public List<Turma> lstTurmas;
         public Turma Turma;
 
-  
+        #region MetodosConstrutores
 
-//namespace Course.Entities
-//    {
-//        class Circle : Shape
-//        {
-//            public double Radius { get; set; }
 
-//            public Circle(double radius, Color color) : base(color)
-//            {
-//                Radius = radius;
-//            }
-
-//            public override double Area()
-//            {
-//                return Math.PI * Radius * Radius;
-//            }
-//        }
-//    }
-
-    public Professor(string nome, double salario, int id, char genero, string nacionalidade, string cidade, string dataNascimento, string pais, List<string> listamaterias, char codigoTurma, List<Turma> turmas,Turma turma)
+        public Professor(string nome, double salario, int id, char genero, string nacionalidade, string cidade, string dataNascimento, string pais, List<string> listamaterias, char codigoTurma, List<Turma> turmas,Turma turma)
         {
             Nome = nome;
             Salario_ = salario;
@@ -56,6 +33,8 @@ namespace ProjetoEscola
 
         }
         public Professor() { }
+
+        #endregion
 
         #region Propriedades 
 
@@ -76,20 +55,12 @@ namespace ProjetoEscola
                 Salario_ = value;
             }
         }
-        public string Nome
-        {
-            get { return Nome_; }
-            set
-            {
-                if (value != null && value.Length > 1)
-                    Nome_ = value;
-            }
-        }
 
 
 
         #endregion
 
+        #region MetodosDaClasse
 
 
         public object CadastrarProfessor()
@@ -180,6 +151,12 @@ namespace ProjetoEscola
 
             }
         }
+
+        #endregion
+
+        #region MetodosAbstratos
+
+        #endregion
     }
 
 }
