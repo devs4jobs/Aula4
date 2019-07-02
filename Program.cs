@@ -22,11 +22,11 @@ namespace CadastroEscolar
                 for ( i = 0; i < N; i++)
                 {
                     Aluno aluno = new Aluno();
-                    aluno.Cadastroalunos();
+                    aluno.Cadastrar();
                     turma.AddAlunos(aluno);
                 }
             }
-            if (decisao == 2)
+            else if (decisao == 2)
             {
                 Console.WriteLine("QUANTOS PROFESSORES DESEJA CADASTRAR? ");
                  N= int.Parse(Console.ReadLine());
@@ -34,7 +34,7 @@ namespace CadastroEscolar
                 for (i = 0; i <N ; i++)
                 {
                     Professor professor = new Professor();
-                    professor.CadastrarProfessor();
+                    professor.Cadastrar();
                     turma.AddProfessores(professor);
 
                     Console.WriteLine(professor.Nome);

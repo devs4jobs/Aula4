@@ -22,7 +22,7 @@ namespace CadastroEscolar.Entidades
             Salario = salario;
         }
 
-        public object CadastrarProfessor()
+        override public object Cadastrar()
         {
             Professor p = new Professor();
 
@@ -82,9 +82,7 @@ namespace CadastroEscolar.Entidades
 
                     default:
                         break;
-
                 }  
-             
             }
             Console.WriteLine("ESSE PROFESSOR DA AULA PARA QUANTAS TURMAS?");
             num = int.Parse(Console.ReadLine());
