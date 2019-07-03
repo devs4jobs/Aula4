@@ -23,8 +23,9 @@ namespace CadastroEscolar.Entidades
             Cpf = cpf;
         }
 
-        public abstract object Cadastrar();
+        public abstract void Cadastrar();
 
+     
     }
     
 }

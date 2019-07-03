@@ -1,14 +1,26 @@
 ﻿using System;
 using CadastroEscolar.Entidades;
 using CadastroEscolar.Entidades.Design;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.IO;
+
 namespace CadastroEscolar
+
 {
     class Program
     {
         static void Main(string[] args)
         {
+
+
+
+           // List<Turma> turmas = new List<Turma>();
+
+
             Turma turma = new Turma();
             Designs d = new Designs();
+
             d.MudarBack();
 
             #region "HORA"
@@ -16,8 +28,8 @@ namespace CadastroEscolar
             tempo.ToString();
             Console.WriteLine("");
             d.MudarCores2();
-          
-            
+
+
             if (tempo.Hour >= 6 && tempo.Hour <= 12)
             {
                 d.WriteLineCenter($"                               BOM DIA E SEJA BEM VINDO(A) AO SISTEMA, DIA: {DateTime.Now }                        ");
@@ -35,7 +47,7 @@ namespace CadastroEscolar
             #endregion
 
             #region "Lógica"
-           int decisao, i = 0, N;
+            int decisao, i = 0, N;
 
             Console.WriteLine("");
             d.MudarCores2();
@@ -65,7 +77,10 @@ namespace CadastroEscolar
 
                 Console.WriteLine("");
                 d.MudarCores1();
+
+
                 N = int.Parse(Console.ReadLine());
+
 
                 for (i = 0; i < N; i++)
                 {
@@ -74,6 +89,15 @@ namespace CadastroEscolar
                         Aluno aluno = new Aluno();
                         aluno.Cadastrar();
                         turma.AddAlunos(aluno);
+
+                        StreamWriter sw2 = new StreamWriter(@"C:\Users\Treinamento 5\Desktop\txtarquivo\txt");
+                        foreach (Aluno alunos in turma.lstAlunos)
+                        {
+                            string g2 = JsonConvert.SerializeObject(alunos);
+                            sw2.WriteLine($"LISTA DE ALUNOS: { g2}  \n");
+                        }
+                        sw2.Close();
+
                     }
                     catch (Exception)
                     {
@@ -82,7 +106,7 @@ namespace CadastroEscolar
                         i--;
 
                     }
-                 
+
                 }
             }
             else if (decisao == 2)
@@ -103,6 +127,15 @@ namespace CadastroEscolar
                         turma.AddProfessores(professor);
 
                         Console.WriteLine(professor.Nome);
+
+                        StreamWriter sw1 = new StreamWriter(@"c:\users\treinamento 5\desktop\txtarquivo\txt2");
+                        foreach (Professor professor1 in turma.lstProfessors)
+                        {
+                            string f = JsonConvert.SerializeObject(professor1);
+                            sw1.WriteLine($"LISTA DE PROFESORES: {f}");
+                        }
+                        sw1.Close();
+
                     }
                     catch (Exception)
                     {
@@ -110,14 +143,21 @@ namespace CadastroEscolar
                         Console.WriteLine("Erro, insira informações validas!");
                         i--;
                     }
-                  
+
                 }
 
             }
 
             #endregion
+
+    
+
+
+
+
+
         }
 
-       
+
     }
 }
