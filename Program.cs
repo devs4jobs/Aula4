@@ -13,11 +13,6 @@ namespace CadastroEscolar
         static void Main(string[] args)
         {
 
-
-
-           // List<Turma> turmas = new List<Turma>();
-
-
             Turma turma = new Turma();
             Designs d = new Designs();
 
@@ -149,11 +144,6 @@ namespace CadastroEscolar
             }
 
             #endregion
-
-    
-
-
-
 
 
         }

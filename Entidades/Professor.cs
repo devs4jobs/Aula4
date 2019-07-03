@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CadastroEscolar.Entidades.Design;
-using CadastroEscolar.Entidades.Enums;
 namespace CadastroEscolar.Entidades
 {
     class Professor : Pessoa
@@ -11,7 +10,7 @@ namespace CadastroEscolar.Entidades
         public int Identificacao { get; set; }
         //  public int Salario { get; set; }
         public List<Materias> lstMaterias { get; set; } = new List<Materias>();
-        public List<Magote> TurmasDoProfesor { get; set; } = new List<Magote>();
+        public List<Turma> TurmasDoProfesor { get; set; } = new List<Turma>();
 
 
         int i = 0;
@@ -58,7 +57,7 @@ namespace CadastroEscolar.Entidades
             Console.WriteLine("");
             d.MudarCores1();
             Cpf = Console.ReadLine().ToUpper();
-
+           
             Console.WriteLine("");
             d.MudarCores();
             // Console.WriteLine("O NUMERO DE IDENTIFICAÇÂO PARA ESTE PROFESSOR É:" );
@@ -91,19 +90,14 @@ namespace CadastroEscolar.Entidades
                 switch (decisao)
                 {
 
-                       
                     case 1:
-                     
-                        
-                            Console.WriteLine("");
-                            d.MudarCores();
-                            Console.WriteLine("MATEMATICA");
-                            m.DefinirMateria(decisao);
-                            lstMaterias.Add(m);
-                            Console.WriteLine("");
 
-                        
-
+                        Console.WriteLine("");
+                        d.MudarCores();
+                        Console.WriteLine("MATEMATICA");
+                        m.DefinirMateria(decisao);
+                        lstMaterias.Add(m);
+                        Console.WriteLine("");
                         break;
 
                     case 2:
@@ -145,7 +139,7 @@ namespace CadastroEscolar.Entidades
                     default:
                         break;
                 }
-            }                             
+            }
             Console.Clear();
             Console.WriteLine("");
             d.MudarCores();
@@ -157,99 +151,98 @@ namespace CadastroEscolar.Entidades
 
             for (i = 0; i < num; i++)
             {
-                Magote ma = new Magote();
+                Turma turma = new Turma();
 
                 Console.WriteLine("QUAL É A TURMA DO PROFESSOR? A,B,C,D ou E");
                 Console.WriteLine("");
                 int decisao = int.Parse(Console.ReadLine());
-               // string decidir;
+               
 
-    
+
                 switch (decisao)
                 {
                     case 1:
-                    
+
                         Console.WriteLine("");
                         d.MudarCores();
                         Console.WriteLine("Turma A CADASTRADA");
-                        ma.DefinirTurma(decisao);
-                        TurmasDoProfesor.Add(ma);
+
+
+                        turma.DefinirTurma(decisao);
+
+                        TurmasDoProfesor.Add(turma);
                         Console.WriteLine("");
-              
+
                         break;
-                      
+
 
                     case 2:
 
-                        if (TurmasDoProfesor.Contains(ma))
-                        {
-                            Console.WriteLine("TURMA JA CADASTRADA PARA ESTE PROFESSOR");
-                        }
                         Console.WriteLine("");
                         d.MudarCores();
+                        if (TurmasDoProfesor.Contains(turma))
+                        {
+                            Console.WriteLine("TURMA JA CADASTRADA PARA ESTE PROFESSOR, FAVOR CADASTRAR OUTRA TURMA ");
+                            TurmasDoProfesor.Remove(turma);
+                        }
+
                         Console.WriteLine("TURMA B CADASTRADA");
-                        ma.DefinirTurma(decisao);
-                        TurmasDoProfesor.Add(ma);
+                        turma.DefinirTurma(decisao);
+                        TurmasDoProfesor.Add(turma);
                         Console.WriteLine("");
+
+
                         break;
+
+
 
                     case 3:
 
-                        if (TurmasDoProfesor.Contains(ma))
+                        if (TurmasDoProfesor.Contains(turma))
                         {
                             Console.WriteLine("TURMA JA CADASTRADA PARA ESTE PROFESSOR");
                         }
                         Console.WriteLine("");
                         d.MudarCores();
                         Console.WriteLine("TURMA C CADASTRADA");
-                        ma.DefinirTurma(decisao);
-                        TurmasDoProfesor.Add(ma);
+                        turma.DefinirTurma(decisao);
+                        TurmasDoProfesor.Add(turma);
                         Console.WriteLine("");
                         break;
 
                     case 4:
 
-                        if (TurmasDoProfesor.Contains(ma))
+                        if (TurmasDoProfesor.Contains(turma))
                         {
                             Console.WriteLine("TURMA JA CADASTRADA PARA ESTE PROFESSOR");
                         }
                         Console.WriteLine("");
                         d.MudarCores();
                         Console.WriteLine("TURMA D CADASTRADA");
-                        ma.DefinirTurma(decisao);
-                        TurmasDoProfesor.Add(ma);
+                        turma.DefinirTurma(decisao);
+                        TurmasDoProfesor.Add(turma);
                         Console.WriteLine("");
                         break;
 
                     case 5:
 
-                        if (TurmasDoProfesor.Contains(ma))
+                        if (TurmasDoProfesor.Contains(turma))
                         {
                             Console.WriteLine("TURMA JA CADASTRADA PARA ESTE PROFESSOR");
                         }
                         Console.WriteLine("");
                         d.MudarCores();
                         Console.WriteLine("TURMA E CADASTRADA");
-                        ma.DefinirTurma(decisao);
-                        TurmasDoProfesor.Add(ma);
+                        turma.DefinirTurma(decisao);
+                        TurmasDoProfesor.Add(turma);
                         Console.WriteLine("");
                         break;
 
                     default:
                         break;
-                      
+
 
                 }
-
-                //while (TurmasDoProfesor.Contains(ma) || i > 5)
-                //{
-                //    Console.WriteLine("TURMA JA CADASTRADA PARA ESTE PROFESSOR");
-                //    Console.WriteLine("CADASTRE OUTRA TURMA!!");
-                //    Console.WriteLine("Deseja cadastrar outra turma ?");
-                //    i++;
-
-                //}
-
 
                 #endregion
 

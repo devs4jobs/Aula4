@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CadastroEscolar.Entidades.Enums;
 using CadastroEscolar.Entidades.Design;
 namespace CadastroEscolar.Entidades
 {
     class Aluno : Pessoa
     {
-        public List<Magote> TurmaDoAluno { get; set; } = new List<Magote>();
+        public List<Turma> TurmaDoAluno { get; set; } = new List<Turma>();
         public int Ra { get; set; }
 
 
@@ -73,7 +72,7 @@ namespace CadastroEscolar.Entidades
             Console.WriteLine("QUAL É A TURMA DO Aluno? A,B,C,D ou E");
             d.MudarCores1();
 
-            Magote ma = new Magote();
+           Turma turmas = new Turma();
 
             int decisao = int.Parse(Console.ReadLine());
 
@@ -83,12 +82,11 @@ namespace CadastroEscolar.Entidades
             {
                 case 1:
 
-
                     Console.WriteLine("");
                     d.MudarCores();
                     Console.WriteLine("Turma A CADASTRADA");
-                    ma.DefinirTurma(decisao);
-                    TurmaDoAluno.Add(ma);
+                    turmas.DefinirTurma(decisao);
+                    TurmaDoAluno.Add(turmas);
                     Console.WriteLine("");
                     break;
 
@@ -96,8 +94,8 @@ namespace CadastroEscolar.Entidades
                     Console.WriteLine("");
                     d.MudarCores();
                     Console.WriteLine("TURMA B CADASTRADA");
-                    ma.DefinirTurma(decisao);
-                    TurmaDoAluno.Add(ma);
+                    turmas.DefinirTurma(decisao);
+                    TurmaDoAluno.Add(turmas);
                     Console.WriteLine("");
                     break;
 
@@ -105,8 +103,8 @@ namespace CadastroEscolar.Entidades
                     Console.WriteLine("");
                     d.MudarCores();
                     Console.WriteLine("TURMA C CADASTRADA");
-                    ma.DefinirTurma(decisao);
-                    TurmaDoAluno.Add(ma);
+                    turmas.DefinirTurma(decisao);
+                    TurmaDoAluno.Add(turmas);
                     Console.WriteLine("");
                     break;
 
@@ -114,8 +112,8 @@ namespace CadastroEscolar.Entidades
                     Console.WriteLine("");
                     d.MudarCores();
                     Console.WriteLine("TURMA D CADASTRADA");
-                    ma.DefinirTurma(decisao);
-                    TurmaDoAluno.Add(ma);
+                    turmas.DefinirTurma(decisao);
+                    TurmaDoAluno.Add(turmas);
                     Console.WriteLine("");
                     break;
 
@@ -123,8 +121,8 @@ namespace CadastroEscolar.Entidades
                     Console.WriteLine("");
                     d.MudarCores();
                     Console.WriteLine("TURMA E CADASTRADA");
-                    ma.DefinirTurma(decisao);
-                    TurmaDoAluno.Add(ma);
+                    turmas.DefinirTurma(decisao);
+                    TurmaDoAluno.Add(turmas);
                     Console.WriteLine("");
                     break;
 
@@ -133,7 +131,7 @@ namespace CadastroEscolar.Entidades
 
             }
 
-            Console.WriteLine($"ALUNO {Nome} CADASTRADO EM {ma.NomeTurma}!");
+            Console.WriteLine($"ALUNO {Nome} CADASTRADO EM {turmas.NomeTurma}!");
 
         }
 
