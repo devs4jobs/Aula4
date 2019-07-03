@@ -11,12 +11,12 @@ namespace ProjetoEscola.Clasees
 
         public List<string> lstMaterias;
         public List<Turma> lstTurmas;
-        
+
 
         #region MetodosConstrutores
 
 
-        public Professor(string nome, double salario, int id, char genero, string nacionalidade, string cidade, string dataNascimento, string pais, List<string> listamaterias, char codigoTurma, List<Turma> turmas, Turma turma)
+        public Professor(string nome, double salario, int id, char genero, string nacionalidade, string cidade, string dataNascimento, string pais, List<string> listamaterias, char codigoTurma, List<Turma> turmas)
         {
             Nome = nome;
             Salario_ = salario;
@@ -29,7 +29,7 @@ namespace ProjetoEscola.Clasees
             lstMaterias = listamaterias;
             CodTurma = codigoTurma;
             lstTurmas = turmas;
-           
+
 
         }
         public Professor() { }
@@ -63,48 +63,51 @@ namespace ProjetoEscola.Clasees
         #region MetodosDaClasse
 
 
-        public override object Cadastrar()
+        public override void Cadastrar(List<Turma> lstTurma, Turma turma)
         {
-            Professor prof = new Professor();
+
             Console.Beep();
             Console.Write("Digite o nome do professor(a) : ");
-            prof.Nome = Console.ReadLine();
+            Nome = Console.ReadLine();
             Console.Write("\nDigite o Genero :  ");
-            prof.Sexo = Convert.ToChar(Console.ReadLine());
+            Sexo = Convert.ToChar(Console.ReadLine());
             Console.Write("\nDigite a Nacionalidade:  ");
-            prof.Nacionaliddade = Console.ReadLine();
+            Nacionaliddade = Console.ReadLine();
             Console.Write("\nDigite o Pais : ");
-            prof.Pais = Console.ReadLine();
+            Pais = Console.ReadLine();
             Console.Write("\nDigite a Cidade: ");
-            prof.Cidade = Console.ReadLine();
+            Cidade = Console.ReadLine();
             Console.Write("\nDigite o ID dele(a), Ex : 1234 : ");
-            prof.ID = Convert.ToInt32(Console.ReadLine());
+            ID = Convert.ToInt32(Console.ReadLine());
             Console.Write("\nDigite a idade : ");
-            prof.Idade = Convert.ToInt32(Console.ReadLine());
+            Idade = Convert.ToInt32(Console.ReadLine());
             Console.Write("\nDigite a Data de Nascimento: ");
-            prof.DataNasc = Console.ReadLine();
+            DataNasc = Console.ReadLine();
             Console.Write("\nDigite o Salario: ");
-            prof.Salario = Convert.ToDouble(Console.ReadLine().ToString(), CultureInfo.InvariantCulture);
+            Salario = Convert.ToDouble(Console.ReadLine().ToString(), CultureInfo.InvariantCulture);
             Console.Write("\nDigite quantas materias esse Professor(a)  terá :");
             int QuantidadeDeMaterias = Convert.ToInt32(Console.ReadLine());
-            prof.Cadastrarmaterias(QuantidadeDeMaterias);
-
+            Cadastrarmaterias(QuantidadeDeMaterias);
             Console.WriteLine("Para quantas turmas você dará aula !");
             int quantidade = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i < quantidade; i++)
-            {
-                List<Turma> lstTurmas = new List<Turma>();
 
-                Console.WriteLine("Digite qual o codigo da turma que vocÊ dara aula : EX: A, B, C.. ");
+            for (int i = 0; i < quantidade; i++) {
 
-                prof.CodTurma = Convert.ToChar(Console.ReadLine());
+                Console.WriteLine("Digite qual o codigo da turma que vocÊ vai ensinar : EX: A, B, C.. ");
+                CodTurma = Convert.ToChar(Console.ReadLine().ToUpper());
 
-                //Turma turma = new Turma(CodTurma);
+                if (lstTurma.Exists(x => x.CodTurma == CodTurma))
+                {
 
-                if (lstTurmas.Exists(x => x.CodTurma == prof.CodTurma))
-                    lstTurmas.Add(prof);
+                    if (turma.lstProfessores.Exists(x => x.ID == ID)) 
+                        Console.WriteLine(" já existe um professor com mesmo id nessa turma ");                      
+                    
+                    else
+                        turma.lstProfessores.Add(this);
+                        Console.WriteLine($"O {Nome} dara aula para Turma {CodTurma} ! ");
+                }else
+                    Program.CadastrarTurma(CodTurma, lstTurma);
             }
-            return prof;
         }
 
         public void Cadastrarmaterias(int qntMaterias)
@@ -141,14 +144,13 @@ namespace ProjetoEscola.Clasees
 
                             while (codMateria < 0 || codMateria > 7)
                             {
+
                                 Console.WriteLine("Opção inválida! Digite um inteiro entre 1 e 7");
                                 codMateria = Convert.ToInt32(Console.ReadLine());
 
                             }
                         }
-
                         break;
-
                 }
 
             }
@@ -162,23 +164,10 @@ namespace ProjetoEscola.Clasees
         #endregion
 
         #region MetodosAbstratos
-        public override void ExibirListas(List<object> list)
-        {
 
-            //Console.WriteLine("Digite o código da turma que deseja ");
-
-            Turma trm = new Turma();
-            Professor professor = new Professor();
-
-
-            foreach (Professor prof in lstProfessores)
-            {
-                Console.WriteLine(prof);
-            }
-
-            
-            #endregion
-        }
+        #endregion
     }
+
 }
+
 

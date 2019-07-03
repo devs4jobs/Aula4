@@ -30,9 +30,7 @@ namespace ProjetoEscola.Clasees
 
         #endregion
 
-        public abstract void ExibirListas( List<object> list);
+        public abstract void Cadastrar(List<Turma> lstTurmas,Turma turma);
 
-        public abstract object Cadastrar();
-        
     }
 }

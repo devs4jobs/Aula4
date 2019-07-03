@@ -8,6 +8,7 @@ namespace ProjetoEscola.Clasees
         private int Matricula_ { get; set; }
         public Turma Turma;
 
+
         #region Construtores
         public Aluno(string nome, char genero, string nacionalidade, int matricula, string dataNascimento, string pais, string cidade , Turma turma)
         {
@@ -42,56 +43,54 @@ namespace ProjetoEscola.Clasees
         #region MetodosDaClasse
 
 
-        public override object Cadastrar()
+        public override void Cadastrar(List<Turma> lstTurmas,Turma turma)
         {
-
-            Aluno aluno = new Aluno();
             Console.Beep();
             Console.Write("Digite o nome do Aluno(a) : ");
-            aluno.Nome = Console.ReadLine();
+            Nome = Console.ReadLine();
             Console.Write("\nDigite o Genero :  ");
-            aluno.Sexo = Convert.ToChar(Console.ReadLine());
+            Sexo = Convert.ToChar(Console.ReadLine());
             Console.Write("\nDigite a Nacionalidade:  ");
-            aluno.Nacionaliddade = Console.ReadLine();
+            Nacionaliddade = Console.ReadLine();
             Console.Write("\nDigite o Pais : ");
-            aluno.Pais = Console.ReadLine();
+            Pais = Console.ReadLine();
             Console.Write("\nDigite a Cidade: ");
-            aluno.Cidade = Console.ReadLine();
+            Cidade = Console.ReadLine();
             Console.Write("\nDigite a Matricula(a), Ex : 1234 : ");
-            aluno.Matricula = Convert.ToInt32(Console.ReadLine());
+             Matricula = Convert.ToInt32(Console.ReadLine());
             Console.Write("\nDigite a idade : ");
-            aluno.Idade = Convert.ToInt32(Console.ReadLine());
+            Idade = Convert.ToInt32(Console.ReadLine());
             Console.Write("\nDigite a Data de Nascimento: ");
-            aluno.DataNasc = Console.ReadLine();
+             DataNasc = Console.ReadLine();
             Console.WriteLine("Digite qual o codigo da turma que vocÊ vai estar !! : EX: A, B, C.. ");
-            aluno.CodTurma = Convert.ToChar(Console.ReadLine());
-
-            if (Turma.lstAlunos.Exists(x => x.CodTurma == aluno.CodTurma)) { Turma.lstAlunos.Add(aluno); }
-            return aluno;
-
+            CodTurma = Convert.ToChar(Console.ReadLine().ToUpper());
+            if (lstTurmas.Exists(x => x.CodTurma == CodTurma))
+            {
+                if (turma.lstAlunos.Exists(x => x.Matricula == Matricula))
+                    Console.WriteLine("O Aluno já existe nessa turma");
+                else
+                    turma.lstAlunos.Add(this);
+                    Console.WriteLine($"O  {Nome} foi inserido na TUrma {CodTurma} com Sucesso ! ");
+            }
+            else
+                Program.CadastrarTurma(CodTurma, lstTurmas);
         }
 
         public override string ToString()
         {
 
             return $"Nome do Aluno: {Nome} , Idade: {Idade} , Matrícula: {Matricula}";
-
+            
         }
 
         #endregion
 
         #region MetodosAbstratos
 
-        public override void ExibirListas(List<object> list)
-        {
-            foreach (Aluno aluno in lstAlunos)
-            {
+      
 
-                Console.WriteLine(aluno);
 
-            }
-        }
-
+       
         #endregion
     }
 }
