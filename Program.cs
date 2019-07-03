@@ -145,6 +145,7 @@ namespace CadastroEscolar
 
             #endregion
 
+            // precisa iniciar com uma turma existente e dentro desta turma deve conter professor, aluno e materias
 
         }
 

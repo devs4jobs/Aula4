@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CadastroEscolar.Entidades.Design;
+using System.Linq;
 namespace CadastroEscolar.Entidades
 {
     class Professor : Pessoa
@@ -95,7 +96,7 @@ namespace CadastroEscolar.Entidades
                         Console.WriteLine("");
                         d.MudarCores();
                         Console.WriteLine("MATEMATICA");
-                        m.DefinirMateria(decisao);
+                        m.DefinirMateria(decisao);                      
                         lstMaterias.Add(m);
                         Console.WriteLine("");
                         break;
@@ -191,10 +192,7 @@ namespace CadastroEscolar.Entidades
                         TurmasDoProfesor.Add(turma);
                         Console.WriteLine("");
 
-
                         break;
-
-
 
                     case 3:
 
@@ -226,14 +224,16 @@ namespace CadastroEscolar.Entidades
 
                     case 5:
 
-                        if (TurmasDoProfesor.Contains(turma))
-                        {
-                            Console.WriteLine("TURMA JA CADASTRADA PARA ESTE PROFESSOR");
-                        }
                         Console.WriteLine("");
                         d.MudarCores();
                         Console.WriteLine("TURMA E CADASTRADA");
                         turma.DefinirTurma(decisao);
+                        if (turma.lstProfessors.Where(p => p.Cpf == Cpf).ToList().Count > 0) 
+                        {
+                            Console.WriteLine("PROFESSOR JÀ CADASTRADO PARA ESTA TURMA");
+                            break;
+                        }
+                        turma.lstProfessors.Add(this);
                         TurmasDoProfesor.Add(turma);
                         Console.WriteLine("");
                         break;
