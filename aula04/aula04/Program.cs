@@ -8,7 +8,7 @@ namespace aula04
     {
         static void Main(string[] args)
         {   string Cadastro;
-            List<string>Mat=new List<string> { "MATEMATICA", "PORTUQUES", "CIENCIAS", "ARTES", "HISTORIA", "EDUCACAO FISICA" };
+            List<string>Mat=new List<string> { "MATEMATICA", "PORTUGUES", "CIENCIAS", "ARTES", "HISTORIA", "EDUCACAO FISICA" };
             List<Professor> prof = new List<Professor>();
             List<Aluno> alu = new List<Aluno>();
             List<Turma> Turmas = new List<Turma>();
@@ -123,7 +123,7 @@ namespace aula04
                                 foreach (Aluno v in alu)
                                 {
                                     if (v.RA == c)
-                                        v.RegistrarT(Turmas);
+                                        v.RegistrarT(Turmas,v);
                                 }
                                 Console.ForegroundColor = aux;
                                 Console.Clear();

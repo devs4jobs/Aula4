@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 namespace aula04
 {
     class Professor : Pessoa
@@ -27,7 +26,7 @@ namespace aula04
             int i = 0;
             while (i < QMateria)
             {
-                Console.WriteLine("Materias Disponiveis");
+                Console.WriteLine("Materias Disponiveis:");
                 foreach (string v in s)
                 {
                     if (!Materias.Contains(v))
@@ -41,6 +40,7 @@ namespace aula04
                         Materias.Add(Materia);
                         i++;
                     }
+                    else { Console.WriteLine("Informe uma materia valida."); }
                 Console.Clear();
             }
             //Loop para Salario
@@ -59,14 +59,6 @@ namespace aula04
         public void RegistraTurma(Turma T)
         {
             Turmas.Add(T);
-        }
-        //Escrita Arquivos 
-        public void Lista(StreamWriter s)
-        {
-            foreach (string v in Materias)
-            {
-                s.WriteLine(v);
-            }
         }
     }
 }

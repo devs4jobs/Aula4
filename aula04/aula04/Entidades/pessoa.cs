@@ -22,15 +22,13 @@ namespace aula04
             Console.WriteLine("Informe a Data de nascimento(DD/MM/YYYY)");
             Nascimento = Convert.ToDateTime(Console.ReadLine());
             do
-            {  try
+            {   try
                 {
                     Console.WriteLine("Informe o RG:");
                     RG = Convert.ToUInt64(Console.ReadLine());
                     if (RG <= 10000000) { Console.WriteLine("Informe RG Valido"); }
-                }catch(Exception)
-                {
-                    Console.WriteLine("Informe RG valido");
                 }
+                catch (Exception){Console.WriteLine("Informe RG valido");}
             } while (RG <= 10000000);
         }
         public override string ToString()
