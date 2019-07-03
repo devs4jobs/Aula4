@@ -43,8 +43,17 @@ namespace ProjetoEscola.Clasees
         #region MetodosDaClasse
 
 
-        public override void Cadastrar(List<Turma> lstTurmas,Turma turma)
+       
+        #endregion
+
+        #region MetodosAbstratos
+
+
+
+        public override void Cadastrar(List<Turma> lstTurmas, Turma turma)
         {
+
+            Random random = new Random();
             Console.Beep();
             Console.Write("Digite o nome do Aluno(a) : ");
             Nome = Console.ReadLine();
@@ -56,21 +65,21 @@ namespace ProjetoEscola.Clasees
             Pais = Console.ReadLine();
             Console.Write("\nDigite a Cidade: ");
             Cidade = Console.ReadLine();
-            Console.Write("\nDigite a Matricula(a), Ex : 1234 : ");
-             Matricula = Convert.ToInt32(Console.ReadLine());
+            Matricula = random.Next(1, 1000);
+            Console.Write($"\nA Matricula(a) dele(a) é {Matricula} \n");
             Console.Write("\nDigite a idade : ");
             Idade = Convert.ToInt32(Console.ReadLine());
             Console.Write("\nDigite a Data de Nascimento: ");
-             DataNasc = Console.ReadLine();
-            Console.WriteLine("Digite qual o codigo da turma que vocÊ vai estar !! : EX: A, B, C.. ");
+            DataNasc = Console.ReadLine();
+            Console.WriteLine("\nDigite qual o codigo da turma que vocÊ vai estar !! : EX: A, B, C.. ");
             CodTurma = Convert.ToChar(Console.ReadLine().ToUpper());
             if (lstTurmas.Exists(x => x.CodTurma == CodTurma))
             {
                 if (turma.lstAlunos.Exists(x => x.Matricula == Matricula))
-                    Console.WriteLine("O Aluno já existe nessa turma");
+                    Console.WriteLine("\nO Aluno já existe nessa turma");
                 else
                     turma.lstAlunos.Add(this);
-                    Console.WriteLine($"O  {Nome} foi inserido na TUrma {CodTurma} com Sucesso ! ");
+                Console.WriteLine($"\nO  {Nome} foi inserido na TUrma {CodTurma} com Sucesso ! ");
             }
             else
                 Program.CadastrarTurma(CodTurma, lstTurmas);
@@ -80,17 +89,10 @@ namespace ProjetoEscola.Clasees
         {
 
             return $"Nome do Aluno: {Nome} , Idade: {Idade} , Matrícula: {Matricula}";
-            
+
         }
 
-        #endregion
 
-        #region MetodosAbstratos
-
-      
-
-
-       
         #endregion
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.IO;
 
 //30/06/2019  Falta : jogar pro txt , pesquisar dicionary e implementar no Codigo , Relacionar as 3 classes  !! Por CodTurma !!
 namespace ProjetoEscola.Clasees
@@ -15,6 +16,8 @@ namespace ProjetoEscola.Clasees
             List<Turma> lstTurmas = new List<Turma>();
             turma.lstAlunos = new List<Aluno>();
             turma.lstProfessores = new List<Professor>();
+//            string seteraquivo = @"C:\Users\Treinamento 6\Desktop\TesteFile";
+//            string receberdados = @"C:\Users\Treinamento 6\Desktop\TesteFile1";
 
             do
             {
@@ -30,7 +33,7 @@ namespace ProjetoEscola.Clasees
                 if (op == 1)
                 {
                     Console.Clear();
-                    Console.Write("Digite quantos Professores  você deseja cadastrar :  ");
+                    Console.Write("Digite quantos Professores  você deseja cadastrar :  \n");
                     int N = Convert.ToInt32(Console.ReadLine());
                     for (int i = 0; i < N; i++)
                     {
@@ -42,7 +45,7 @@ namespace ProjetoEscola.Clasees
                 }
                 else if (op == 2)
                 {
-                    Console.Write("Digite quantos Alunos  você deseja cadastrar :  ");
+                    Console.Write("Digite quantos Alunos  você deseja cadastrar :  \n");
                     int N = Convert.ToInt32(Console.ReadLine());
                     for (int i = 0; i < N; i++)
                     {
@@ -69,8 +72,23 @@ namespace ProjetoEscola.Clasees
 
             } while (op != 4 || op > 4);
 
+            try
+            {
+             //Aqui vamos Passar o Arquivo JSON para o nosso aquivo da maquina !! , caso no FileInfo ... 
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("Ocorreu um erro ");
+                Console.WriteLine(e.Message);
+
+            }
+
+
+
         }//Main
 
+
+        #region MetodosStaticos
         public static object CadastrarTurma(char cod, List<Turma> lstTurmas)
         {
             do
@@ -116,7 +134,12 @@ namespace ProjetoEscola.Clasees
                     return 0;
 
             } while (cod != 'A' || cod != 'B' || cod != 'C');
-        }  
+
+          
+        }
+
+        #endregion
+
     }//Class Programa
 }
 

@@ -63,9 +63,15 @@ namespace ProjetoEscola.Clasees
         #region MetodosDaClasse
 
 
+
+
+        #endregion
+
+        #region MetodosAbstratos
+
         public override void Cadastrar(List<Turma> lstTurma, Turma turma)
         {
-
+            Random random = new Random();
             Console.Beep();
             Console.Write("Digite o nome do professor(a) : ");
             Nome = Console.ReadLine();
@@ -77,8 +83,8 @@ namespace ProjetoEscola.Clasees
             Pais = Console.ReadLine();
             Console.Write("\nDigite a Cidade: ");
             Cidade = Console.ReadLine();
-            Console.Write("\nDigite o ID dele(a), Ex : 1234 : ");
-            ID = Convert.ToInt32(Console.ReadLine());
+            ID = random.Next(1, 1000);
+            Console.Write($"\n O ID dele(a) é {ID} \n");
             Console.Write("\nDigite a idade : ");
             Idade = Convert.ToInt32(Console.ReadLine());
             Console.Write("\nDigite a Data de Nascimento: ");
@@ -88,24 +94,26 @@ namespace ProjetoEscola.Clasees
             Console.Write("\nDigite quantas materias esse Professor(a)  terá :");
             int QuantidadeDeMaterias = Convert.ToInt32(Console.ReadLine());
             Cadastrarmaterias(QuantidadeDeMaterias);
-            Console.WriteLine("Para quantas turmas você dará aula !");
+            Console.WriteLine("\nPara quantas turmas você dará aula !");
             int quantidade = Convert.ToInt32(Console.ReadLine());
 
-            for (int i = 0; i < quantidade; i++) {
+            for (int i = 0; i < quantidade; i++)
+            {
 
-                Console.WriteLine("Digite qual o codigo da turma que vocÊ vai ensinar : EX: A, B, C.. ");
+                Console.WriteLine("\nDigite qual o codigo da turma que vocÊ vai ensinar : EX: A, B, C.. ");
                 CodTurma = Convert.ToChar(Console.ReadLine().ToUpper());
 
                 if (lstTurma.Exists(x => x.CodTurma == CodTurma))
                 {
 
-                    if (turma.lstProfessores.Exists(x => x.ID == ID)) 
-                        Console.WriteLine(" já existe um professor com mesmo id nessa turma ");                      
-                    
+                    if (turma.lstProfessores.Exists(x => x.ID == ID))
+                        Console.WriteLine(" já existe um professor com mesmo id nessa turma ");
+
                     else
                         turma.lstProfessores.Add(this);
-                        Console.WriteLine($"O {Nome} dara aula para Turma {CodTurma} ! ");
-                }else
+                    Console.WriteLine($"O {Nome} dara aula para Turma {CodTurma} ! ");
+                }
+                else
                     Program.CadastrarTurma(CodTurma, lstTurma);
             }
         }
@@ -160,10 +168,6 @@ namespace ProjetoEscola.Clasees
         {
             return $"Nome do Professor: {Nome} , Idade: {Idade} , ID: {ID}";
         }
-
-        #endregion
-
-        #region MetodosAbstratos
 
         #endregion
     }

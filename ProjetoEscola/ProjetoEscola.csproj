@@ -47,8 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clasees\Aluno.cs" />
+    <Compile Include="Clasees\Dicionario.cs" />
     <Compile Include="Clasees\Pessoa.cs" />
     <Compile Include="Clasees\Professor.cs" />
+    <Compile Include="Clasees\Verbetes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Clasees\Turma.cs" />

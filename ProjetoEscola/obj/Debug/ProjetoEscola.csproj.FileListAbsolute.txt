@@ -11,3 +11,6 @@ C:\Users\Treinamento 6\Desktop\Sabados !\Sabado3006\Aula4\ProjetoEscola\obj\Debu
 C:\Users\Treinamento 6\Desktop\Sabados !\Sabado3006\Aula4\ProjetoEscola\obj\Debug\ProjetoEscola.csproj.CoreCompileInputs.cache
 C:\Users\Treinamento 6\Desktop\Sabados !\Sabado3006\Aula4\ProjetoEscola\obj\Debug\ProjetoEscola.exe
 C:\Users\Treinamento 6\Desktop\Sabados !\Sabado3006\Aula4\ProjetoEscola\obj\Debug\ProjetoEscola.pdb
+C:\Users\Treinamento 6\Desktop\Sabados !\Sabado3006\Aula4\ProjetoEscola\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Treinamento 6\Desktop\Sabados !\Sabado3006\Aula4\ProjetoEscola\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Treinamento 6\Desktop\Sabados !\Sabado3006\Aula4\ProjetoEscola\obj\Debug\ProjetoEscola.csproj.CopyComplete
