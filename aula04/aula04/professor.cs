@@ -5,23 +5,24 @@ namespace aula04
 {
     class Professor : Pessoa
     {
-        public string NRProfessor;
+        public int NRProfessor;
         public double Salario;
         public List<string> Materias=new List<string>();
         public List<Turma> Turmas = new List<Turma>();
 
         public Professor()
         {
-
         }
+        //Registro Professor 
         public override void Registro(List<string>s)
         {
             ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;
             base.Registro(s);
-            Console.WriteLine("Digite o numero do professor:");
-            NRProfessor = Console.ReadLine().ToUpper();
-            Console.WriteLine("Quantas o professor leciona:");
+            Random R = new Random();
+            NRProfessor = R.Next(10000000, 99999999);
+            //Materias professor
+            Console.WriteLine("Quantas materias o professor leciona:");
             int QMateria = Convert.ToInt32(Console.ReadLine());
             int i = 0;
             while (i < QMateria)
@@ -42,21 +43,27 @@ namespace aula04
                     }
                 Console.Clear();
             }
-            Console.WriteLine("Quanto de Salario:");
-            Salario = Convert.ToDouble(Console.ReadLine());
-            Console.ForegroundColor = aux;
+            //Loop para Salario
+            do
+            {
+                Console.WriteLine("Quanto de Salario:");
+                Salario = Convert.ToDouble(Console.ReadLine());
+                Console.ForegroundColor = aux;
+            } while (Salario <= 0);
         }
         public override string ToString()
         {
-            return base.ToString() + $"\nN° Professor:{NRProfessor}";
+            return base.ToString() + $",N° Professor:{NRProfessor}";
         }
+        //Registro das Turmas 
         public void RegistraTurma(Turma T)
         {
             Turmas.Add(T);
         }
+        //Escrita Arquivos 
         public void Lista(StreamWriter s)
         {
-            foreach(string v in Materias)
+            foreach (string v in Materias)
             {
                 s.WriteLine(v);
             }

@@ -6,71 +6,56 @@ namespace aula04
     class Turma 
     {
         public string Nome;
-        List<Aluno> aluno = new List<Aluno>();
-        List<Professor> professors = new List<Professor>();
-        Professor coordenador;
-        bool Validacao;
+        public List<Aluno> aluno = new List<Aluno>();
+        public List<Professor> professors = new List<Professor>();
+        public bool Validacao;
         public Turma()
         {
         }
+        //Registro de turma para Professores
         public void Registro(List<Professor> professor)
         {
-            ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Green;
-            if (coordenador != null)
+            if (Validacao==true)
             {
-                
-                for (int i = 0; i < professor.Count; i++)
-                {   if(professor[i]!=coordenador)
-                        Console.WriteLine($"Nome:{professor[i].Nome},N°:{professor[i].NRProfessor}");
+                foreach(Professor P in professor)
+                {   if(!professors.Contains(P))
+                        Console.WriteLine($"Nome:{P.Nome},N°:{P.NRProfessor}");
                 }
                 Console.WriteLine("Digite o N° do professor:");
-                string NP = Console.ReadLine().ToUpper();
+                int NP = Convert.ToInt32(Console.ReadLine());
                 foreach (var p in professor)
                 {
                     if (NP == p.NRProfessor)
                     {
-                        professors.Add(p);
-                        p.RegistraTurma(this);
+                        if (!professors.Contains(p))
+                        {
+                            professors.Add(p);
+                            p.RegistraTurma(this);
+                        }
                     }
                 }
             }
             else
             {
+                //Primeiro Registro da Turma
                 Console.WriteLine("Digite o nome da turma:");
                 Nome = Console.ReadLine().ToUpper();
-                while (Validacao == false)
-                {
-                    for (int i = 0; i < professor.Count; i++)
-                    {
-                        Console.WriteLine($"Nome:{professor[i].Nome},N°:{professor[i].NRProfessor}");
-                    }
-                    Console.WriteLine("Registre o professor Coordenador:");
-                    string NP = Console.ReadLine().ToUpper();
-                    foreach (var p in professor)
-                    {
-                        if (NP == p.NRProfessor)
-                        {
-                            coordenador = p;
-                            p.RegistraTurma(this);
-                            professors.Add(p);
-                            Validacao = true;
-                        }
-                    }
-                    if (coordenador == null) { Console.WriteLine("Digite um N° de professor valido"); }
-                }
+                Validacao = true;
                 Console.Clear();
             }
-            Console.ForegroundColor = aux;
+            Console.ResetColor();
         }
+        //Registra aluno
         public void RegistraAluno(Aluno aluno1)
         {
             aluno.Add(aluno1);
         }
         public override string ToString()
         {
-            return $"Turma:{Nome},Coordenador:{coordenador.Nome}";
+            return $"Turma:{Nome},Validacao:{Validacao}";
         }
+        //Escrita Arquivo
         public void Lista(StreamWriter s)
         {
             s.WriteLine("Alunos");
@@ -84,6 +69,34 @@ namespace aula04
             {
                 s.WriteLine($"Professor:{a.Nome} N°Professor:{a.NRProfessor}");
             }
+        }
+        public void RegistrarT(List<Turma> turma,Aluno a)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            if (a.Atual == null)
+            {
+                foreach (var T in turma)
+                {
+                    Console.WriteLine($"Turma:{T.Nome}");
+                }
+                while (a.Validar == false)
+                {
+                    Console.WriteLine("Qual turma o aluno ira?");
+                    string s = Console.ReadLine().ToUpper();
+                    foreach (var T in turma)
+                    {
+                        if (T.Nome == s)
+                        {
+                            T.RegistraAluno(a);
+                            a.Atual = T;
+                            a.Validar = true;
+                        }
+                        else { Console.WriteLine("Digite uma turma valida!"); }
+                    }
+                }
+            }
+            else { Console.WriteLine("O Aluno ja esta em uma turma."); }
+            Console.ResetColor();
         }
     }
 }

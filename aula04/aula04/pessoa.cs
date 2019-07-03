@@ -7,7 +7,7 @@ namespace aula04
         public string Nome;
         public int Idade;
         public DateTime Nascimento;
-        public string RG;
+        public ulong RG;
         public Pessoa()
         {
         }
@@ -15,16 +15,27 @@ namespace aula04
         {
             Console.WriteLine("Informe o nome:");
             Nome = Console.ReadLine();
-            Console.WriteLine("Informe a Idade");
-            Idade = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Informe a Data de nascimento");
+            do
+            {   Console.WriteLine("Informe a Idade");
+                Idade = Convert.ToInt32(Console.ReadLine());
+            } while (Idade <= 0||Idade>=110);
+            Console.WriteLine("Informe a Data de nascimento(DD/MM/YYYY)");
             Nascimento = Convert.ToDateTime(Console.ReadLine());
-            Console.WriteLine("Informe o RG:");
-            RG = Console.ReadLine();
+            do
+            {  try
+                {
+                    Console.WriteLine("Informe o RG:");
+                    RG = Convert.ToUInt64(Console.ReadLine());
+                    if (RG <= 10000000) { Console.WriteLine("Informe RG Valido"); }
+                }catch(Exception)
+                {
+                    Console.WriteLine("Informe RG valido");
+                }
+            } while (RG <= 10000000);
         }
         public override string ToString()
         {
-            return $"Nome:{Nome}\nIdade:{Idade}\nData de Nascimento:{Nascimento.ToString("dd/MM/yyyy")}\nRG:{RG}";
+            return $"Nome:{Nome},Idade:{Idade},Data de Nascimento:{Nascimento.ToString("dd/MM/yyyy")},RG:{RG}";
         }
     }
 }

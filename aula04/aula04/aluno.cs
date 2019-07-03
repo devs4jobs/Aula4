@@ -6,10 +6,10 @@ namespace aula04
 {
     class Aluno : Pessoa
     {
-        public string RA;
-        List<string> Disciplinas = new List<string>();
+        public int RA;
+        public List<string> Disciplinas = new List<string>();
         public Turma Atual;
-        bool Validar;
+        public bool Validar;
         public Aluno()
         {
          
@@ -19,8 +19,8 @@ namespace aula04
             ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Blue;
             base.Registro(s);
-            Console.WriteLine("Informe o RA:");
-            RA = Console.ReadLine().ToUpper();
+            Random R = new Random();
+            RA = R.Next(10000000, 99999999);
             bool C;
             do
             {
@@ -43,6 +43,7 @@ namespace aula04
             } while (C == true);
             Console.ForegroundColor = aux;
         }
+        //Registro de Turma para Aluno
         public void RegistrarT(List<Turma> turma)
         {
             ConsoleColor aux = Console.ForegroundColor;
@@ -56,7 +57,7 @@ namespace aula04
                 while (Validar == false)
                 {
                     Console.WriteLine("Qual turma o aluno ira?");
-                    string s = Console.ReadLine();
+                    string s = Console.ReadLine().ToUpper();
                     foreach (var T in turma)
                     {
                         if (T.Nome == s)
@@ -74,8 +75,9 @@ namespace aula04
         }
         public override string ToString()
         {
-            return base.ToString()+ $"\nRA:{RA}";
+            return base.ToString()+ $",RA:{RA}";
         }
+        //Escrita Arquivo
         public void Lista(StreamWriter s)
         {
             foreach (string v in Disciplinas)
