@@ -7,7 +7,6 @@ namespace aula04
         public string Nome;
         public List<string> aluno = new List<string>();
         public List<string> professors = new List<string>();
-        public List<string> Materias = new List<string>();
         public bool Validacao;
         public Turma()
         {
