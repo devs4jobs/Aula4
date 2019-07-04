@@ -14,7 +14,7 @@ namespace aula04
         public virtual void Registro(List<string>s)
         {
             Console.WriteLine("Informe o nome:");
-            Nome = Console.ReadLine();
+            Nome = Console.ReadLine().ToUpper();
             do
             {   Console.WriteLine("Informe a Idade");
                 Idade = Convert.ToInt32(Console.ReadLine());
@@ -33,7 +33,7 @@ namespace aula04
         }
         public override string ToString()
         {
-            return $"Nome:{Nome},Idade:{Idade},Data de Nascimento:{Nascimento.ToString("dd/MM/yyyy")},RG:{RG}";
+            return $"Nome:{Nome}\nIdade:{Idade}\nData de Nascimento:{Nascimento.ToString("dd/MM/yyyy")}\nRG:{RG}";
         }
     }
 }

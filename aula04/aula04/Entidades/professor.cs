@@ -16,7 +16,7 @@ namespace aula04
         public override void Registro(List<string>s)
         {
             ConsoleColor aux = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             base.Registro(s);
             Random R = new Random();
             NRProfessor = R.Next(10000000, 99999999);
@@ -53,12 +53,32 @@ namespace aula04
         }
         public override string ToString()
         {
-            return base.ToString() + $",N° Professor:{NRProfessor}";
+            return base.ToString() + $"\nN° Professor:{NRProfessor}\nSalario:{Salario}";
         }
         //Registro das Turmas 
         public void RegistraTurma(Turma T)
         {
             Turmas.Add(T);
+        }
+        public void Link(List<Turma>T,Professor a)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Materias dadas");
+            foreach(var v in Materias)
+            {
+                Console.WriteLine(v);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Turmas:");
+            foreach (Turma v in T)
+            {
+                if (v.professors.Contains(a.Nome))
+                {
+                    Console.WriteLine($"\n{v.Nome}");
+                }
+            }
+            Console.ReadLine();
+            Console.Clear();
         }
     }
 }

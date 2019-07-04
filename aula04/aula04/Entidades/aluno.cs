@@ -67,7 +67,16 @@ namespace aula04
         }
         public override string ToString()
         {
-            return base.ToString() + $",RA:{RA}";
+            return base.ToString() + $"\nRA:{RA}";
+        }
+        public void Show()
+        {
+            foreach(var v in this.Disciplinas)
+            {
+                Console.WriteLine(v);
+            }
+            Console.ReadLine();
+            Console.Clear();
         }
     }
 }

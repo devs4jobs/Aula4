@@ -15,7 +15,6 @@ namespace aula04
             string path = @"C:\Users\Treinamento 2\Desktop\Aula4\aula04\CaminhoT";
             string path2 = @"C:\Users\Treinamento 2\Desktop\Aula4\aula04\CaminhoP";
             string path3 = @"C:\Users\Treinamento 2\Desktop\Aula4\aula04\CaminhoA";
-
             try
             {
                 using (StreamReader s = File.OpenText(path))
@@ -56,8 +55,8 @@ namespace aula04
             }
             do
             {
-                Console.WriteLine("Digite 1 para cadastrar professor.\nDigite 2 para cadastrar aluno.\nDigite 3 para cadastrar uma turma.\nDigite 4 para cadastrar um professor em uma turma\n" +
-                    "Digite 5 para Cadastrar um aluno numa turma\nDigite 6 para terminar.");
+                Console.WriteLine("Digite 1 para cadastrar professor.\nDigite 2 para cadastrar aluno.\nDigite 3 para cadastrar uma turma.\nDigite 4 para cadastrar um professor em uma turma.\n" +
+                    "Digite 5 para cadastrar um aluno numa turma.\nDigite 6 para terminar.\nDigite 7 para ver as informações de um professor.\nDigite 8 para ver as informações de um aluno.");
                 Cadastro = Console.ReadLine();
                 try
                 {
@@ -134,6 +133,41 @@ namespace aula04
                                 Console.WriteLine("Termino da registro");
                                 break;
                             }
+                        case "7":
+                            {
+                                foreach(var v in prof)
+                                {
+                                    Console.WriteLine($"{v.Nome}");
+                                }
+                                Console.WriteLine("Informe o professor:");
+                                string g = Console.ReadLine();
+                                foreach(var v in prof)
+                                {
+                                    if (v.Nome.Contains(g)) {
+                                        Console.WriteLine(v.ToString());
+                                        v.Link(Turmas,v);
+                                    }  
+                                }
+                                break;
+                            }
+                        case "8":
+                            {
+                                foreach(var v in alu)
+                                {
+                                    Console.WriteLine($"{v.Nome}");
+                                }
+                                Console.WriteLine("Informe o aluno:");
+                                string g = Console.ReadLine();
+                                foreach (var v in alu)
+                                {
+                                    if (v.Nome.Contains(g))
+                                    {
+                                        Console.WriteLine(v.ToString());
+                                        v.Show();
+                                    }
+                                }
+                                break;
+                            }
                         default:
                             {
                                 Console.WriteLine("Digite uma opcao valida!");
@@ -143,10 +177,10 @@ namespace aula04
                 }catch(Exception e)
                 {
                     Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("ERROR");
                     Console.WriteLine(e.Message);
-                    Console.ForegroundColor = ConsoleColor.White;
-
+                    Console.ResetColor();
                 }
             } while (Cadastro != "6");
             try
