@@ -95,17 +95,15 @@ namespace CadastroEscolar.Entidades
                         Console.WriteLine("");
                         d.MudarCores();
                      
-                        if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count > 0)
+                        if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
                         {
                             Console.WriteLine("MATEMATICA");
-                        
-                            lstMaterias.Where(t => t.CodMateria == decisao).FirstOrDefault().DefinirMateria(decisao);
-
+                            m.DefinirMateria(decisao);
                             lstMaterias.Add(m);
                         }
                         else
                             Console.WriteLine("MATERIAS REPETIDAS, FAVOR ADICIONAR OUTRA ");
-                        Console.Clear();
+                      //  Console.Clear();
 
                             Console.WriteLine("");
                         break;
