@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CadastroEscolar.Entidades.Design;
-using System.Linq;
+
 namespace CadastroEscolar.Entidades
 {
-    class Professor : Pessoa
+    public class Professor : Pessoa
     {
         public int Identificacao { get; set; }
         //  public int Salario { get; set; }
         public List<Materias> lstMaterias { get; set; } = new List<Materias>();
-        public List<Turma> TurmasDoProfesor { get; set; } = new List<Turma>();
-
+  
 
         int i = 0;
         public Professor()
@@ -26,7 +25,7 @@ namespace CadastroEscolar.Entidades
         //    Salario = salario;
         //}
         #region "CADASTRO INFORMAÇÔES PROFESSORES"
-        override public void Cadastrar()
+        override public void Cadastrar(List<Turma> lstTurmas)
         {
             Random rnd = new Random();
             Designs d = new Designs();
@@ -50,7 +49,7 @@ namespace CadastroEscolar.Entidades
             Console.WriteLine("QUAL O SEXO DO PROFESSOR?\n DIGITE ( F ) PARA FEMININO E ( M ) PARA MASCULINO");
             Console.WriteLine("");
             d.MudarCores1();
-            Sexo = char.Parse(Console.ReadLine().ToUpper());
+            Sexo = Console.ReadLine().ToUpper();
 
             Console.WriteLine("");
             d.MudarCores();
@@ -61,12 +60,12 @@ namespace CadastroEscolar.Entidades
            
             Console.WriteLine("");
             d.MudarCores();
-            // Console.WriteLine("O NUMERO DE IDENTIFICAÇÂO PARA ESTE PROFESSOR É:" );
+     
             Console.WriteLine("");
             d.MudarCores1();
             int codidentificado = (rnd.Next(10000, 90000));
             Identificacao = codidentificado;
-
+            
             Console.WriteLine("O NUMERO DE IDENTIFICAÇÂO PARA ESTE PROFESSOR É:" + codidentificado);
 
             Console.WriteLine("");
@@ -95,12 +94,23 @@ namespace CadastroEscolar.Entidades
 
                         Console.WriteLine("");
                         d.MudarCores();
-                        Console.WriteLine("MATEMATICA");
-                        m.DefinirMateria(decisao);                      
-                        lstMaterias.Add(m);
-                        Console.WriteLine("");
+                     
+                        if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count > 0)
+                        {
+                            Console.WriteLine("MATEMATICA");
+                        
+                            lstMaterias.Where(t => t.CodMateria == decisao).FirstOrDefault().DefinirMateria(decisao);
+
+                            lstMaterias.Add(m);
+                        }
+                        else
+                            Console.WriteLine("MATERIAS REPETIDAS, FAVOR ADICIONAR OUTRA ");
+                        Console.Clear();
+
+                            Console.WriteLine("");
                         break;
 
+                        
                     case 2:
                         Console.WriteLine("");
                         d.MudarCores();
@@ -138,116 +148,83 @@ namespace CadastroEscolar.Entidades
                         break;
 
                     default:
+
                         break;
+
+
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 }
             }
             Console.Clear();
             Console.WriteLine("");
             d.MudarCores();
             Console.WriteLine("ESSE PROFESSOR DA AULA PARA QUANTAS TURMAS?");
+            int turm = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("");
             d.MudarCores1();
-            num = int.Parse(Console.ReadLine());
 
-
-            for (i = 0; i < num; i++)
+            for (int i = 0; i < turm; i++)
             {
-                Turma turma = new Turma();
+                Console.WriteLine("PARA QUAL TURMA ESTE PROFESSOR DARÁ AULA ?");
 
-                Console.WriteLine("QUAL É A TURMA DO PROFESSOR? A,B,C,D ou E");
-                Console.WriteLine("");
-                int decisao = int.Parse(Console.ReadLine());
-               
+                var codigoTurma = Console.ReadLine().ToUpper();
 
-
-                switch (decisao)
+                if (lstTurmas.Where(t => t.CodTurma == codigoTurma).ToList().Count > 0)
                 {
-                    case 1:
-
-                        Console.WriteLine("");
-                        d.MudarCores();
-                        Console.WriteLine("Turma A CADASTRADA");
-
-
-                        turma.DefinirTurma(decisao);
-
-                        TurmasDoProfesor.Add(turma);
-                        Console.WriteLine("");
-
-                        break;
-
-
-                    case 2:
-
-                        Console.WriteLine("");
-                        d.MudarCores();
-                        if (TurmasDoProfesor.Contains(turma))
-                        {
-                            Console.WriteLine("TURMA JA CADASTRADA PARA ESTE PROFESSOR, FAVOR CADASTRAR OUTRA TURMA ");
-                            TurmasDoProfesor.Remove(turma);
-                        }
-
-                        Console.WriteLine("TURMA B CADASTRADA");
-                        turma.DefinirTurma(decisao);
-                        TurmasDoProfesor.Add(turma);
-                        Console.WriteLine("");
-
-                        break;
-
-                    case 3:
-
-                        if (TurmasDoProfesor.Contains(turma))
-                        {
-                            Console.WriteLine("TURMA JA CADASTRADA PARA ESTE PROFESSOR");
-                        }
-                        Console.WriteLine("");
-                        d.MudarCores();
-                        Console.WriteLine("TURMA C CADASTRADA");
-                        turma.DefinirTurma(decisao);
-                        TurmasDoProfesor.Add(turma);
-                        Console.WriteLine("");
-                        break;
-
-                    case 4:
-
-                        if (TurmasDoProfesor.Contains(turma))
-                        {
-                            Console.WriteLine("TURMA JA CADASTRADA PARA ESTE PROFESSOR");
-                        }
-                        Console.WriteLine("");
-                        d.MudarCores();
-                        Console.WriteLine("TURMA D CADASTRADA");
-                        turma.DefinirTurma(decisao);
-                        TurmasDoProfesor.Add(turma);
-                        Console.WriteLine("");
-                        break;
-
-                    case 5:
-
-                        Console.WriteLine("");
-                        d.MudarCores();
-                        Console.WriteLine("TURMA E CADASTRADA");
-                        turma.DefinirTurma(decisao);
-                        if (turma.lstProfessors.Where(p => p.Cpf == Cpf).ToList().Count > 0) 
-                        {
-                            Console.WriteLine("PROFESSOR JÀ CADASTRADO PARA ESTA TURMA");
-                            break;
-                        }
-                        turma.lstProfessors.Add(this);
-                        TurmasDoProfesor.Add(turma);
-                        Console.WriteLine("");
-                        break;
-
-                    default:
-                        break;
-
-
+                    lstTurmas.Where(t => t.CodTurma == codigoTurma).FirstOrDefault().AddProfessores(this);
                 }
+                else
+                {
+                    Console.WriteLine("ESSA TURMA NAO EXISTE, DESEJA CADASTRAR UMA NOVA TURMA?");
+                    string decisaoturma = Console.ReadLine().ToUpper();
+                    if (decisaoturma == "SIM")
+                        d.MudarCores();
+                    Console.WriteLine("QUAL TURMA DESEJA CADASTRAR? A,B,C,D OU E ?");
+                    string c = Console.ReadLine().ToUpper();
+
+                    Turma turma1 = new Turma();
+                    turma1.CadastrarTurma(c);
+
+                    lstTurmas.Add(turma1);
+                    Console.WriteLine("");
+
+                    Console.WriteLine("TURMA CRIADA, POR GENTILEZA EFETUAR O CADASTRO DO PROFESSOR NOVAMENTE !");
+                    Console.WriteLine("");
+                }
+            }
+
 
                 #endregion
 
-            }
-            Console.WriteLine("TODAS AS TURMAS FORAM CADASTRADAS!");
+            
+       
         }
     }
 }

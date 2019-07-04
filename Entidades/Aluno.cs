@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using CadastroEscolar.Entidades.Design;
+using System.Linq;
 namespace CadastroEscolar.Entidades
 {
-    class Aluno : Pessoa
+   public class  Aluno : Pessoa
     {
-        public List<Turma> TurmaDoAluno { get; set; } = new List<Turma>();
+        
         public int Ra { get; set; }
 
 
@@ -21,13 +22,11 @@ namespace CadastroEscolar.Entidades
             Ra = ra;
         }
 
-        override public void Cadastrar()
+        override public void Cadastrar(List<Turma> lstTurmas)
         {
-
-
             Designs d = new Designs();
             Random rnd = new Random();
-
+           
 
             Console.WriteLine("");
             Console.WriteLine("DIGITE O NOME DO ALUNO");
@@ -47,7 +46,7 @@ namespace CadastroEscolar.Entidades
             Console.WriteLine("QUAL O SEXO DO ALUNO?\n DIGITE ( F ) PARA FEMININO E ( M ) PARA MASCULINO");
             Console.WriteLine("");
             d.MudarCores1();
-            Sexo = char.Parse(Console.ReadLine().ToUpper());
+            Sexo = Console.ReadLine().ToUpper();
 
             Console.WriteLine("");
             d.MudarCores();
@@ -62,76 +61,41 @@ namespace CadastroEscolar.Entidades
             Console.WriteLine("");
             d.MudarCores1();
 
-            int codidentificado = (rnd.Next(10000, 90000));
-            Ra = codidentificado;
+            Ra = (rnd.Next(10000, 90000));
+            
 
-            Console.WriteLine("O RA GERADO PARA ESTE ALUNO É:" + codidentificado);
-
-            Console.WriteLine("");
-            d.MudarCores();
-            Console.WriteLine("QUAL É A TURMA DO Aluno? A,B,C,D ou E");
-            d.MudarCores1();
-
-           Turma turmas = new Turma();
-
-            int decisao = int.Parse(Console.ReadLine());
-
-            switch (decisao)
+            Console.WriteLine("O RA GERADO PARA ESTE ALUNO É:" + Ra);
 
 
+            Console.WriteLine("QUAL TURMA ESTÈ ALUNO IRA PERTENCER? ");
+            var codigoTurma = Console.ReadLine().ToUpper();
+
+            if (lstTurmas.Where(t => t.CodTurma == codigoTurma).ToList().Count > 0)
             {
-                case 1:
-
-                    Console.WriteLine("");
-                    d.MudarCores();
-                    Console.WriteLine("Turma A CADASTRADA");
-                    turmas.DefinirTurma(decisao);
-                    TurmaDoAluno.Add(turmas);
-                    Console.WriteLine("");
-                    break;
-
-                case 2:
-                    Console.WriteLine("");
-                    d.MudarCores();
-                    Console.WriteLine("TURMA B CADASTRADA");
-                    turmas.DefinirTurma(decisao);
-                    TurmaDoAluno.Add(turmas);
-                    Console.WriteLine("");
-                    break;
-
-                case 3:
-                    Console.WriteLine("");
-                    d.MudarCores();
-                    Console.WriteLine("TURMA C CADASTRADA");
-                    turmas.DefinirTurma(decisao);
-                    TurmaDoAluno.Add(turmas);
-                    Console.WriteLine("");
-                    break;
-
-                case 4:
-                    Console.WriteLine("");
-                    d.MudarCores();
-                    Console.WriteLine("TURMA D CADASTRADA");
-                    turmas.DefinirTurma(decisao);
-                    TurmaDoAluno.Add(turmas);
-                    Console.WriteLine("");
-                    break;
-
-                case 5:
-                    Console.WriteLine("");
-                    d.MudarCores();
-                    Console.WriteLine("TURMA E CADASTRADA");
-                    turmas.DefinirTurma(decisao);
-                    TurmaDoAluno.Add(turmas);
-                    Console.WriteLine("");
-                    break;
-
-                default:
-                    break;
-
+                lstTurmas.Where(t => t.CodTurma == codigoTurma).FirstOrDefault().AddAlunos(this);
             }
+            else
+            {
+                Console.WriteLine("ESSA TURMA NAO EXISTE, DESEJA CADASTRAR UMA NOVA TURMA?");
+                string decisaoturma = Console.ReadLine().ToUpper();
+                if (decisaoturma == "SIM")
+                    d.MudarCores();
+                Console.WriteLine("QUAL TURMA DESEJA CADASTAR ESSE ALUNO? ? A,B,C,D OU E ?");
+                string c = Console.ReadLine().ToUpper();
 
-            Console.WriteLine($"ALUNO {Nome} CADASTRADO EM {turmas.NomeTurma}!");
+                Turma turma1 = new Turma();
+                turma1.CadastrarTurma(c);
+
+                lstTurmas.Add(turma1);
+                Console.WriteLine("");
+
+                Console.WriteLine("TURMA CRIADA, POR GENTILEZA EFETUAR O CADASTRO DO ALUNO NOVAMENTE !");
+                Console.WriteLine("");
+            }
+           
+            
+
+      
 
         }
 

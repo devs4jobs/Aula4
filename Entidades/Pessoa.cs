@@ -4,18 +4,23 @@ using System.Text;
 
 namespace CadastroEscolar.Entidades
 {
-   public abstract class Pessoa
+   public abstract class Pessoa 
     {
         public string Nome { get; set; }
         public int Idade { get;  set; }
-        public char Sexo { get;  set; }
+        public string Sexo { get;  set; }
         public string Cpf { get;  set; }
 
+
+        public Pessoa(List<Turma> lstTurmas, Turma turma)
+        {
+
+        }
         public Pessoa()
         {
 
         }
-        public Pessoa(string nome, int idade, char sexo, string cpf)
+        public Pessoa(string nome, int idade, string sexo, string cpf)
         {
             Nome = nome;
             Idade = idade;
@@ -23,7 +28,7 @@ namespace CadastroEscolar.Entidades
             Cpf = cpf;
         }
 
-        public abstract void Cadastrar();
+        public abstract void Cadastrar(List<Turma> lstTurmas);
 
      
     }
