@@ -5,9 +5,9 @@ using CadastroEscolar.Entidades.Design;
 using System.Linq;
 namespace CadastroEscolar.Entidades
 {
-   public class  Aluno : Pessoa
+    public class Aluno : Pessoa
     {
-        
+
         public int Ra { get; set; }
 
 
@@ -26,7 +26,7 @@ namespace CadastroEscolar.Entidades
         {
             Designs d = new Designs();
             Random rnd = new Random();
-           
+
 
             Console.WriteLine("");
             Console.WriteLine("DIGITE O NOME DO ALUNO");
@@ -41,6 +41,15 @@ namespace CadastroEscolar.Entidades
             d.MudarCores1();
             Idade = int.Parse(Console.ReadLine());
 
+
+            while (Idade  <4 || Idade > 18 )
+            {
+                Console.WriteLine("PARA CADASTRO DE ALUNOS EM NOSSA ESCOLA É NECESSARIO TER NO MINIMO 4 ANOS ( ENSINO FUNDAMENTAL)");
+                Console.WriteLine("E O MAXIMO DE 18 ANOS, 3 ANO DO ENSINO MEDIO");
+                Console.WriteLine("");
+                Idade = int.Parse(Console.ReadLine());
+            }
+
             Console.WriteLine("");
             d.MudarCores();
             Console.WriteLine("QUAL O SEXO DO ALUNO?\n DIGITE ( F ) PARA FEMININO E ( M ) PARA MASCULINO");
@@ -48,12 +57,16 @@ namespace CadastroEscolar.Entidades
             d.MudarCores1();
             Sexo = Console.ReadLine().ToUpper();
 
-            Console.WriteLine("");
-            d.MudarCores();
-            Console.WriteLine(" DIGITE O CPF DO ALUNO:");
-            Console.WriteLine("");
-            d.MudarCores1();
-            Cpf = Console.ReadLine().ToUpper();
+            do
+            {
+                Console.WriteLine("");
+                d.MudarCores();
+                Console.WriteLine("DIGITE O CPF DO ALUNO:");
+                Console.WriteLine("");
+                d.MudarCores1();
+                Cpf = long.Parse(Console.ReadLine());
+
+            } while (Cpf < 10000000000 || Cpf > 99999999999);
 
             Console.WriteLine("");
             d.MudarCores();
@@ -62,7 +75,7 @@ namespace CadastroEscolar.Entidades
             d.MudarCores1();
 
             Ra = (rnd.Next(10000, 90000));
-            
+
 
             Console.WriteLine("O RA GERADO PARA ESTE ALUNO É:" + Ra);
 
@@ -84,22 +97,27 @@ namespace CadastroEscolar.Entidades
                 string c = Console.ReadLine().ToUpper();
 
                 Turma turma1 = new Turma();
-                turma1.CadastrarTurma(c);
+                if (lstTurmas.Where(t => t.CodTurma == c).ToList().Count == 0)
+                {
+                    turma1.CadastrarTurma(c);
+                    Console.WriteLine($"TURMA {c} CADASTRADA");
+                    lstTurmas.Add(turma1);
 
-                lstTurmas.Add(turma1);
-                Console.WriteLine("");
+                }
+                else
+                {
+                    Console.WriteLine("TURMA JA CADASTRADA, NÂO É POSSIVEL CRIAR ELA NOVAMENTE");
+                    Console.WriteLine("");
+                   
+                }
 
                 Console.WriteLine("TURMA CRIADA, POR GENTILEZA EFETUAR O CADASTRO DO ALUNO NOVAMENTE !");
                 Console.WriteLine("");
+
             }
-           
-            
-
-      
-
+            Console.WriteLine("");
+            Console.WriteLine($"CADASTRO DO ALUNO {Nome} RA: {Ra} FOI REALIZADO ") ;
         }
 
-
     }
-
 }
