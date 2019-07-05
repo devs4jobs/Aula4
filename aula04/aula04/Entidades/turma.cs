@@ -37,9 +37,8 @@ namespace aula04
                                 professors.Add(a);
                                 i++;
                             }
-                            else { Console.WriteLine("Informe um professor da lista"); }
-                        }
-                        else { Console.WriteLine("Digite um professor da lista"); }
+                            else { Console.WriteLine("Professor ja esta na turma."); }
+                        } else { Console.WriteLine("Professor não existe."); }
                     } while (i < 1);
                 }
                 else
@@ -53,9 +52,8 @@ namespace aula04
                     Console.WriteLine("Classe Registrada");
                 }
             }
+            else { Console.WriteLine("Registre mais professores. "); }
             Console.Clear();
-            Console.WriteLine("Registre mais professores. ");
-            Console.ResetColor();
         }
         //Registra aluno
         public void RegistraAluno(Aluno aluno1)

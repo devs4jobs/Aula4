@@ -7,7 +7,7 @@ namespace aula04
         public string Nome;
         public int Idade;
         public DateTime Nascimento;
-        public ulong RG;
+        public long RG;
         public Pessoa()
         {
         }
@@ -23,8 +23,7 @@ namespace aula04
             Console.WriteLine("Informe a Data de nascimento(DD/MM/YYYY)");
             Nascimento = Convert.ToDateTime(Console.ReadLine());
             Console.WriteLine("Informe o RG:");
-            RG = Convert.ToUInt64(Console.ReadLine());
-
+            RG = Convert.ToInt64(Console.ReadLine());
         }
         public override string ToString()
         {

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
 namespace aula04
 {
     class Program
@@ -35,6 +35,7 @@ namespace aula04
             }
             do
             {
+                Console.ResetColor();
                 Console.WriteLine("Digite 1 para cadastrar professor.\nDigite 2 para cadastrar aluno.\nDigite 3 para cadastrar uma turma.\nDigite 4 para cadastrar um professor em uma turma.\n" +
                     "Digite 5 para cadastrar um aluno numa turma.\nDigite 6 para ver as informações de um professor.\nDigite 7 para ver informações de um aluno.\nDigite 8 para terminar.");
                 Cadastro = Console.ReadLine();
@@ -44,9 +45,9 @@ namespace aula04
                     {
                         case "1":
                             {
-                                Professor professor = new Professor();
-                                professor.Registro(Mat);
-                                Prof.Add(professor);
+                                Professor Professor = new Professor();
+                                Professor.Registro(Mat);
+                                Prof.Add(Professor);
                                 Console.Clear();
                                 break;
                             }
@@ -60,9 +61,9 @@ namespace aula04
                             }
                         case "3":
                             {
-                                Turma turma = new Turma();
-                                turma.Registro(Prof);
-                                Turmas.Add(turma);
+                                Turma Turma = new Turma();
+                                Turma.Registro(Prof);
+                                Turmas.Add(Turma);
                                 Console.Clear();
                                 break;
                             }
@@ -84,15 +85,13 @@ namespace aula04
                                 int c;
                                 Console.ForegroundColor = ConsoleColor.Blue;
                                 foreach (var g in Alu)
-                                {
+                                {   if(!g.Validar)
                                     Console.WriteLine($"Nome do aluno:{g.Nome} RA:{g.RA}");
                                 }
                                 Console.WriteLine("Qual o RA do aluno?");
                                 c = Convert.ToInt32(Console.ReadLine());
                                 Aluno v = Alu.Find(x => x.RA == c);
-                                if (v != null) { v.RegistrarT(Turmas,v); }
-                                Console.Clear();
-                                Console.ResetColor();
+                                if (v != null) { v.RegistrarT(Turmas, v); }
                                 break;
                             }
                         case "6":
@@ -105,7 +104,7 @@ namespace aula04
                                 }
                                 Console.ResetColor();
                                 Console.WriteLine("Informe o NR do professor");
-                                int g =Convert.ToInt32(Console.ReadLine());
+                                int g = Convert.ToInt32(Console.ReadLine());
                                 Professor a = Prof.Find(x => x.NRProfessor == g);
                                 if (a != null)
                                 {
@@ -113,8 +112,7 @@ namespace aula04
                                     Console.WriteLine(a.ToString());
                                     a.Link(Turmas, a);
                                 }
-                                else{ Console.WriteLine("Professor não existe"); } 
-                                Console.ResetColor();
+                                else { Console.WriteLine("Professor não existe"); }
                                 break;
                             }
                         case "7":
@@ -126,7 +124,7 @@ namespace aula04
                                     Console.WriteLine($"Nome:{v.Nome},RA:{v.RA}");
                                 }
                                 Console.WriteLine("Informe o RA do aluno:");
-                                int g =Convert.ToInt32(Console.ReadLine());
+                                int g = Convert.ToInt32(Console.ReadLine());
                                 Aluno b = Alu.Find(x => x.RA == g);
                                 if (b != null)
                                 {
@@ -140,10 +138,9 @@ namespace aula04
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("Termino da registro");
-                                Console.ResetColor();
                                 break;
                             }
-                        
+
                         default:
                             {
                                 Console.WriteLine("Digite uma opcao valida!");
@@ -157,7 +154,6 @@ namespace aula04
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("ERROR");
                     Console.WriteLine(e.Message);
-                    Console.ResetColor();
                 }
             } while (Cadastro != "8");
             try

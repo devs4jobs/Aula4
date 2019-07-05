@@ -6,7 +6,6 @@ namespace aula04
     class Professor : Pessoa
     {
         public int NRProfessor;
-        public double Salario;
         public List<string> Materias = new List<string>();
 
         public Professor()
@@ -15,7 +14,6 @@ namespace aula04
         //Registro Professor 
         public override void Registro(List<string> s)
         {
-            ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Yellow;
             base.Registro(s);
             Random R = new Random();
@@ -43,17 +41,10 @@ namespace aula04
                     else { Console.WriteLine("Informe uma materia valida."); }
                 Console.Clear();
             }
-            //Loop para Salario
-            do
-            {
-                Console.WriteLine("Quanto de Salario:");
-                Salario = Convert.ToDouble(Console.ReadLine());
-                Console.ForegroundColor = aux;
-            } while (Salario < 998);
         }
         public override string ToString()
         {
-            return base.ToString() + $"\nN° Professor:{NRProfessor}\nSalario:{Salario.ToString("F2", CultureInfo.InvariantCulture)}";
+            return base.ToString() + $"\nN° Professor:{NRProfessor}";
         }
         public void Link(List<Turma> T, Professor a)
         {

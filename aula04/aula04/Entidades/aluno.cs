@@ -13,32 +13,38 @@ namespace aula04
         }
         public override void Registro(List<string> s)
         {
-            ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Blue;
             base.Registro(s);
             Random R = new Random();
             RA = R.Next(10000000, 99999999);
-            Console.ForegroundColor = aux;
         }
         //Registro de Turma para Aluno
         public void RegistrarT(List<Turma> turma, Aluno a)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
-            foreach (var T in turma)
+            if (Validar)
             {
-                Console.WriteLine($"Turma:{T.Nome}");
+                Console.Clear();
+                Console.WriteLine("Aluno ja esta em uma turma\n");
             }
-            while (a.Validar == false)
+            else
             {
-                Console.WriteLine("Qual turma o aluno ira?");
-                string s = Console.ReadLine().ToUpper();
-                Turma T = turma.Find(x => x.Nome == s);
-                if (T != null)
+                foreach (var T in turma)
                 {
-                    T.RegistraAluno(a);
-                    a.Validar = true;
+                    Console.WriteLine($"Turma:{T.Nome}");
                 }
-                else { Console.WriteLine("Digite uma turma valida!"); }
+                while (a.Validar == false)
+                {
+                    Console.WriteLine("Qual turma o aluno ira?");
+                    string s = Console.ReadLine().ToUpper();
+                    Turma T = turma.Find(x => x.Nome == s);
+                    if (T != null)
+                    {
+                        T.RegistraAluno(a);
+                        a.Validar = true;
+                    }
+                    else { Console.WriteLine("Digite uma turma valida!"); }
+                }
             }
         }
         public override string ToString()
