@@ -10,8 +10,8 @@ namespace aula04
         {
             string Cadastro;
             List<string> Mat = new List<string> { "MATEMATICA", "PORTUGUES", "CIENCIAS", "ARTES", "HISTORIA", "EDUCACAO FISICA" };
-            List<Professor> prof = new List<Professor>();
-            List<Aluno> alu = new List<Aluno>();
+            List<Professor> Prof = new List<Professor>();
+            List<Aluno> Alu = new List<Aluno>();
             List<Turma> Turmas = new List<Turma>();
             string Path = @"C:\Users\Treinamento 2\Desktop\Aula4\aula04\CaminhoT";
             string Path2 = @"C:\Users\Treinamento 2\Desktop\Aula4\aula04\CaminhoP";
@@ -24,8 +24,7 @@ namespace aula04
                     foreach (var line in lines)
                     {
                         Turma G = JsonConvert.DeserializeObject<Turma>(line);
-                        if (!Turmas.Contains(G))
-                            Turmas.Add(G);
+                        Turmas.Add(G);
                     }
                 }
                 using (StreamReader s = File.OpenText(Path2))
@@ -34,8 +33,7 @@ namespace aula04
                     foreach (var line in lines)
                     {
                         Professor G = JsonConvert.DeserializeObject<Professor>(line);
-                        if (!prof.Contains(G))
-                            prof.Add(G);
+                        Prof.Add(G);
                     }
                 }
                 using (StreamReader s = File.OpenText(Path3))
@@ -44,8 +42,7 @@ namespace aula04
                     foreach (var line in lines)
                     {
                         Aluno G = JsonConvert.DeserializeObject<Aluno>(line);
-                        if (!alu.Contains(G))
-                            alu.Add(G);
+                        Alu.Add(G);
                     }
                 }
             }
@@ -67,7 +64,7 @@ namespace aula04
                             {
                                 Professor professor = new Professor();
                                 professor.Registro(Mat);
-                                prof.Add(professor);
+                                Prof.Add(professor);
                                 Console.Clear();
                                 break;
                             }
@@ -75,14 +72,14 @@ namespace aula04
                             {
                                 Aluno Aluno = new Aluno();
                                 Aluno.Registro(Mat);
-                                alu.Add(Aluno);
+                                Alu.Add(Aluno);
                                 Console.Clear();
                                 break;
                             }
                         case "3":
                             {
                                 Turma turma = new Turma();
-                                turma.Registro(prof);
+                                turma.Registro(Prof);
                                 Turmas.Add(turma);
                                 Console.Clear();
                                 break;
@@ -97,20 +94,20 @@ namespace aula04
                                 Console.WriteLine("Qual o nome da turma?");
                                 string c = Console.ReadLine().ToUpper();
                                 Turma v = Turmas.Find(x => x.Nome == c);
-                                if (v != null) { v.Registro(prof); }
+                                if (v != null) { v.Registro(Prof); }
                                 break;
                             }
                         case "5":
                             {
                                 int c;
                                 Console.ForegroundColor = ConsoleColor.Blue;
-                                foreach (var g in alu)
+                                foreach (var g in Alu)
                                 {
                                     Console.WriteLine($"Nome do aluno:{g.Nome} RA:{g.RA}");
                                 }
                                 Console.WriteLine("Qual o RA do aluno?");
                                 c = Convert.ToInt32(Console.ReadLine());
-                                Aluno v = alu.Find(x => x.RA == c);
+                                Aluno v = Alu.Find(x => x.RA == c);
                                 if (v != null) { v.RegistrarT(Turmas, v); }
                                 Console.Clear();
                                 Console.ResetColor();
@@ -125,26 +122,29 @@ namespace aula04
                             }
                         case "7":
                             {
-                                Console.WriteLine("Professores:");
-                                foreach (var v in prof)
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("Professor(es):");
+                                foreach (var v in Prof)
                                 {
                                     Console.WriteLine($"{v.Nome}");
                                 }
-                                Console.WriteLine("Aluno:");
-                                foreach (var v in alu)
+                                Console.ForegroundColor = ConsoleColor.Blue;
+                                Console.WriteLine("Aluno(s):");
+                                foreach (var v in Alu)
                                 {
                                     Console.WriteLine($"{v.Nome}");
                                 }
+                                Console.ResetColor();
                                 Console.WriteLine("Informe o nome do professor ou aluno:");
                                 string g = Console.ReadLine().ToUpper();
-                                Professor a = prof.Find(x => x.Nome == g);
+                                Professor a = Prof.Find(x => x.Nome == g);
                                 if (a != null)
                                 {
                                     Console.ForegroundColor = ConsoleColor.Yellow;
                                     Console.WriteLine(a.ToString());
                                     a.Link(Turmas, a);
                                 }
-                                Aluno b = alu.Find(x => x.Nome == g);
+                                Aluno b = Alu.Find(x => x.Nome == g);
                                 if (b != null)
                                 {
                                     Console.ForegroundColor = ConsoleColor.Blue;
@@ -184,7 +184,7 @@ namespace aula04
                 File.Delete(Path2);
                 using (StreamWriter g = File.AppendText(Path2))
                 {
-                    foreach (Professor v in prof)
+                    foreach (Professor v in Prof)
                     {
                         string G = JsonConvert.SerializeObject(v);
                         g.WriteLine(G);
@@ -193,7 +193,7 @@ namespace aula04
                 File.Delete(Path3);
                 using (StreamWriter h = File.AppendText(Path3))
                 {
-                    foreach (Aluno V in alu)
+                    foreach (Aluno V in Alu)
                     {
                         string G = JsonConvert.SerializeObject(V);
                         h.WriteLine(G);

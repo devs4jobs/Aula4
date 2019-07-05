@@ -11,7 +11,7 @@ namespace aula04
         public Pessoa()
         {
         }
-        public virtual void Registro(List<string> s)
+        public virtual void Registro(List<string>s)
         {
             Console.WriteLine("Informe o nome:");
             Nome = Console.ReadLine().ToUpper();
