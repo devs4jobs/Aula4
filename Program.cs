@@ -133,8 +133,12 @@ namespace CadastroEscolar
                         break;
 
                     }
-                   
-                    
+
+                    while (decisao >= 5  || decisao <0)
+                    {
+                       Console.WriteLine("OPCAO INVÁLIDA, FAVOR DIGITAR NOVAMENTE!");
+                        decisao = int.Parse(Console.ReadLine());
+                    }
                   
                     
                         
@@ -307,8 +311,7 @@ namespace CadastroEscolar
                     sw2.Close();
 
                 }
-
-
+             
 
             }
             #endregion

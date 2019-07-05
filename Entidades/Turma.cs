@@ -45,7 +45,7 @@ namespace CadastroEscolar.Entidades
             else if (opcao == "E") { NomeTurma = "Turma E"; CodTurma = "E"; }
 
         }
-
+   
     }
 
 
