@@ -53,17 +53,15 @@ namespace aula04
             {
                 Console.WriteLine("Qual turma o aluno ira?");
                 string s = Console.ReadLine().ToUpper();
-                foreach (var T in turma)
+                Turma T = turma.Find(x => x.Nome == s);
+                if (T != null)
                 {
-                    if (T.Nome == s)
-                    {
-                        T.RegistraAluno(a);
-                        a.Validar = true;
-                    }
-                    else { Console.WriteLine("Digite uma turma valida!"); }
+                    T.RegistraAluno(a);
+                    a.Validar = true;
                 }
+                else { Console.WriteLine("Digite uma turma valida!"); }
+
             }
-            Console.ResetColor();
         }
         public override string ToString()
         {
@@ -71,7 +69,7 @@ namespace aula04
         }
         public void Show()
         {
-            foreach(var v in this.Disciplinas)
+            foreach (var v in Disciplinas)
             {
                 Console.WriteLine(v);
             }

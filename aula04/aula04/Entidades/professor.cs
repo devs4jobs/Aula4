@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 namespace aula04
 {
     class Professor : Pessoa
     {
         public int NRProfessor;
         public double Salario;
-        public List<string> Materias=new List<string>();
+        public List<string> Materias = new List<string>();
         public List<Turma> Turmas = new List<Turma>();
 
         public Professor()
         {
         }
         //Registro Professor 
-        public override void Registro(List<string>s)
+        public override void Registro(List<string> s)
         {
             ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -30,7 +31,7 @@ namespace aula04
                 foreach (string v in s)
                 {
                     if (!Materias.Contains(v))
-                    Console.WriteLine(v);
+                        Console.WriteLine(v);
                 }
                 Console.WriteLine("Digite a materia que o professor leciona:");
                 string Materia = Console.ReadLine().ToUpper();
@@ -49,22 +50,22 @@ namespace aula04
                 Console.WriteLine("Quanto de Salario:");
                 Salario = Convert.ToDouble(Console.ReadLine());
                 Console.ForegroundColor = aux;
-            } while (Salario <= 0);
+            } while (Salario < 998);
         }
         public override string ToString()
         {
-            return base.ToString() + $"\nN° Professor:{NRProfessor}\nSalario:{Salario}";
+            return base.ToString() + $"\nN° Professor:{NRProfessor}\nSalario:{Salario.ToString("F2", CultureInfo.InvariantCulture)}";
         }
         //Registro das Turmas 
         public void RegistraTurma(Turma T)
         {
             Turmas.Add(T);
         }
-        public void Link(List<Turma>T,Professor a)
+        public void Link(List<Turma> T, Professor a)
         {
             Console.WriteLine();
             Console.WriteLine("Materias dadas");
-            foreach(var v in Materias)
+            foreach (var v in Materias)
             {
                 Console.WriteLine(v);
             }

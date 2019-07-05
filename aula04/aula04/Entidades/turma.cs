@@ -15,41 +15,47 @@ namespace aula04
         public void Registro(List<Professor> professor)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            if (Validacao == true)
+            if (professor.Count != professors.Count)
             {
-                foreach (Professor P in professor)
-                { if (!professors.Contains(P.Nome))
-                        Console.WriteLine($"Nome:{P.Nome},N°:{P.NRProfessor}");
-                }
-                int i = 0;
-                do
+                if (Validacao == true)
                 {
-                    Console.WriteLine("Digite o N° do professor:");
-                    int NP = Convert.ToInt32(Console.ReadLine());
-                    foreach (var p in professor)
+                    foreach (Professor P in professor)
                     {
-                        if (NP == p.NRProfessor)
+                        if (!professors.Contains(P.Nome))
+                            Console.WriteLine($"Nome:{P.Nome},N°:{P.NRProfessor}");
+                    }
+                    int i = 0;
+                    do
+                    {
+                        Console.WriteLine("Digite o N° do professor:");
+                        int NP = Convert.ToInt32(Console.ReadLine());
+                        Professor a = professor.Find(x => x.NRProfessor == NP);
+                        if (a != null)
                         {
-                            if (!professors.Contains(p.Nome))
+                            if (!professors.Contains(a.Nome))
                             {
-                                professors.Add(p.Nome);
-                                p.RegistraTurma(this);
+                                professors.Add(a.Nome);
+                                a.RegistraTurma(this);
                                 i++;
                             }
-                            else { Console.WriteLine("Informe um professor valido"); }
+                            else { Console.WriteLine("Informe um professor da lista"); }
                         }
-                    }
-                    Console.WriteLine("Informe um prof valido");
-                } while (i < 1);
+                        else { Console.WriteLine("Digite um professor da lista"); }
+                    } while (i < 1);
+                }
+                else
+                {
+                    //Primeiro Registro da Turma
+                    Console.WriteLine("Digite o nome da turma:");
+                    Nome = Console.ReadLine().ToUpper();
+                    Validacao = true;
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Classe Registrada");
+                }
             }
-            else
-            {
-                //Primeiro Registro da Turma
-                Console.WriteLine("Digite o nome da turma:");
-                Nome = Console.ReadLine().ToUpper();
-                Validacao = true;
-                Console.Clear();
-            }
+            Console.Clear();
+            Console.WriteLine("Registre mais professores. ");
             Console.ResetColor();
         }
         //Registra aluno
@@ -62,5 +68,5 @@ namespace aula04
             return $"Turma:{Nome},Validacao:{Validacao}";
         }
     }
-    
+
 }
