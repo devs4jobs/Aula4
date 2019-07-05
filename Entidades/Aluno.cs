@@ -5,9 +5,9 @@ using CadastroEscolar.Entidades.Design;
 using System.Linq;
 namespace CadastroEscolar.Entidades
 {
-   public class  Aluno : Pessoa
+    public class Aluno : Pessoa
     {
-        
+
         public int Ra { get; set; }
 
 
@@ -26,7 +26,7 @@ namespace CadastroEscolar.Entidades
         {
             Designs d = new Designs();
             Random rnd = new Random();
-           
+
 
             Console.WriteLine("");
             Console.WriteLine("DIGITE O NOME DO ALUNO");
@@ -53,7 +53,7 @@ namespace CadastroEscolar.Entidades
             Console.WriteLine(" DIGITE O CPF DO ALUNO:");
             Console.WriteLine("");
             d.MudarCores1();
-            Cpf = Console.ReadLine().ToUpper();
+            Cpf = int.Parse(Console.ReadLine());
 
             Console.WriteLine("");
             d.MudarCores();
@@ -62,7 +62,7 @@ namespace CadastroEscolar.Entidades
             d.MudarCores1();
 
             Ra = (rnd.Next(10000, 90000));
-            
+
 
             Console.WriteLine("O RA GERADO PARA ESTE ALUNO É:" + Ra);
 
@@ -84,22 +84,31 @@ namespace CadastroEscolar.Entidades
                 string c = Console.ReadLine().ToUpper();
 
                 Turma turma1 = new Turma();
-                turma1.CadastrarTurma(c);
+                if (lstTurmas.Where(t => t.CodTurma == c).ToList().Count == 0)
+                {
+                    turma1.CadastrarTurma(c);
+                    Console.WriteLine($"TURMA {c} CADASTRADA");
+                    lstTurmas.Add(turma1);
 
-                lstTurmas.Add(turma1);
-                Console.WriteLine("");
+                }
+                else
+                {
+                    Console.WriteLine("TURMA JA CADASTRADA, NÂO É POSSIVEL CRIAR ELA NOVAMENTE");
+                    Console.WriteLine("");
+                   
+
+                }
 
                 Console.WriteLine("TURMA CRIADA, POR GENTILEZA EFETUAR O CADASTRO DO ALUNO NOVAMENTE !");
                 Console.WriteLine("");
-            }
-           
-            
 
-      
+
+
+
+            }
+
 
         }
 
-
     }
-
 }

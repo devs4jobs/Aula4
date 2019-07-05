@@ -9,9 +9,9 @@ namespace CadastroEscolar.Entidades
     public class Professor : Pessoa
     {
         public int Identificacao { get; set; }
-        //  public int Salario { get; set; }
+        public double Salario { get; set; }
         public List<Materias> lstMaterias { get; set; } = new List<Materias>();
-  
+
 
         int i = 0;
         public Professor()
@@ -36,13 +36,16 @@ namespace CadastroEscolar.Entidades
             Console.WriteLine("");
             d.MudarCores1();
             Nome = Console.ReadLine();
-
-            Console.WriteLine("");
-            d.MudarCores();
-            Console.WriteLine("DIGITE A IDADE DO PROFESSOR:");
-            Console.WriteLine("");
-            d.MudarCores1();
-            Idade = int.Parse(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("");
+                d.MudarCores();
+                Console.WriteLine("DIGITE A IDADE DO PROFESSOR:");
+                Console.WriteLine("");
+                d.MudarCores1();
+                Idade = int.Parse(Console.ReadLine());
+            } while (Idade <0  || Idade>100);
+ 
 
             Console.WriteLine("");
             d.MudarCores();
@@ -51,22 +54,30 @@ namespace CadastroEscolar.Entidades
             d.MudarCores1();
             Sexo = Console.ReadLine().ToUpper();
 
+            do
+            {
+                Console.WriteLine("");
+                d.MudarCores();
+                Console.WriteLine("DIGITE O CPF DO PROFESSOR:");
+                Console.WriteLine("");
+                d.MudarCores1();
+                Cpf = long.Parse(Console.ReadLine());
+
+            } while (Cpf <10000000000 || Cpf >99999999999);
+
+            Console.WriteLine("AGORA DIGITE O SALARIO DO PROFESSOR ");
+              Salario = Convert.ToDouble(Console.ReadLine());
+
+
             Console.WriteLine("");
             d.MudarCores();
-            Console.WriteLine("DIGITE O CPF DO PROFESSOR:");
+
             Console.WriteLine("");
             d.MudarCores1();
-            Cpf = Console.ReadLine().ToUpper();
+            Identificacao = (rnd.Next(10000, 90000));
            
-            Console.WriteLine("");
-            d.MudarCores();
-     
-            Console.WriteLine("");
-            d.MudarCores1();
-            int codidentificado = (rnd.Next(10000, 90000));
-            Identificacao = codidentificado;
-            
-            Console.WriteLine("O NUMERO DE IDENTIFICAÇÂO PARA ESTE PROFESSOR É:" + codidentificado);
+
+            Console.WriteLine("O NUMERO DE IDENTIFICAÇÂO PARA ESTE PROFESSOR É:" + Identificacao);
 
             Console.WriteLine("");
             d.MudarCores();
@@ -94,89 +105,107 @@ namespace CadastroEscolar.Entidades
 
                         Console.WriteLine("");
                         d.MudarCores();
-                     
+
                         if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
                         {
-                            Console.WriteLine("MATEMATICA");
+                            Console.WriteLine("MATERIA MATEMATICA ADICIONADA!");
                             m.DefinirMateria(decisao);
                             lstMaterias.Add(m);
                         }
                         else
-                            Console.WriteLine("MATERIAS REPETIDAS, FAVOR ADICIONAR OUTRA ");
-                      //  Console.Clear();
 
-                            Console.WriteLine("");
+                        {
+                            Console.WriteLine("MATERIAS REPETIDAS, FAVOR ADICIONAR OUTRA ");
+                            i--;
+                        }
+
+
+                        Console.WriteLine("");
                         break;
 
-                        
+
                     case 2:
                         Console.WriteLine("");
                         d.MudarCores();
-                        Console.WriteLine("PORTUGUES");
-                        m.DefinirMateria(decisao);
-                        lstMaterias.Add(m);
+
+                        if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
+                        {
+                            Console.WriteLine("MATERIA PORTUGUES ADICIONADA!");
+                            m.DefinirMateria(decisao);
+                            lstMaterias.Add(m);
+                        }
+                        else
+
+                        {
+                            Console.WriteLine("MATERIAS REPETIDAS, FAVOR ADICIONAR OUTRA ");
+                            i--;
+                        }
+
+
                         Console.WriteLine("");
                         break;
 
                     case 3:
                         Console.WriteLine("");
                         d.MudarCores();
-                        Console.WriteLine("BIOLOGIA");
-                        m.DefinirMateria(decisao);
-                        lstMaterias.Add(m);
+
+                        if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
+                        {
+                            Console.WriteLine("MATERIA BIOLOGIA ADICIONADA!");
+                            m.DefinirMateria(decisao);
+                            lstMaterias.Add(m);
+                        }
+                        else
+
+                        {
+                            Console.WriteLine("MATERIAS REPETIDAS, FAVOR ADICIONAR OUTRA ");
+                            i--;
+                        }
+
                         Console.WriteLine("");
                         break;
 
                     case 4:
                         Console.WriteLine("");
                         d.MudarCores();
-                        Console.WriteLine("GEOGRAFIA");
-                        m.DefinirMateria(decisao);
-                        lstMaterias.Add(m);
+
+                        if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
+                        {
+                            Console.WriteLine("MATERIA GEOGRAFIA ADICIONADA!");
+                            m.DefinirMateria(decisao);
+                            lstMaterias.Add(m);
+                        }
+                        else
+
+                        {
+                            Console.WriteLine("MATERIAS REPETIDAS, FAVOR ADICIONAR OUTRA ");
+                            i--;
+                        }
+
                         Console.WriteLine("");
                         break;
 
                     case 5:
                         Console.WriteLine("");
                         d.MudarCores();
-                        Console.WriteLine("INGLES");
-                        m.DefinirMateria(decisao);
-                        lstMaterias.Add(m);
+
+                        if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
+                        {
+                            Console.WriteLine("MATERIA INGLES  ADICIONADA!");
+                            m.DefinirMateria(decisao);
+                            lstMaterias.Add(m);
+                        }
+                        else
+                        {
+                            Console.WriteLine("MATERIAS REPETIDAS, FAVOR ADICIONAR OUTRA ");
+                            i--;
+                        }
                         Console.WriteLine("");
                         break;
 
                     default:
 
                         break;
-
-
-
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 }
             }
@@ -208,21 +237,30 @@ namespace CadastroEscolar.Entidades
                     string c = Console.ReadLine().ToUpper();
 
                     Turma turma1 = new Turma();
-                    turma1.CadastrarTurma(c);
+                    if (lstTurmas.Where(t => t.CodTurma == c).ToList().Count == 0)
+                    {
+                        turma1.CadastrarTurma(c);
+                        Console.WriteLine($"TURMA {c} CADASTRADA");
+                        lstTurmas.Add(turma1);
 
-                    lstTurmas.Add(turma1);
-                    Console.WriteLine("");
+                    }
+                    else
+                    {
+                        Console.WriteLine("TURMA JA CADASTRADA, FAVOR ADICIONAR OUTRA");
+                        Console.WriteLine("");
+                        i--;
 
-                    Console.WriteLine("TURMA CRIADA, POR GENTILEZA EFETUAR O CADASTRO DO PROFESSOR NOVAMENTE !");
-                    Console.WriteLine("");
+                        Console.WriteLine("TURMA CRIADA, POR GENTILEZA EFETUAR O CADASTRO DO PROFESSOR NOVAMENTE !");
+                        Console.WriteLine("");
+                    }
                 }
-            }
 
 
                 #endregion
 
-            
-       
+
+
+            }
         }
     }
 }

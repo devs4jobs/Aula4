@@ -9,7 +9,7 @@ namespace CadastroEscolar.Entidades
         public string Nome { get; set; }
         public int Idade { get;  set; }
         public string Sexo { get;  set; }
-        public string Cpf { get;  set; }
+        public long Cpf { get;  set; }
 
 
         public Pessoa(List<Turma> lstTurmas, Turma turma)
@@ -20,7 +20,7 @@ namespace CadastroEscolar.Entidades
         {
 
         }
-        public Pessoa(string nome, int idade, string sexo, string cpf)
+        public Pessoa(string nome, int idade, string sexo, long cpf)
         {
             Nome = nome;
             Idade = idade;
