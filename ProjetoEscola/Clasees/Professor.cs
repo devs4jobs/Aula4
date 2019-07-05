@@ -9,7 +9,7 @@ namespace ProjetoEscola.Clasees
         private double Salario_ { get; set; }
         private int Id_ { get; set; }
 
-        public List<string> lstMaterias;
+        public List<string> lstMaterias ;
         public List<Turma> lstTurmas;
 
 
@@ -94,7 +94,11 @@ namespace ProjetoEscola.Clasees
             Console.Write("\nDigite quantas materias esse Professor(a)  terá :");
             int QuantidadeDeMaterias = Convert.ToInt32(Console.ReadLine());
             Cadastrarmaterias(QuantidadeDeMaterias);
-            Console.WriteLine("\nPara quantas turmas você dará aula !");
+
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("\nPara quantas turmas você dará aula?");
             int quantidade = Convert.ToInt32(Console.ReadLine());
 
             for (int i = 0; i < quantidade; i++)
@@ -106,43 +110,141 @@ namespace ProjetoEscola.Clasees
                 if (lstTurma.Exists(x => x.CodTurma == CodTurma))
                 {
 
-                    if (turma.lstProfessores.Exists(x => x.ID == ID))
+                    if (turma.lstProfessores.Exists(x => x.ID == ID)) { 
                         Console.WriteLine(" já existe um professor com mesmo id nessa turma ");
+                    i--;
+                    }
 
-                    else
-                        turma.lstProfessores.Add(this);
+                else
+                    turma.lstProfessores.Add(this);
                     Console.WriteLine($"O {Nome} dara aula para Turma {CodTurma} ! ");
                 }
                 else
+                {
                     Program.CadastrarTurma(CodTurma, lstTurma);
+                    if (lstTurma.Exists(x => x.CodTurma == CodTurma))
+                        turma.lstProfessores.Add(this);
+
+                }
             }
         }
-
-        public void Cadastrarmaterias(int qntMaterias)
+        public void Cadastrarmaterias(int QuantidadeDeMaterias)
         {
+            lstMaterias = new List<string>();
 
-            for (int i = 0; i < qntMaterias; i++)
+            for (int i = 0; i < QuantidadeDeMaterias; i++)
             {
-                Console.Clear();
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine();
+                Console.BackgroundColor = ConsoleColor.DarkGray;
+                Console.ForegroundColor = ConsoleColor.Black;               
                 Console.WriteLine("\t\t============================ MENU DE MATÉRIAS ============================\t\t\n");
                 Console.WriteLine("\t\t\t\t\tDigite um Opção a ser feita ! : \n\n");
                 Console.WriteLine("\t\t\t\t\t1 - Português\n\t\t\t\t\t2 - Matemática\n\t\t\t\t\t3 - Ciências\n\t\t\t\t\t4 - Geografia\n\t\t\t\t\t5 - Artes\n\t\t\t\t\t6 - História\n\t\t\t\t\t7 - Ed.Física");
-                int codMateria = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("\t\t============================== XXXX ==============================\t\t\n");
-                lstMaterias = new List<string>();
+                Console.WriteLine();
+                Console.Write("                                   ");int codMateria = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
 
                 switch (codMateria)
                 {
 
-                    case 1: lstMaterias.Add("Português"); break;
-                    case 2: lstMaterias.Add("Matemática"); break;
-                    case 3: lstMaterias.Add("Ciências"); break;
-                    case 4: lstMaterias.Add("Geografia"); break;
-                    case 5: lstMaterias.Add("Artes"); break;
-                    case 6: lstMaterias.Add("História"); break;
-                    case 7: lstMaterias.Add("Ed.Física"); break;
+                    case 1:
+                        if (lstMaterias.Contains("Português"))
+                        {
+                            Console.WriteLine("Materia já cadastrada");
+                            Console.WriteLine();
+                            Console.WriteLine("Insira uma matéria válida do menu abaixo:");
+                            i--;
+                            break;
+                        }
+                        else
+                            lstMaterias.Add("Português");
+                        break;
+
+
+                    case 2:
+                        if (lstMaterias.Contains("Matemática"))
+                        {
+                            Console.WriteLine("Materia já cadastrada");
+                            Console.WriteLine();
+                            Console.WriteLine("Insira uma matéria válida do menu abaixo:");
+                            i--;
+                            break;
+                        }
+                        else
+                           lstMaterias.Add("Matemática");
+                        break;
+
+
+                    case 3:
+                        if (lstMaterias.Contains("Ciências"))
+                        {
+                            Console.WriteLine("Materia já cadastrada");
+                            Console.WriteLine();
+                            Console.WriteLine("Insira uma matéria válida do menu abaixo:");
+                            i--;
+                            break;
+                        }
+                        else
+                            lstMaterias.Add("Ciências");
+                        break;
+
+
+                    case 4:
+                        if (lstMaterias.Contains("Geografia"))
+                        {
+                            Console.WriteLine("Materia já cadastrada");
+                            Console.WriteLine();
+                            Console.WriteLine("Insira uma matéria válida do menu abaixo:");
+                            i--;
+                            break;
+                        }
+                        else
+                            lstMaterias.Add("Geografia");
+                        break;
+
+
+                    case 5:
+                        if (lstMaterias.Contains("Biologia"))
+                        {
+                            Console.WriteLine("Materia já cadastrada");
+                            Console.WriteLine();
+                            Console.WriteLine("Insira uma matéria válida do menu abaixo:");
+                            i--;
+                            break;
+                        }
+                        else
+                            lstMaterias.Add("Biologia");
+                        break;
+
+
+                    case 6:
+                        if (lstMaterias.Contains("História"))
+                        {
+                            Console.WriteLine("Materia já cadastrada");
+                            Console.WriteLine();
+                            Console.WriteLine("Insira uma matéria válida do menu abaixo:");
+                            i--;
+                            break;
+                        }
+                        else
+                             lstMaterias.Add("História");
+                        break;
+
+
+                    case 7:
+                        if (lstMaterias.Contains("Ed.Física"))
+                        {
+                            Console.WriteLine("Materia já cadastrada");
+                            Console.WriteLine();
+                            Console.WriteLine("Insira uma matéria válida do menu abaixo:");
+                            i--;
+                            break;
+                        }
+                        else
+                          lstMaterias.Add("Ed.Física");
+                        break;
+
+
                     default:
                         Console.WriteLine("Opção inválida! Digite um inteiro entre 1 e 7");
                         codMateria = Convert.ToInt32(Console.ReadLine());
@@ -158,11 +260,14 @@ namespace ProjetoEscola.Clasees
 
                             }
                         }
+
                         break;
                 }
 
             }
         }
+
+
 
         public override string ToString()
         {

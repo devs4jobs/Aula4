@@ -5,12 +5,12 @@ namespace ProjetoEscola.Clasees
 {
     class Aluno : Pessoa
     {
-        private int Matricula_ { get; set; }
+        private Guid Matricula_ { get; set; }
         public Turma Turma;
 
 
         #region Construtores
-        public Aluno(string nome, char genero, string nacionalidade, int matricula, string dataNascimento, string pais, string cidade , Turma turma)
+        public Aluno(string nome, char genero, string nacionalidade, Guid matricula, string dataNascimento, string pais, string cidade , Turma turma)
         {
             Nome = nome;
             Sexo = genero;
@@ -29,11 +29,10 @@ namespace ProjetoEscola.Clasees
             turma.CodTurma = codigoturma ;
         }
 
-        public int Matricula
+        public Guid Matricula
         {
             get { return Matricula_; }
             set {
-                if (value != 0 && value >= 4)
                     Matricula_ = value;
             }
         }
@@ -52,8 +51,7 @@ namespace ProjetoEscola.Clasees
 
         public override void Cadastrar(List<Turma> lstTurmas, Turma turma)
         {
-
-            Random random = new Random();
+          
             Console.Beep();
             Console.Write("Digite o nome do Aluno(a) : ");
             Nome = Console.ReadLine();
@@ -65,7 +63,7 @@ namespace ProjetoEscola.Clasees
             Pais = Console.ReadLine();
             Console.Write("\nDigite a Cidade: ");
             Cidade = Console.ReadLine();
-            Matricula = random.Next(1, 1000);
+            Guid Matricula = Guid.NewGuid() ;
             Console.Write($"\nA Matricula(a) dele(a) é {Matricula} \n");
             Console.Write("\nDigite a idade : ");
             Idade = Convert.ToInt32(Console.ReadLine());
@@ -75,10 +73,7 @@ namespace ProjetoEscola.Clasees
             CodTurma = Convert.ToChar(Console.ReadLine().ToUpper());
             if (lstTurmas.Exists(x => x.CodTurma == CodTurma))
             {
-                if (turma.lstAlunos.Exists(x => x.Matricula == Matricula))
-                    Console.WriteLine("\nO Aluno já existe nessa turma");
-                else
-                    turma.lstAlunos.Add(this);
+                turma.lstAlunos.Add(this);
                 Console.WriteLine($"\nO  {Nome} foi inserido na TUrma {CodTurma} com Sucesso ! ");
             }
             else
@@ -91,8 +86,6 @@ namespace ProjetoEscola.Clasees
             return $"Nome do Aluno: {Nome} , Idade: {Idade} , Matrícula: {Matricula}";
 
         }
-
-
         #endregion
     }
 }

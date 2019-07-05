@@ -6,38 +6,38 @@ using System.Threading.Tasks;
 
 namespace ProjetoEscola.Clasees
 {
-    class Dicionario< Tturma, TlstProf, Tprof, TlsAluno, Taluno>
+    class Dicionario< TChave, TValor>
     {
-        public List<Verbetes< Tturma , TlstProf , Tprof , TlsAluno ,Taluno >> verbetes;
+        public List<Verbetes<TChave, TValor>> verbetes;
 
         public Dicionario() {
-            verbetes = new List<Verbetes<Tturma, TlstProf, Tprof, TlsAluno, Taluno>>();
+            verbetes = new List<Verbetes<TChave, TValor>>();
         }
 
-        public Dicionario (List<Verbetes<Tturma, TlstProf, Tprof, TlsAluno, Taluno>> verbetes)
+        public Dicionario (List<Verbetes<TChave, TValor>> verbetes)
         {
             this.verbetes = verbetes;
         }
 
-        public void Add (Verbetes<Tturma, TlstProf, Tprof, TlsAluno, Taluno> verbete)
+        public void Add (Verbetes<TChave, TValor> verbete)
         {
             verbetes.Add(verbete);
         }
 
-        public Tturma GetTturma (TlstProf lstProfessor, TlsAluno lstAluno)
-        {
-            Tturma valorProcurado = default(Tturma);
+        //public Tturma GetTturma (TlstProf lstProfessor, TlsAluno lstAluno)
+        //{
+        //    Tturma valorProcurado = default(Tturma);
 
-            for(int i = 0; i < verbetes.Count; i++)
-            {
-                if (verbetes[i].TlsAluno_.Equals(lstAluno))
+        //    for(int i = 0; i < verbetes.Count; i++)
+        //    {
+        //        if (verbetes[i].TlsAluno_.Equals(lstAluno))
                 
-                    valorProcurado = verbetes[i].TlsAluno_;
+        //            valorProcurado = verbetes[i].TlsAluno_;
                 
-            }
-            return valorProcurado;
+        //    }
+        //    return valorProcurado; n
 
-        }
+        //}
 
         public override string ToString()
         {

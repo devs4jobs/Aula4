@@ -34,12 +34,11 @@ namespace ProjetoEscola.Clasees
 
        
 
-        public void RemoverAluno(int matricula)
+        public void RemoverAluno()
         {
             foreach (Aluno alun in lstAlunos)
             {
                 Console.WriteLine(alun);
-                lstAlunos.Exists(x => x.Matricula == matricula);
                 lstAlunos.Remove(alun);
             }
         }
