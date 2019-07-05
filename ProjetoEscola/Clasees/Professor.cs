@@ -9,14 +9,12 @@ namespace ProjetoEscola.Clasees
         private double Salario_ { get; set; }
         private int Id_ { get; set; }
 
-        public List<string> lstMaterias ;
-        public List<Turma> lstTurmas;
-
-
+        public List<string> lstMaterias = new List<string>();
+        public List<string> lstCodTurma = new List<string>();
+              
         #region MetodosConstrutores
-
-
-        public Professor(string nome, double salario, int id, char genero, string nacionalidade, string cidade, string dataNascimento, string pais, List<string> listamaterias, char codigoTurma, List<Turma> turmas)
+         
+        public Professor(string nome, double salario, int id, string genero, string nacionalidade, string cidade, string dataNascimento, string pais, List<string> listamaterias, List<string> codigoTurma)
         {
             Nome = nome;
             Salario_ = salario;
@@ -27,10 +25,8 @@ namespace ProjetoEscola.Clasees
             Pais = pais;
             Cidade = cidade;
             lstMaterias = listamaterias;
-            CodTurma = codigoTurma;
-            lstTurmas = turmas;
-
-
+            lstCodTurma = codigoTurma;
+           
         }
         public Professor() { }
 
@@ -56,27 +52,22 @@ namespace ProjetoEscola.Clasees
             }
         }
 
-
-
         #endregion
 
         #region MetodosDaClasse
-
-
-
 
         #endregion
 
         #region MetodosAbstratos
 
-        public override void Cadastrar(List<Turma> lstTurma, Turma turma)
+        public override void Cadastrar()
         {
             Random random = new Random();
             Console.Beep();
             Console.Write("Digite o nome do professor(a) : ");
             Nome = Console.ReadLine();
             Console.Write("\nDigite o Genero :  ");
-            Sexo = Convert.ToChar(Console.ReadLine());
+            Sexo = Console.ReadLine();
             Console.Write("\nDigite a Nacionalidade:  ");
             Nacionaliddade = Console.ReadLine();
             Console.Write("\nDigite o Pais : ");
@@ -98,36 +89,72 @@ namespace ProjetoEscola.Clasees
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.ForegroundColor = ConsoleColor.Black;
+
+            //Console.Write("\nDigite o código da turma que dará aula:");           
+            //Cadastrarmaterias(QuantidadeDeMaterias);          
+        }
+
+        public override void CadastrarCodigoTurma(string codTurma)
+        {
+            lstCodTurma = new List<string>();
+           
             Console.WriteLine("\nPara quantas turmas você dará aula?");
             int quantidade = Convert.ToInt32(Console.ReadLine());
 
             for (int i = 0; i < quantidade; i++)
             {
+                Console.WriteLine("Digite o cóidigo da turma que dará aula:");
+                codTurma = Console.ReadLine();
 
-                Console.WriteLine("\nDigite qual o codigo da turma que vocÊ vai ensinar : EX: A, B, C.. ");
-                CodTurma = Convert.ToChar(Console.ReadLine().ToUpper());
+                switch (codTurma) {
+                    case "A":
+                        if (lstCodTurma.Contains("A"))
+                        {
+                            Console.WriteLine("Codigo já cadastrado");
+                            Console.WriteLine();
+                            Console.WriteLine("Insira um código válido");
+                            i--;
+                            break;
+                        }
+                        else
+                            lstCodTurma.Add("A");
+                        break;
 
-                if (lstTurma.Exists(x => x.CodTurma == CodTurma))
-                {
 
-                    if (turma.lstProfessores.Exists(x => x.ID == ID)) { 
-                        Console.WriteLine(" já existe um professor com mesmo id nessa turma ");
-                    i--;
-                    }
+                    case "B":
+                        if (lstCodTurma.Contains("B"))
+                        {
+                            Console.WriteLine("Código já cadastrado");
+                            Console.WriteLine();
+                            Console.WriteLine("Insira um código válido");
+                            i--;
+                            break;
+                        }
+                        else
+                            lstCodTurma.Add("B");
+                        break;
 
-                else
-                    turma.lstProfessores.Add(this);
-                    Console.WriteLine($"O {Nome} dara aula para Turma {CodTurma} ! ");
-                }
-                else
-                {
-                    Program.CadastrarTurma(CodTurma, lstTurma);
-                    if (lstTurma.Exists(x => x.CodTurma == CodTurma))
-                        turma.lstProfessores.Add(this);
 
-                }
-            }
+                    case "C":
+                        if (lstCodTurma.Contains("C"))
+                        {
+                            Console.WriteLine("Código já cadastrado");
+                            Console.WriteLine();
+                            Console.WriteLine("Insira um código válido");
+                            i--;
+                            break;
+                        }
+                        else
+                            lstCodTurma.Add("C");
+                        break;
+
+                } }
+
         }
+
+
+
+
         public void Cadastrarmaterias(int QuantidadeDeMaterias)
         {
             lstMaterias = new List<string>();
@@ -268,10 +295,14 @@ namespace ProjetoEscola.Clasees
         }
 
 
-
         public override string ToString()
         {
             return $"Nome do Professor: {Nome} , Idade: {Idade} , ID: {ID}";
+        }
+
+        public override void Cadastrar(List<Turma> lstTurmas, Turma turma)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

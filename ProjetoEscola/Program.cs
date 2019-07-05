@@ -14,9 +14,7 @@ namespace ProjetoEscola.Clasees
             
             int op;
             Turma turma = new Turma();
-            List<Turma> lstTurmas = new List<Turma>();
-            turma.lstAlunos = new List<Aluno>();
-            turma.lstProfessores = new List<Professor>();
+            List<Turma> lstTurmas = new List<Turma>();        
 
             do
             {
@@ -36,15 +34,17 @@ namespace ProjetoEscola.Clasees
                 if (op == 1)
                 {
                     Console.Clear();
-                    Console.Write("Digite quantos Professores você deseja cadastrar:  \n");
+                    Console.Write("Digite quantos Professores você deseja cadastrar: \n");
                     int N = Convert.ToInt32(Console.ReadLine());
+
                     for (int i = 0; i < N; i++)
                     {
-                        Professor prof = new Professor();
-                        prof.Cadastrar(lstTurmas,turma);
-                        turma.lstProfessores = new List<Professor>();
+                        Professor prof = new Professor();                        
+                        prof.Cadastrar();                        
+                        //turma.lstProfessores = new List<Professor>();
                         turma.lstProfessores.Add(prof);
-                        JsonSelialize(prof);
+                        //lstTurmas.Add(turma);
+      
                     }//Repetição Para Adicionar Professores a Lista !!
                 }
                 else if (op == 2)
@@ -56,33 +56,32 @@ namespace ProjetoEscola.Clasees
                         Console.Clear();
                         Aluno aluno = new Aluno();
                         aluno.Cadastrar(lstTurmas,turma);
-                        turma.lstAlunos.Add(aluno);
-                        JsonSelialize(aluno);
+                        //turma.lstAlunos.Add(aluno);
+                        //lstTurmas.Add(turma);
                     }//Repetição Para Adicionar Professores a Lista !!
                 }
                 else if (op == 3)
                 {
                     //List<Turma> lstTurmas = new List<Turma>();
                         Console.WriteLine("Insira o código da turma a ser cadastrado. Ex : A, B, C");
-                        char codigoTurma = Convert.ToChar(Console.ReadLine().ToUpper());
-                        CadastrarTurma(codigoTurma, lstTurmas);         
-                                                
-                        //lstTurmas.Add(trm);   
+                        string CodTurma1 = Console.ReadLine().ToUpper();
+                        CadastrarTurma(CodTurma1,lstTurmas);                        
+                        
                 }
 
                 else if (op == 4)
                 {
                     Console.WriteLine("RafaTheus agradece e volte sempre!");
+                    Console.ReadKey();
                 }
             } while (op != 4 || op > 4);
 
-
+            JsonSelialize(lstTurmas);
 
         }//Main
 
-
         #region MetodosStaticos
-        public static object CadastrarTurma(char cod, List<Turma> lstTurmas)
+        public static object CadastrarTurma(string cod, List<Turma> lstTurmas)
         {
             do
             {
@@ -92,30 +91,30 @@ namespace ProjetoEscola.Clasees
                     Console.WriteLine("Essa Turma já Existe!");
                     return 0;
 
-                }else   if (cod == 'A') {
+                }else   if (cod == "A") {
 
                     Turma A = new Turma
                     {
-                        CodTurma = 'A'
+                        CodTurma = "A"
                     };
                     Console.WriteLine($"Turma {cod} cadastrada com sucesso");
                     lstTurmas.Add(A);
                     return A;
 
-                }else if (cod == 'B') {
+                }else if (cod == "B") {
                     Turma B = new Turma
                     {
-                        CodTurma = 'B'
+                        CodTurma = "B"
                     };
 
                     Console.WriteLine($"Turma {cod} cadastrada com sucesso");
                     lstTurmas.Add(B);
                     return B;
 
-                }  else if (cod == 'C') {
+                }  else if (cod == "C") {
                     Turma C = new Turma
                     {
-                        CodTurma = 'C'
+                        CodTurma = "C"
                     };
 
                     Console.WriteLine($"Turma {cod} cadastrada com sucesso");
@@ -126,32 +125,24 @@ namespace ProjetoEscola.Clasees
                     Console.WriteLine("Turma Inválida digite uma Turma Valida : A ou B ou C , Nada foi registrado!");
                     return 0;
 
-            } while (cod != 'A' || cod != 'B' || cod != 'C');
+            } while (cod != "A" || cod != "B" || cod != "C");
 
           
         }
 
 
-        public static void JsonSelialize(object objetoDesejado)
+        public static void JsonSelialize(List<Turma> turmas)
         {
             {
-                string seteraquivo = @"C:\Users\Treinamento 6\Documents\Testes\Cadastro.json";
-
-                try
-                {
-                    string strResultadoJson = JsonConvert.SerializeObject(objetoDesejado);
-                    File.WriteAllText(seteraquivo, strResultadoJson);
-
-
-                }
-                catch (IOException e)
-                {
-                    Console.WriteLine("Ocorreu um erro ");
-                    Console.WriteLine(e.Message);
+                StreamWriter file = new StreamWriter(@"C:\Users\Treinamento 6\Desktop\teste\teste");
+               
+                    string strResultadoJson = JsonConvert.SerializeObject(turmas);
+                    file.Write($"Lista de Turmas: {strResultadoJson} \n");
+                    file.Close();
 
                 }
             }
-        }
+        
         #endregion
 
     }//Class Programa
