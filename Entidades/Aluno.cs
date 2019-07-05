@@ -41,6 +41,15 @@ namespace CadastroEscolar.Entidades
             d.MudarCores1();
             Idade = int.Parse(Console.ReadLine());
 
+
+            while (Idade  <4 || Idade > 18 )
+            {
+                Console.WriteLine("PARA CADASTRO DE ALUNOS EM NOSSA ESCOLA É NECESSARIO TER NO MINIMO 4 ANOS ( ENSINO FUNDAMENTAL)");
+                Console.WriteLine("E O MAXIMO DE 18 ANOS, 3 ANO DO ENSINO MEDIO");
+                Console.WriteLine("");
+                Idade = int.Parse(Console.ReadLine());
+            }
+
             Console.WriteLine("");
             d.MudarCores();
             Console.WriteLine("QUAL O SEXO DO ALUNO?\n DIGITE ( F ) PARA FEMININO E ( M ) PARA MASCULINO");
@@ -48,12 +57,16 @@ namespace CadastroEscolar.Entidades
             d.MudarCores1();
             Sexo = Console.ReadLine().ToUpper();
 
-            Console.WriteLine("");
-            d.MudarCores();
-            Console.WriteLine(" DIGITE O CPF DO ALUNO:");
-            Console.WriteLine("");
-            d.MudarCores1();
-            Cpf = int.Parse(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("");
+                d.MudarCores();
+                Console.WriteLine("DIGITE O CPF DO ALUNO:");
+                Console.WriteLine("");
+                d.MudarCores1();
+                Cpf = long.Parse(Console.ReadLine());
+
+            } while (Cpf < 10000000000 || Cpf > 99999999999);
 
             Console.WriteLine("");
             d.MudarCores();
@@ -96,18 +109,14 @@ namespace CadastroEscolar.Entidades
                     Console.WriteLine("TURMA JA CADASTRADA, NÂO É POSSIVEL CRIAR ELA NOVAMENTE");
                     Console.WriteLine("");
                    
-
                 }
 
                 Console.WriteLine("TURMA CRIADA, POR GENTILEZA EFETUAR O CADASTRO DO ALUNO NOVAMENTE !");
                 Console.WriteLine("");
 
-
-
-
             }
-
-
+            Console.WriteLine("");
+            Console.WriteLine($"CADASTRO DO ALUNO {Nome} RA: {Ra} FOI REALIZADO ") ;
         }
 
     }

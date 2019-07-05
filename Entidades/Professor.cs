@@ -36,15 +36,20 @@ namespace CadastroEscolar.Entidades
             Console.WriteLine("");
             d.MudarCores1();
             Nome = Console.ReadLine();
-            do
-            {
+
+
                 Console.WriteLine("");
                 d.MudarCores();
                 Console.WriteLine("DIGITE A IDADE DO PROFESSOR:");
                 Console.WriteLine("");
                 d.MudarCores1();
                 Idade = int.Parse(Console.ReadLine());
-            } while (Idade <0  || Idade>100);
+
+            while (Idade <18 || Idade >=100)
+            {
+                Console.WriteLine("PARA CADASTRO DE PROFESSORES É NECESSARIO SER MAIOR DE IDADE");
+                  Idade = int.Parse(Console.ReadLine());
+            }
  
 
             Console.WriteLine("");
@@ -81,7 +86,8 @@ namespace CadastroEscolar.Entidades
 
             Console.WriteLine("");
             d.MudarCores();
-            Console.WriteLine("CADASTRE AS MATERIAS QUE O PROFESSOR DA AULA");
+            Console.WriteLine("CADASTRE AS MATERIAS QUE O PROFESSOR DA AULA: ");
+            Console.WriteLine("");
             Console.WriteLine("QUANTAS MATERIAS DESEJA CADASTRAR PARA ESTE PROFESSOR?");
             Console.WriteLine("");
             d.MudarCores1();
@@ -222,7 +228,11 @@ namespace CadastroEscolar.Entidades
                 Console.WriteLine("PARA QUAL TURMA ESTE PROFESSOR DARÁ AULA ?");
 
                 var codigoTurma = Console.ReadLine().ToUpper();
-
+                while (codigoTurma != "A" && codigoTurma != "B" && codigoTurma != "C" && codigoTurma != "D" && codigoTurma != "E")
+                {
+                    Console.WriteLine("OPCAO INVÁLIDA, FAVOR DIGITAR NOVAMENTE!");
+                    codigoTurma = Console.ReadLine().ToUpper();
+                }
                 if (lstTurmas.Where(t => t.CodTurma == codigoTurma).ToList().Count > 0)
                 {
                     lstTurmas.Where(t => t.CodTurma == codigoTurma).FirstOrDefault().AddProfessores(this);
@@ -233,8 +243,14 @@ namespace CadastroEscolar.Entidades
                     string decisaoturma = Console.ReadLine().ToUpper();
                     if (decisaoturma == "SIM")
                         d.MudarCores();
+
                     Console.WriteLine("QUAL TURMA DESEJA CADASTRAR? A,B,C,D OU E ?");
                     string c = Console.ReadLine().ToUpper();
+
+                   
+
+
+
 
                     Turma turma1 = new Turma();
                     if (lstTurmas.Where(t => t.CodTurma == c).ToList().Count == 0)
@@ -261,6 +277,8 @@ namespace CadastroEscolar.Entidades
 
 
             }
+            Console.WriteLine($"CADASTRO DO PROFESSOR {Nome} ID: {Identificacao} FOI REALIZADO ");
         }
+       
     }
 }
