@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Treinamento 5\\Desktop\\Projeto Cadastro Escolar\\Aula4\\CadastroEscolar.csproj": {}
+    "C:\\Users\\guibo\\source\\Aulas\\gits\\Aula4\\CadastroEscolar.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Treinamento 5\\Desktop\\Projeto Cadastro Escolar\\Aula4\\CadastroEscolar.csproj": {
+    "C:\\Users\\guibo\\source\\Aulas\\gits\\Aula4\\CadastroEscolar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Treinamento 5\\Desktop\\Projeto Cadastro Escolar\\Aula4\\CadastroEscolar.csproj",
+        "projectUniqueName": "C:\\Users\\guibo\\source\\Aulas\\gits\\Aula4\\CadastroEscolar.csproj",
         "projectName": "CadastroEscolar",
-        "projectPath": "C:\\Users\\Treinamento 5\\Desktop\\Projeto Cadastro Escolar\\Aula4\\CadastroEscolar.csproj",
-        "packagesPath": "C:\\Users\\Treinamento 5\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Treinamento 5\\Desktop\\Projeto Cadastro Escolar\\Aula4\\obj\\",
+        "projectPath": "C:\\Users\\guibo\\source\\Aulas\\gits\\Aula4\\CadastroEscolar.csproj",
+        "packagesPath": "C:\\Users\\guibo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\guibo\\source\\Aulas\\gits\\Aula4\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Treinamento 5\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\guibo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"

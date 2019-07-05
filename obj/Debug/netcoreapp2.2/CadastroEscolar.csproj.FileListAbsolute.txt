@@ -31,3 +31,9 @@ C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\obj\Debug\netcoreapp2.2\CadastroEsco
 C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfo.cs
 C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.dll
 C:\Users\guibo\source\Aulas\Aula 4POO\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.pdb
+C:\Users\guibo\source\Aulas\gits\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.csprojAssemblyReference.cache
+C:\Users\guibo\source\Aulas\gits\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.csproj.CoreCompileInputs.cache
+C:\Users\guibo\source\Aulas\gits\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfoInputs.cache
+C:\Users\guibo\source\Aulas\gits\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfo.cs
+C:\Users\guibo\source\Aulas\gits\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.dll
+C:\Users\guibo\source\Aulas\gits\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.pdb
