@@ -11,7 +11,7 @@ namespace aula04
         public Pessoa()
         {
         }
-        public virtual void Registro(List<string>s)
+        public virtual void Registro(List<string> s)
         {
             Console.WriteLine("Informe o nome:");
             Nome = Console.ReadLine().ToUpper();
@@ -22,13 +22,9 @@ namespace aula04
             } while (Idade <= 0 || Idade >= 110);
             Console.WriteLine("Informe a Data de nascimento(DD/MM/YYYY)");
             Nascimento = Convert.ToDateTime(Console.ReadLine());
-            do
-            {
-                Console.WriteLine("Informe o RG:");
-                RG = Convert.ToUInt64(Console.ReadLine());
-                if (RG <= 100000000 || RG > 999999999) { Console.WriteLine("Informe RG Valido"); }
+            Console.WriteLine("Informe o RG:");
+            RG = Convert.ToUInt64(Console.ReadLine());
 
-            } while (RG <= 10000000 || RG > 999999999);
         }
         public override string ToString()
         {

@@ -8,7 +8,6 @@ namespace aula04
         public int NRProfessor;
         public double Salario;
         public List<string> Materias = new List<string>();
-        public List<Turma> Turmas = new List<Turma>();
 
         public Professor()
         {
@@ -56,11 +55,6 @@ namespace aula04
         {
             return base.ToString() + $"\nN° Professor:{NRProfessor}\nSalario:{Salario.ToString("F2", CultureInfo.InvariantCulture)}";
         }
-        //Registro das Turmas 
-        public void RegistraTurma(Turma T)
-        {
-            Turmas.Add(T);
-        }
         public void Link(List<Turma> T, Professor a)
         {
             Console.WriteLine();
@@ -73,9 +67,9 @@ namespace aula04
             Console.WriteLine("Turmas:");
             foreach (Turma v in T)
             {
-                if (v.professors.Contains(a.Nome))
+                if (v.professors.Contains(a))
                 {
-                    Console.WriteLine($"\n{v.Nome}");
+                    Console.WriteLine($"{v.Nome}");
                 }
             }
             Console.ReadLine();

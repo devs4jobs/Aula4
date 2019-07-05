@@ -6,7 +6,6 @@ namespace aula04
     class Aluno : Pessoa
     {
         public int RA;
-        public List<string> Disciplinas = new List<string>();
         public bool Validar;
         public Aluno()
         {
@@ -19,26 +18,6 @@ namespace aula04
             base.Registro(s);
             Random R = new Random();
             RA = R.Next(10000000, 99999999);
-            bool C;
-            do
-            {
-                Console.WriteLine("Materias Disponiveis");
-                foreach (string v in s)
-                {
-                    if (!Disciplinas.Contains(v))
-                        Console.WriteLine(v);
-                }
-                Console.WriteLine("Informe a disciplina:");
-                string A = Console.ReadLine().ToUpper();
-                if (s.Contains(A))
-                    if (!Disciplinas.Contains(A))
-                        Disciplinas.Add(A);
-                    else Console.WriteLine("Materia ja esta cadastrada");
-                else Console.WriteLine("Materia Invalida");
-                Console.WriteLine("O aluno tera outra disciplina?(S/N)");
-                C = Console.ReadLine().ToLower().Contains("s");
-                Console.Clear();
-            } while (C == true);
             Console.ForegroundColor = aux;
         }
         //Registro de Turma para Aluno
@@ -60,21 +39,11 @@ namespace aula04
                     a.Validar = true;
                 }
                 else { Console.WriteLine("Digite uma turma valida!"); }
-
             }
         }
         public override string ToString()
         {
             return base.ToString() + $"\nRA:{RA}";
-        }
-        public void Show()
-        {
-            foreach (var v in Disciplinas)
-            {
-                Console.WriteLine(v);
-            }
-            Console.ReadLine();
-            Console.Clear();
         }
     }
 }

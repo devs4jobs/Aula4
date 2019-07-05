@@ -5,23 +5,23 @@ namespace aula04
     class Turma
     {
         public string Nome;
-        public List<string> aluno = new List<string>();
-        public List<string> professors = new List<string>();
+        public List<Aluno> aluno = new List<Aluno>();
+        public List<Professor> professors = new List<Professor>();
         public bool Validacao;
         public Turma()
         {
         }
-        //Registro de turma para Professores
+        //Registro de turma
         public void Registro(List<Professor> professor)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             if (professor.Count != professors.Count)
             {
                 if (Validacao == true)
-                {
+                {   //Registro de turma para Professores
                     foreach (Professor P in professor)
                     {
-                        if (!professors.Contains(P.Nome))
+                        if (!professors.Contains(P))
                             Console.WriteLine($"Nome:{P.Nome},N°:{P.NRProfessor}");
                     }
                     int i = 0;
@@ -32,10 +32,9 @@ namespace aula04
                         Professor a = professor.Find(x => x.NRProfessor == NP);
                         if (a != null)
                         {
-                            if (!professors.Contains(a.Nome))
+                            if (!professors.Contains(a))
                             {
-                                professors.Add(a.Nome);
-                                a.RegistraTurma(this);
+                                professors.Add(a);
                                 i++;
                             }
                             else { Console.WriteLine("Informe um professor da lista"); }
@@ -61,7 +60,7 @@ namespace aula04
         //Registra aluno
         public void RegistraAluno(Aluno aluno1)
         {
-            aluno.Add(aluno1.Nome);
+            aluno.Add(aluno1);
         }
         public override string ToString()
         {
