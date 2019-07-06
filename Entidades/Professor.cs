@@ -18,18 +18,13 @@ namespace CadastroEscolar.Entidades
         {
 
         }
-
-        //public Professor(int identificacao, int salario)
-        //{
-        //    Identificacao = identificacao;
-        //    Salario = salario;
-        //}
+        // metodo de cadastro com diversas validações
         #region "CADASTRO INFORMAÇÔES PROFESSORES"
         override public void Cadastrar(List<Turma> lstTurmas)
         {
             Random rnd = new Random();
             Designs d = new Designs();
-
+        inicio:
             Console.WriteLine("");
             d.MudarCores();
             Console.WriteLine("DIGITE O NOME DO PROFESSOR");
@@ -37,27 +32,29 @@ namespace CadastroEscolar.Entidades
             d.MudarCores1();
             Nome = Console.ReadLine();
 
-
-                Console.WriteLine("");
-                d.MudarCores();
-                Console.WriteLine("DIGITE A IDADE DO PROFESSOR:");
-                Console.WriteLine("");
-                d.MudarCores1();
-                Idade = int.Parse(Console.ReadLine());
-
-            while (Idade <18 || Idade >=100)
-            {
-                Console.WriteLine("PARA CADASTRO DE PROFESSORES É NECESSARIO SER MAIOR DE IDADE");
-                  Idade = int.Parse(Console.ReadLine());
-            }
- 
-
             Console.WriteLine("");
             d.MudarCores();
-            Console.WriteLine("QUAL O SEXO DO PROFESSOR?\n DIGITE ( F ) PARA FEMININO E ( M ) PARA MASCULINO");
+            Console.WriteLine("DIGITE A IDADE DO PROFESSOR:");
             Console.WriteLine("");
             d.MudarCores1();
-            Sexo = Console.ReadLine().ToUpper();
+            Idade = int.Parse(Console.ReadLine());
+
+            while (Idade < 18 || Idade >= 100)
+            {
+                Console.WriteLine("PARA CADASTRO DE PROFESSORES É NECESSARIO SER MAIOR DE IDADE");
+                Idade = int.Parse(Console.ReadLine());
+            }
+
+            do
+            {
+                Console.WriteLine("");
+                d.MudarCores();
+                Console.WriteLine("QUAL O SEXO DO PROFESSOR?\n DIGITE ( F ) PARA FEMININO E ( M ) PARA MASCULINO");
+                Console.WriteLine("");
+                d.MudarCores1();
+                Sexo = Console.ReadLine().ToUpper();
+
+            } while (Sexo != "F" && Sexo != "M");
 
             do
             {
@@ -68,11 +65,10 @@ namespace CadastroEscolar.Entidades
                 d.MudarCores1();
                 Cpf = long.Parse(Console.ReadLine());
 
-            } while (Cpf <10000000000 || Cpf >99999999999);
+            } while (Cpf < 10000000000 || Cpf > 99999999999);
 
             Console.WriteLine("AGORA DIGITE O SALARIO DO PROFESSOR ");
-              Salario = Convert.ToDouble(Console.ReadLine());
-
+            Salario = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("");
             d.MudarCores();
@@ -80,7 +76,6 @@ namespace CadastroEscolar.Entidades
             Console.WriteLine("");
             d.MudarCores1();
             Identificacao = (rnd.Next(10000, 90000));
-           
 
             Console.WriteLine("O NUMERO DE IDENTIFICAÇÂO PARA ESTE PROFESSOR É:" + Identificacao);
 
@@ -103,6 +98,11 @@ namespace CadastroEscolar.Entidades
                 Console.WriteLine("");
                 d.MudarCores1();
                 int decisao = int.Parse(Console.ReadLine());
+                while (decisao < 0 || decisao > 5)
+                {
+                    Console.WriteLine("OPCAO INVÁLIDA, DIGITE NOVAMENTE!");
+                    decisao = int.Parse(Console.ReadLine());
+                }
 
                 switch (decisao)
                 {
@@ -236,20 +236,14 @@ namespace CadastroEscolar.Entidades
                 if (lstTurmas.Where(t => t.CodTurma == codigoTurma).ToList().Count > 0)
                 {
                     lstTurmas.Where(t => t.CodTurma == codigoTurma).FirstOrDefault().AddProfessores(this);
+                    Console.WriteLine($"CADASTRO DO PROFESSOR {Nome} ID: {Identificacao} NESSA TURMA REALIZADO ");
                 }
                 else
                 {
-                    Console.WriteLine("ESSA TURMA NAO EXISTE, DESEJA CADASTRAR UMA NOVA TURMA?");
-                    string decisaoturma = Console.ReadLine().ToUpper();
-                    if (decisaoturma == "SIM")
-                        d.MudarCores();
+                    d.MudarCores();
 
-                    Console.WriteLine("QUAL TURMA DESEJA CADASTRAR? A,B,C,D OU E ?");
+                    Console.WriteLine(" ESSA TURMA NAO EXISTE, QUAL TURMA DESEJA CADASTRAR? A,B,C,D OU E ?");
                     string c = Console.ReadLine().ToUpper();
-
-                   
-
-
 
 
                     Turma turma1 = new Turma();
@@ -265,20 +259,16 @@ namespace CadastroEscolar.Entidades
                         Console.WriteLine("TURMA JA CADASTRADA, FAVOR ADICIONAR OUTRA");
                         Console.WriteLine("");
                         i--;
-
-                        Console.WriteLine("TURMA CRIADA, POR GENTILEZA EFETUAR O CADASTRO DO PROFESSOR NOVAMENTE !");
-                        Console.WriteLine("");
                     }
+                    Console.WriteLine("TURMA CRIADA, APERTE ENTER EFETUAR O CADASTRO DO PROFESSOR NOVAMENTE !");
+                    Console.WriteLine("");
+                    Console.ReadLine();
+                    goto inicio;
                 }
-
-
                 #endregion
-
-
-
             }
-            Console.WriteLine($"CADASTRO DO PROFESSOR {Nome} ID: {Identificacao} FOI REALIZADO ");
+
         }
-       
+
     }
 }

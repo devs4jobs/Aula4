@@ -5,18 +5,17 @@ using System.Text;
 
 namespace CadastroEscolar.Entidades
 {
-   public class Turma
+    public class Turma
     {
         public string NomeTurma { get; set; }
         public string CodTurma { get; set; }
         public List<Aluno> lstAlunos { get; set; } = new List<Aluno>();
         public List<Professor> lstProfessors { get; set; } = new List<Professor>();
-      
+
         public Turma()
         {
 
         }
-
         public Turma(string nomeTurma, string codTurma, List<Aluno> lstAlunos, List<Professor> lstProfessors)
         {
             NomeTurma = nomeTurma;
@@ -25,6 +24,7 @@ namespace CadastroEscolar.Entidades
             this.lstProfessors = lstProfessors;
         }
 
+        // metodo para diicionar alunos e professores nas turmas
         public void AddAlunos(Aluno alunos)
         {
             lstAlunos.Add(alunos);
@@ -34,8 +34,8 @@ namespace CadastroEscolar.Entidades
         {
             lstProfessors.Add(professores);
         }
- 
 
+        // metodo para definir a turma
         public void CadastrarTurma(string opcao)
         {
             if (opcao == "A") { NomeTurma = "Turma A"; CodTurma = "A"; }
@@ -45,55 +45,36 @@ namespace CadastroEscolar.Entidades
             else if (opcao == "E") { NomeTurma = "Turma E"; CodTurma = "E"; }
 
         }
+        // metodos para exibir alunos e professores
         public void MostrarAlunos()
         {
-            if (lstAlunos.Count>0)
+            if (lstAlunos.Count > 0)
             {
 
-                foreach (Aluno aluno in lstAlunos)
+                foreach (Aluno alunos in lstAlunos)
                 {
                     Console.WriteLine("LISTA DE ALUNOS");
-
-
-                    Console.WriteLine($"NOME: {aluno.Nome}");
-                    Console.WriteLine($"ID: {aluno.Ra}" ); 
+                    Console.WriteLine($"NOME: {alunos.Nome}");
+                    Console.WriteLine($"ID: {alunos.Ra}");
                 }
             }
-            else 
+            else
                 Console.WriteLine("NAO HÁ ALUNOS REGISTRADOS");
-
         }
-
         public void MostrarProfessores()
         {
-            if (lstProfessors.Count>0)
+            if (lstProfessors.Count > 0)
             {
-                foreach (Professor professor in lstProfessors)
+                foreach (Professor professors in lstProfessors)
                 {
                     Console.WriteLine("LISTA DE PROFESSORES!");
-                    Console.WriteLine($"NOME: {professor.Nome} ");
-                    Console.WriteLine($"ID: {professor.Identificacao}"); 
+                    Console.WriteLine($"NOME: {professors.Nome} ");
+                    Console.WriteLine($"ID: {professors.Identificacao}");
 
                 }
             }
-           else
-                Console.WriteLine("NAO HÁ PROFESSORES REGISTRADOS"); if (lstProfessors.Count>0)
-            {
-                foreach (Professor professor in lstProfessors)
-                {
-                    Console.WriteLine("LISTA DE PROFESSORES!");
-                    Console.WriteLine($"NOME: {professor.Nome} ");
-                    Console.WriteLine($"ID: {professor.Identificacao}"); 
-
-                }
-            }
-           else
+            else
                 Console.WriteLine("NAO HÁ PROFESSORES REGISTRADOS");
-
-
         }
-
     }
-
-
 }
