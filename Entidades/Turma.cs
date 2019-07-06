@@ -45,7 +45,54 @@ namespace CadastroEscolar.Entidades
             else if (opcao == "E") { NomeTurma = "Turma E"; CodTurma = "E"; }
 
         }
-   
+        public void MostrarAlunos()
+        {
+            if (lstAlunos.Count>0)
+            {
+
+                foreach (Aluno aluno in lstAlunos)
+                {
+                    Console.WriteLine("LISTA DE ALUNOS");
+
+
+                    Console.WriteLine($"NOME: {aluno.Nome}");
+                    Console.WriteLine($"ID: {aluno.Ra}" ); 
+                }
+            }
+            else 
+                Console.WriteLine("NAO HÁ ALUNOS REGISTRADOS");
+
+        }
+
+        public void MostrarProfessores()
+        {
+            if (lstProfessors.Count>0)
+            {
+                foreach (Professor professor in lstProfessors)
+                {
+                    Console.WriteLine("LISTA DE PROFESSORES!");
+                    Console.WriteLine($"NOME: {professor.Nome} ");
+                    Console.WriteLine($"ID: {professor.Identificacao}"); 
+
+                }
+            }
+           else
+                Console.WriteLine("NAO HÁ PROFESSORES REGISTRADOS"); if (lstProfessors.Count>0)
+            {
+                foreach (Professor professor in lstProfessors)
+                {
+                    Console.WriteLine("LISTA DE PROFESSORES!");
+                    Console.WriteLine($"NOME: {professor.Nome} ");
+                    Console.WriteLine($"ID: {professor.Identificacao}"); 
+
+                }
+            }
+           else
+                Console.WriteLine("NAO HÁ PROFESSORES REGISTRADOS");
+
+
+        }
+
     }
 
 

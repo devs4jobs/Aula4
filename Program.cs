@@ -44,8 +44,6 @@ namespace CadastroEscolar
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
             #endregion
 
-
-
             #region "Lógica"
             int decisao = 1, i = 0, N = 0;
 
@@ -107,15 +105,15 @@ namespace CadastroEscolar
             }
 
         inicio:
-            while (decisao == 2 || decisao == 1 || decisao == 3 || decisao == 4)
+            while (decisao == 2 || decisao == 1 || decisao == 3 || decisao == 4 || decisao == 5 || decisao == 6 || decisao == 7)
             {
                 Console.WriteLine("");
                 d.MudarCores2();
                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------\n");
 
-                d.WriteLineCenter("                DIGITE 1 PARA ALUNO / DIGITE 2 PARA PROFESSOR  / 3 PARA CADASDASTRAR TURMA / 4 PARA SAIR               \n");
-
+                d.WriteLineCenter("                DIGITE 1 PARA ALUNO / DIGITE 2 PARA PROFESSOR  / 3 PARA CADASDASTRAR TURMA / 4 PARA MOSTRAR PROFESSORES \n");
+                d.WriteLineCenter("                DIGITE 5 PARA MOSTRAR ALUNOS / DIGITE 6 PARA MOSTRAR TURMAS  / 7 PARA SAIR                              \n");
                 d.WriteLineCenter("------------------------------------------------------------------------------------------------------------------------");
                 d.WriteLineCenter("------------------------------------------------------------------------------------------------------------------------");
                 Console.WriteLine("");
@@ -134,7 +132,7 @@ namespace CadastroEscolar
 
                     }
 
-                    while (decisao >= 5  || decisao <0)
+                    while (decisao >= 8  || decisao <0)
                     {
                        Console.WriteLine("OPCAO INVÁLIDA, FAVOR DIGITAR NOVAMENTE!");
                         decisao = int.Parse(Console.ReadLine());
@@ -161,9 +159,6 @@ namespace CadastroEscolar
 
                             Console.WriteLine("ERRO, SERÁ FEITO O CADASTRO DE APENAS UM ALUNO");
                         }
-
-
-
 
                         for (i = 0; i < N; i++)
                         {
@@ -298,11 +293,35 @@ namespace CadastroEscolar
                         }
                     }
 
+                
                     else if (decisao == 4)
+                    {
+                        turma.MostrarProfessores();
+
+                    }
+
+                    else if  (decisao == 5)
+                    {
+                         turma.MostrarAlunos();
+                    }
+
+                    else if (decisao == 6)
+                    {
+
+                           foreach (Turma turmas in lstTurmas)
+                            {
+                                Console.WriteLine("LISTA DE TURMAS");
+                            Console.WriteLine($"TURMAS: {turmas.NomeTurma} Codigo {turmas.CodTurma} ");
+                            }
+                     
+                    
+                    }
+                    else if (decisao == 7)
                     {
                         Console.WriteLine("ATÉ MAIS!");
                         Environment.Exit(0);
                     }
+
 
                     StreamWriter sw2 = new StreamWriter(@"C:\Users\Treinamento 5\Desktop\txtarquivo\txt");
                     string g2 = JsonConvert.SerializeObject(lstTurmas);

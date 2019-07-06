@@ -74,7 +74,7 @@ namespace CadastroEscolar.Entidades
             Console.WriteLine("");
             d.MudarCores1();
 
-            Ra = (rnd.Next(10000, 90000));
+            Ra = (rnd.Next(1000, 9000));
 
 
             Console.WriteLine("O RA GERADO PARA ESTE ALUNO É:" + Ra);
