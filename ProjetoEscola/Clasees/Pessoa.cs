@@ -32,9 +32,8 @@ namespace ProjetoEscola.Clasees
 
         #endregion
 
-        public abstract void Cadastrar(List<Turma> lstTurmas,Turma turma);
-        public abstract void Cadastrar();
-        public abstract void CadastrarCodigoTurma(string codTurma);
+        public abstract object Cadastrar(List<Turma> lstTurmas);
+        public abstract void CadastrarCodigoTurma( List<Turma> lstTurma);
 
     }
 }

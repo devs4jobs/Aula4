@@ -10,7 +10,7 @@ namespace ProjetoEscola.Clasees
 
 
         #region Construtores
-        public Aluno(string nome, string genero, string nacionalidade, Guid matricula, string dataNascimento, string pais, string cidade , Turma turma)
+        public Aluno(string nome, string genero, string nacionalidade, Guid matricula, string dataNascimento, string pais, string cidade, Turma turma)
         {
 
             Nome = nome;
@@ -29,8 +29,9 @@ namespace ProjetoEscola.Clasees
         public Guid Matricula
         {
             get { return Matricula_; }
-            set {
-                    Matricula_ = value;
+            set
+            {
+                Matricula_ = value;
             }
         }
 
@@ -44,41 +45,37 @@ namespace ProjetoEscola.Clasees
 
         #region MetodosAbstratos
 
-        public override void Cadastrar(List<Turma> lstTurmas , Turma turma)
+        public override object Cadastrar(List<Turma> lstTurmas)
         {
-          
-            Console.Beep();
-            Console.Write("Digite o nome do Aluno(a) : ");
-            Nome = Console.ReadLine();
-            Console.Write("\nDigite o Genero :  ");
-            Sexo = Console.ReadLine();
-            Console.Write("\nDigite a Nacionalidade:  ");
-            Nacionaliddade = Console.ReadLine();
-            Console.Write("\nDigite o Pais : ");
-            Pais = Console.ReadLine();
-            Console.Write("\nDigite a Cidade: ");
-            Cidade = Console.ReadLine();
-            Guid Matricula = Guid.NewGuid() ;
-            Console.Write($"\nA Matricula(a) dele(a) é {Matricula} \n");
-            Console.Write("\nDigite a idade : ");
-            Idade = Convert.ToInt32(Console.ReadLine());
-            Console.Write("\nDigite a Data de Nascimento: ");
-            DataNasc = Console.ReadLine();
-            Console.WriteLine("\nDigite qual o codigo da turma que o aluno vai estar !! : EX: A, B, C.. ");
-            string codTurma = Console.ReadLine().ToUpper();
-            if (lstTurmas.Exists(x => x.CodTurma == codTurma))
+            try
             {
-                turma.lstAlunos.Add(this);
-                lstTurmas.Add(turma);
-                Console.WriteLine($"\nO {Nome} foi inserido na Turma {codTurma} com Sucesso ! ");
+                Console.Beep();
+                Console.Write("Digite o nome do Aluno(a) : ");
+                Nome = Console.ReadLine();
+                Console.Write("\nDigite o Genero :  ");
+                Sexo = Console.ReadLine();
+                Console.Write("\nDigite a Nacionalidade:  ");
+                Nacionaliddade = Console.ReadLine();
+                Console.Write("\nDigite o Pais : ");
+                Pais = Console.ReadLine();
+                Console.Write("\nDigite a Cidade: ");
+                Cidade = Console.ReadLine();
+                Guid Matricula = Guid.NewGuid();
+                Console.Write($"\nA Matricula(a) dele(a) é {Matricula} \n");
+                Console.Write("\nDigite a idade : ");
+                Idade = Convert.ToInt32(Console.ReadLine());
+                Console.Write("\nDigite a Data de Nascimento: ");
+                DataNasc = Console.ReadLine();
+                CadastrarCodigoTurma(lstTurmas);
+
+                return this;
             }
-            else
-
-                Program.CadastrarTurma(codTurma, lstTurmas);
-                turma.lstAlunos.Add(this);
-                lstTurmas.Add(turma);
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return 0;
+            }
         }
-
         public override string ToString()
         {
 
@@ -86,14 +83,58 @@ namespace ProjetoEscola.Clasees
 
         }
 
-        public override void Cadastrar()
-        {
-            throw new NotImplementedException();
-        }
 
-        public override void CadastrarCodigoTurma(string codTurma)
+        public override void CadastrarCodigoTurma(List<Turma> lstTurmas)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("\nDigite qual o codigo da turma que o aluno vai estar !! : EX: A, B, C.. ");
+            string codTurma = Console.ReadLine().ToUpper();
+
+            switch (codTurma)
+            {
+                case "A":
+                    foreach (var turma in lstTurmas)
+                    {
+                        if (turma.CodTurma == "A")
+                            turma.lstAlunos.Add(this);
+                        else
+                        {
+                            Turma A = new Turma();
+                            A.lstAlunos.Add(this);
+                            lstTurmas.Add(A);
+                        }
+                    }
+                    break;
+
+                case "B":
+                    foreach (var turma in lstTurmas)
+                    {
+                        if (turma.CodTurma == "B")
+                            turma.lstAlunos.Add(this);
+
+                        else
+                        {
+                            Turma B = new Turma();
+                            B.lstAlunos.Add(this);
+                            lstTurmas.Add(B);
+                        }
+                    }
+                    break;
+                case "C":
+                    foreach (var turma in lstTurmas)
+                    {
+                        if (turma.CodTurma == "C")
+                            turma.lstAlunos.Add(this);
+
+                        else
+                        {
+                            Turma C = new Turma();
+                            C.lstAlunos.Add(this);
+                            lstTurmas.Add(C);
+                        }
+                    }
+                    break;
+
+            }
         }
         #endregion
     }

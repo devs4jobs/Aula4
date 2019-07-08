@@ -49,8 +49,6 @@ namespace ProjetoEscola.Clasees
             return dicionario ; 
         }
 
-
-
         //https://www.youtube.com/watch?v=ALLSIVMhwYw&t=42s <=== dicionario !!
     }
 }
