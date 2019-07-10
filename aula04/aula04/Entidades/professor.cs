@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 namespace aula04
 {
     class Professor : Pessoa
@@ -21,6 +20,7 @@ namespace aula04
             //Materias professor
             Console.WriteLine("Quantas materias o professor leciona:");
             int QMateria = Convert.ToInt32(Console.ReadLine());
+            if (QMateria > 7) { QMateria = 7; }
             int i = 0;
             while (i < QMateria)
             {
@@ -49,7 +49,7 @@ namespace aula04
         public void Link(List<Turma> T, Professor a)
         {
             Console.WriteLine();
-            Console.WriteLine("Materias dadas");
+            Console.WriteLine("Materias Lecionadas");
             foreach (var v in Materias)
             {
                 Console.WriteLine(v);

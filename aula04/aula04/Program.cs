@@ -33,6 +33,11 @@ namespace aula04
                 Console.WriteLine("ERROR");
                 Console.WriteLine(e.Message);
             }
+            catch(JsonException e)
+            {
+                Console.WriteLine("ERROR");
+                Console.WriteLine(e.Message);
+            }
             do
             {
                 Console.ResetColor();
@@ -78,20 +83,21 @@ namespace aula04
                                 string c = Console.ReadLine().ToUpper();
                                 Turma v = Turmas.Find(x => x.Nome == c);
                                 if (v != null) { v.Registro(Prof); }
+                                else { Console.WriteLine("Turma não existe"); }
                                 break;
                             }
                         case "5":
                             {
-                                int c;
                                 Console.ForegroundColor = ConsoleColor.Blue;
                                 foreach (var g in Alu)
                                 {   if(!g.Validar)
                                     Console.WriteLine($"Nome do aluno:{g.Nome} RA:{g.RA}");
                                 }
                                 Console.WriteLine("Qual o RA do aluno?");
-                                c = Convert.ToInt32(Console.ReadLine());
+                                int c = Convert.ToInt32(Console.ReadLine());
                                 Aluno v = Alu.Find(x => x.RA == c);
                                 if (v != null) { v.RegistrarT(Turmas, v); }
+                                else { Console.WriteLine("Aluno não existe"); }
                                 break;
                             }
                         case "6":

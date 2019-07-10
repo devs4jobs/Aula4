@@ -53,7 +53,6 @@ namespace aula04
                 }
             }
             else { Console.WriteLine("Registre mais professores. "); }
-            Console.Clear();
         }
         //Registra aluno
         public void RegistraAluno(Aluno aluno1)
