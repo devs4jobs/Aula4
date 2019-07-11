@@ -20,7 +20,7 @@ namespace aula04
             //Materias professor
             Console.WriteLine("Quantas materias o professor leciona:");
             int QMateria = Convert.ToInt32(Console.ReadLine());
-            if (QMateria > 7) { QMateria = 7; }
+            if (QMateria > 6) { QMateria = 6; }
             int i = 0;
             while (i < QMateria)
             {
