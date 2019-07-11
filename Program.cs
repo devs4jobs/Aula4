@@ -133,11 +133,23 @@ namespace CadastroEscolar
                         break;
 
                     }
-                   
-                    
-                  
-                    
-                        
+
+
+                    if (decisao != 1 || decisao != 2 || decisao != 3 || decisao != 4)
+                    {
+
+
+                        Console.WriteLine("OPÇÃO INVALIDA, PRESSIONE ENTER E REINICIE O CONSOLE! ");
+                        Console.ReadKey();
+                        break;
+
+                         
+
+                    }
+
+
+
+
 
                     if (decisao == 1)
                     {
