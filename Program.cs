@@ -33,7 +33,7 @@ namespace CadastroEscolar
             }
             else if (tempo.Hour > 12 && tempo.Hour < 18)
             {
-                d.WriteLineCenter($"                               BOA TARDE E SEJA BEM VINDO(A) AO SISTEMA DIA: {    tempo.ToString()}                         ");
+                d.WriteLineCenter($"                               BOA TARDE E SEJA BEM VINDO(A) AO SISTEMA DIA: {DateTime.Now}                         ");
             }
 
             else
@@ -43,7 +43,7 @@ namespace CadastroEscolar
             #endregion
 
             #region "Lógica"
-            int decisao = 1, i = 0, N = 0;
+            int decisao = 0, i = 0, N = 0;
 
             d.MudarCores();
             d.WriteLineCenter("                                           QUANTAS TURMAS DESEJA CADASTRAR?                                             ");
@@ -69,6 +69,7 @@ namespace CadastroEscolar
 
                 d.WriteLineCenter("                                   QUAL TURMA DESEJA CADASTAR ? A,B,C,D OU E ?                                         ");
                 string c = Console.ReadLine().ToUpper();
+                Console.WriteLine("");
                 while (c != "A" && c != "B" && c != "C" && c != "D" && c != "E")
                 {
                     Console.WriteLine("OPCAO INVÁLIDA, FAVOR DIGITAR NOVAMENTE!");
@@ -94,7 +95,7 @@ namespace CadastroEscolar
             }
         // menu de opçoes do sistema
         inicio:
-            while (decisao == 2 || decisao == 1 || decisao == 3 || decisao == 4 || decisao == 5 || decisao == 6 || decisao == 7)
+            while (decisao != 7)
             {
                 Console.WriteLine("");
                 d.MudarCores2();
@@ -102,52 +103,35 @@ namespace CadastroEscolar
                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------\n");
 
                 d.WriteLineCenter("                DIGITE 1 PARA ALUNO / DIGITE 2 PARA PROFESSOR  / 3 PARA CADASDASTRAR TURMA / 4 PARA EXIBIR PROFESSORES \n");
-                d.WriteLineCenter("                DIGITE 5 PARA EXIBIR ALUNOS / DIGITE 6 PARA EXIBIR TURMAS  / 7 PARA SAIR                              \n");
+                d.WriteLineCenter("                          DIGITE 5 PARA EXIBIR ALUNOS / DIGITE 6 PARA EXIBIR TURMAS  / 7 PARA SAIR                       ");
                 d.WriteLineCenter("------------------------------------------------------------------------------------------------------------------------");
                 d.WriteLineCenter("------------------------------------------------------------------------------------------------------------------------");
                 Console.WriteLine("");
-                { 
-                    try
+                {
+                    do
                     {
-                        decisao = int.Parse(Console.ReadLine());
-                    }
-                    catch (Exception)
-                    {
-
-                        Console.WriteLine("OPCAO ERRADA, ABRA O PROGRAMA NOVAMENTE");
-                        Console.ReadKey();
-                        break;
-                    }
+                        try
+                        {
+                            Console.WriteLine("DIGITE UM NUMERO INTEIRO ENTRE 1 e 7");
+                            decisao = int.Parse(Console.ReadLine());
 
 
-                    if (decisao != 1 || decisao != 2 || decisao != 3 || decisao != 4)
-                    {
+                        }
+                        catch (System.FormatException)
+                        {
+                            Console.WriteLine("DIGITE UMA OPÇÃO VALIDA DO MENU");
+                        }
+
+                    } while (decisao <= 0 || decisao > 7);
 
 
-                        Console.WriteLine("OPÇÃO INVALIDA, PRESSIONE ENTER E REINICIE O CONSOLE! ");
-                        Console.ReadKey();
-                        break;
-
-                         
-
-                    }
-
-
-
-
-
-
-                    while (decisao >= 8 || decisao < 0)
-                    {
-                        Console.WriteLine("OPCAO INVÁLIDA, FAVOR DIGITAR NOVAMENTE!");
-                        decisao = int.Parse(Console.ReadLine());
-                    }
                     if (decisao == 1)
                     {
                         d.MudarCores();
                         Console.WriteLine("QUANTOS ALUNOS DESEJA CADASTRAR?");
                         Console.WriteLine("");
                         d.MudarCores1();
+
                         try
                         {
                             N = int.Parse(Console.ReadLine());
@@ -231,12 +215,6 @@ namespace CadastroEscolar
                             N = int.Parse(Console.ReadLine());
 
                         }
-                        while (N > 5)
-                        {
-                            Console.WriteLine("QUANTIDADE DE TURMAS INVALIDAS!");
-                            N = int.Parse(Console.ReadLine());
-
-                        }
                         for (i = 0; i < N; i++)
                         {
                             Console.WriteLine("QUAL TURMA DESEJA CADASTAR ? A,B,C,D OU E ?");
@@ -262,7 +240,7 @@ namespace CadastroEscolar
                                 Console.WriteLine("DIGITE ENTER PARA VOLTAR AO INICIO");
                                 Console.ReadLine();
                                 Console.Clear();
-                                goto inicio;
+                               goto inicio;
                             }
                             else
                             {
@@ -275,21 +253,15 @@ namespace CadastroEscolar
                     else if (decisao == 4)
                     {
                         turma.MostrarProfessores();
-
                     }
                     else if (decisao == 5)
                     {
                         turma.MostrarAlunos();
                     }
-
                     else if (decisao == 6)
                     {
                         // para exibir as turmas 
-                        foreach (Turma turmas in lstTurmas)
-                        {
-                            Console.WriteLine("LISTA DE TURMAS");
-                            Console.WriteLine($"TURMAS: {turmas.NomeTurma} Codigo {turmas.CodTurma} ");
-                        }
+                        turma.MostrarTurmas(lstTurmas);
                     }
                     else if (decisao == 7)
                     {
@@ -298,13 +270,13 @@ namespace CadastroEscolar
                         Environment.Exit(0);
                     }
                     // convertendo e escrevendo o json 
-                    StreamWriter sw2 = new StreamWriter(@"C:\Users\Treinamento 5\Desktop\txtarquivo\txt");
+                    StreamWriter sw2 = new StreamWriter(@"C:\Users\Treinamento 4\Desktop\Armazenamento\armazenagem");
                     string g2 = JsonConvert.SerializeObject(lstTurmas);
-                    sw2.WriteLine($"LISTA DE TURMAS: { g2}  \n");
+                    sw2.WriteLine(g2);
                     sw2.Close();
                 }
             }
-        #endregion
+            #endregion
         }
     }
 }

@@ -10,7 +10,7 @@ namespace CadastroEscolar.Entidades
     {
         public int Identificacao { get; set; }
         public double Salario { get; set; }
-        public List<Materias> lstMaterias { get; set; } = new List<Materias>();
+        public List<Materias> LstMaterias { get; set; } = new List<Materias>();
 
 
         int i = 0;
@@ -38,11 +38,13 @@ namespace CadastroEscolar.Entidades
             Console.WriteLine("");
             d.MudarCores1();
             Idade = int.Parse(Console.ReadLine());
+            Console.WriteLine("");
 
             while (Idade < 18 || Idade >= 100)
             {
                 Console.WriteLine("PARA CADASTRO DE PROFESSORES É NECESSARIO SER MAIOR DE IDADE");
                 Idade = int.Parse(Console.ReadLine());
+
             }
 
             do
@@ -64,6 +66,7 @@ namespace CadastroEscolar.Entidades
                 Console.WriteLine("");
                 d.MudarCores1();
                 Cpf = long.Parse(Console.ReadLine());
+                Console.WriteLine("");
 
             } while (Cpf < 10000000000 || Cpf > 99999999999);
 
@@ -88,6 +91,11 @@ namespace CadastroEscolar.Entidades
             d.MudarCores1();
             int num = int.Parse(Console.ReadLine());
 
+            while (num > 5)
+            {
+                Console.WriteLine("O PROFESSOR PODE DAR AULA APENAS EM 5 MATERIAS DIFERENTES");
+                num = int.Parse(Console.ReadLine());
+            }
             for (i = 0; i < num; i++)
             {
                 Materias m = new Materias();
@@ -112,11 +120,11 @@ namespace CadastroEscolar.Entidades
                         Console.WriteLine("");
                         d.MudarCores();
 
-                        if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
+                        if (LstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
                         {
                             Console.WriteLine("MATERIA MATEMATICA ADICIONADA!");
                             m.DefinirMateria(decisao);
-                            lstMaterias.Add(m);
+                            LstMaterias.Add(m);
                         }
                         else
 
@@ -134,11 +142,11 @@ namespace CadastroEscolar.Entidades
                         Console.WriteLine("");
                         d.MudarCores();
 
-                        if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
+                        if (LstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
                         {
                             Console.WriteLine("MATERIA PORTUGUES ADICIONADA!");
                             m.DefinirMateria(decisao);
-                            lstMaterias.Add(m);
+                            LstMaterias.Add(m);
                         }
                         else
 
@@ -155,11 +163,11 @@ namespace CadastroEscolar.Entidades
                         Console.WriteLine("");
                         d.MudarCores();
 
-                        if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
+                        if (LstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
                         {
                             Console.WriteLine("MATERIA BIOLOGIA ADICIONADA!");
                             m.DefinirMateria(decisao);
-                            lstMaterias.Add(m);
+                            LstMaterias.Add(m);
                         }
                         else
 
@@ -175,11 +183,11 @@ namespace CadastroEscolar.Entidades
                         Console.WriteLine("");
                         d.MudarCores();
 
-                        if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
+                        if (LstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
                         {
                             Console.WriteLine("MATERIA GEOGRAFIA ADICIONADA!");
                             m.DefinirMateria(decisao);
-                            lstMaterias.Add(m);
+                            LstMaterias.Add(m);
                         }
                         else
 
@@ -195,11 +203,11 @@ namespace CadastroEscolar.Entidades
                         Console.WriteLine("");
                         d.MudarCores();
 
-                        if (lstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
+                        if (LstMaterias.Where(t => t.CodMateria == decisao).ToList().Count == 0)
                         {
                             Console.WriteLine("MATERIA INGLES  ADICIONADA!");
                             m.DefinirMateria(decisao);
-                            lstMaterias.Add(m);
+                            LstMaterias.Add(m);
                         }
                         else
                         {
@@ -220,12 +228,17 @@ namespace CadastroEscolar.Entidades
             d.MudarCores();
             Console.WriteLine("ESSE PROFESSOR DA AULA PARA QUANTAS TURMAS?");
             int turm = Convert.ToInt32(Console.ReadLine());
+            if (turm >5)
+            {
+                turm = 5;
+            }
             Console.WriteLine("");
             d.MudarCores1();
 
             for (int i = 0; i < turm; i++)
             {
                 Console.WriteLine("PARA QUAL TURMA ESTE PROFESSOR DARÁ AULA ?");
+                Console.WriteLine("");
 
                 var codigoTurma = Console.ReadLine().ToUpper();
                 while (codigoTurma != "A" && codigoTurma != "B" && codigoTurma != "C" && codigoTurma != "D" && codigoTurma != "E")
@@ -242,16 +255,33 @@ namespace CadastroEscolar.Entidades
                 {
                     d.MudarCores();
 
-                    Console.WriteLine(" ESSA TURMA NAO EXISTE, QUAL TURMA DESEJA CADASTRAR? A,B,C,D OU E ?");
+                    Console.WriteLine("ESSA TURMA NAO EXISTE, QUAL TURMA DESEJA CADASTRAR? A,B,C,D OU E ?");
                     string c = Console.ReadLine().ToUpper();
+                    Console.WriteLine("");
 
 
                     Turma turma1 = new Turma();
                     if (lstTurmas.Where(t => t.CodTurma == c).ToList().Count == 0)
                     {
+                        while (c != "A" && c != "B" && c != "C" && c != "D" && c != "E")
+                        {
+                            Console.WriteLine("OPCAO INVÁLIDA, FAVOR DIGITAR NOVAMENTE!");
+                            c = Console.ReadLine().ToUpper();
+                        }
+
+
                         turma1.CadastrarTurma(c);
                         Console.WriteLine($"TURMA {c} CADASTRADA");
-                        lstTurmas.Add(turma1);
+                        if (lstTurmas.Contains(turma1))
+                        {
+                            Console.WriteLine("NAO É POSSIVEL ADICONAR TURMA, POIS ELA JÁ EXISTE!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Turma Adicionada");
+                            lstTurmas.Add(turma1);
+                        }
+
 
                     }
                     else

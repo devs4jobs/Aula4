@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 
 namespace CadastroEscolar.Entidades
@@ -9,30 +8,24 @@ namespace CadastroEscolar.Entidades
     {
         public string NomeTurma { get; set; }
         public string CodTurma { get; set; }
-        public List<Aluno> lstAlunos { get; set; } = new List<Aluno>();
-        public List<Professor> lstProfessors { get; set; } = new List<Professor>();
+        public List<Aluno> LstAlunos { get; set; } = new List<Aluno>();
+        public List<Professor> LstProfessors { get; set; } = new List<Professor>();
 
         public Turma()
         {
 
         }
-        public Turma(string nomeTurma, string codTurma, List<Aluno> lstAlunos, List<Professor> lstProfessors)
-        {
-            NomeTurma = nomeTurma;
-            CodTurma = codTurma;
-            this.lstAlunos = lstAlunos;
-            this.lstProfessors = lstProfessors;
-        }
+       
 
         // metodo para diicionar alunos e professores nas turmas
         public void AddAlunos(Aluno alunos)
         {
-            lstAlunos.Add(alunos);
+            LstAlunos.Add(alunos);
         }
 
         public void AddProfessores(Professor professores)
         {
-            lstProfessors.Add(professores);
+            LstProfessors.Add(professores);
         }
 
         // metodo para definir a turma
@@ -48,14 +41,15 @@ namespace CadastroEscolar.Entidades
         // metodos para exibir alunos e professores
         public void MostrarAlunos()
         {
-            if (lstAlunos.Count > 0)
+            if (LstAlunos.Count > 0)
             {
 
-                foreach (Aluno alunos in lstAlunos)
+                foreach (Aluno alunos in LstAlunos)
                 {
                     Console.WriteLine("LISTA DE ALUNOS");
                     Console.WriteLine($"NOME: {alunos.Nome}");
                     Console.WriteLine($"ID: {alunos.Ra}");
+                    Console.WriteLine("");
                 }
             }
             else
@@ -63,9 +57,9 @@ namespace CadastroEscolar.Entidades
         }
         public void MostrarProfessores()
         {
-            if (lstProfessors.Count > 0)
+            if (LstProfessors.Count > 0)
             {
-                foreach (Professor professors in lstProfessors)
+                foreach (Professor professors in LstProfessors)
                 {
                     Console.WriteLine("LISTA DE PROFESSORES!");
                     Console.WriteLine($"NOME: {professors.Nome} ");
@@ -76,5 +70,13 @@ namespace CadastroEscolar.Entidades
             else
                 Console.WriteLine("NAO HÁ PROFESSORES REGISTRADOS");
         }
+        public void MostrarTurmas(List<Turma> turmas) {
+            foreach (Turma Turma in turmas)
+            {
+                Console.WriteLine("LISTA DE TURMAS");
+                Console.WriteLine($"TURMAS: {Turma.NomeTurma} Codigo {Turma.CodTurma} ");
+            }
+        }
+
     }
 }

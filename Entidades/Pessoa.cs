@@ -12,17 +12,8 @@ namespace CadastroEscolar.Entidades
         public string Sexo { get; set; }
         public long Cpf { get; set; }
 
-        public Pessoa()
-        {
-
-        }
-        public Pessoa(string nome, int idade, string sexo, long cpf)
-        {
-            Nome = nome;
-            Idade = idade;
-            Sexo = sexo;
-            Cpf = cpf;
-        }
+      
+   
         public abstract void Cadastrar(List<Turma> lstTurmas);
     }
 

@@ -42,3 +42,25 @@ C:\Users\guibo\source\Aulas\gits\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.r
 C:\Users\guibo\source\Aulas\gits\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.runtimeconfig.dev.json
 C:\Users\guibo\source\Aulas\gits\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.dll
 C:\Users\guibo\source\Aulas\gits\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.pdb
+C:\Users\Treinamento 4\Desktop\projeto cadastro escolar\Aula4\Aula4\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.deps.json
+C:\Users\Treinamento 4\Desktop\projeto cadastro escolar\Aula4\Aula4\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.runtimeconfig.json
+C:\Users\Treinamento 4\Desktop\projeto cadastro escolar\Aula4\Aula4\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.runtimeconfig.dev.json
+C:\Users\Treinamento 4\Desktop\projeto cadastro escolar\Aula4\Aula4\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.dll
+C:\Users\Treinamento 4\Desktop\projeto cadastro escolar\Aula4\Aula4\Aula4\bin\Debug\netcoreapp2.2\CadastroEscolar.pdb
+C:\Users\Treinamento 4\Desktop\projeto cadastro escolar\Aula4\Aula4\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.csprojAssemblyReference.cache
+C:\Users\Treinamento 4\Desktop\projeto cadastro escolar\Aula4\Aula4\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.csproj.CoreCompileInputs.cache
+C:\Users\Treinamento 4\Desktop\projeto cadastro escolar\Aula4\Aula4\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfoInputs.cache
+C:\Users\Treinamento 4\Desktop\projeto cadastro escolar\Aula4\Aula4\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfo.cs
+C:\Users\Treinamento 4\Desktop\projeto cadastro escolar\Aula4\Aula4\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.dll
+C:\Users\Treinamento 4\Desktop\projeto cadastro escolar\Aula4\Aula4\Aula4\obj\Debug\netcoreapp2.2\CadastroEscolar.pdb
+C:\Users\Treinamento 5\Downloads\MediaAvaliacao\cadastroEscolarATT-master\bin\Debug\netcoreapp2.2\CadastroEscolar.deps.json
+C:\Users\Treinamento 5\Downloads\MediaAvaliacao\cadastroEscolarATT-master\bin\Debug\netcoreapp2.2\CadastroEscolar.runtimeconfig.json
+C:\Users\Treinamento 5\Downloads\MediaAvaliacao\cadastroEscolarATT-master\bin\Debug\netcoreapp2.2\CadastroEscolar.runtimeconfig.dev.json
+C:\Users\Treinamento 5\Downloads\MediaAvaliacao\cadastroEscolarATT-master\bin\Debug\netcoreapp2.2\CadastroEscolar.dll
+C:\Users\Treinamento 5\Downloads\MediaAvaliacao\cadastroEscolarATT-master\bin\Debug\netcoreapp2.2\CadastroEscolar.pdb
+C:\Users\Treinamento 5\Downloads\MediaAvaliacao\cadastroEscolarATT-master\obj\Debug\netcoreapp2.2\CadastroEscolar.csprojAssemblyReference.cache
+C:\Users\Treinamento 5\Downloads\MediaAvaliacao\cadastroEscolarATT-master\obj\Debug\netcoreapp2.2\CadastroEscolar.csproj.CoreCompileInputs.cache
+C:\Users\Treinamento 5\Downloads\MediaAvaliacao\cadastroEscolarATT-master\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfoInputs.cache
+C:\Users\Treinamento 5\Downloads\MediaAvaliacao\cadastroEscolarATT-master\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfo.cs
+C:\Users\Treinamento 5\Downloads\MediaAvaliacao\cadastroEscolarATT-master\obj\Debug\netcoreapp2.2\CadastroEscolar.dll
+C:\Users\Treinamento 5\Downloads\MediaAvaliacao\cadastroEscolarATT-master\obj\Debug\netcoreapp2.2\CadastroEscolar.pdb
