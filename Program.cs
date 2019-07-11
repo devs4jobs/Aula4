@@ -7,15 +7,13 @@ using System.IO;
 using System.Linq;
 
 namespace CadastroEscolar
-
 {
     class Program
     {
         static void Main(string[] args)
         {
-
+            // instanciação da lista e das classes
             List<Turma> lstTurmas = new List<Turma>();
-
             Turma turma = new Turma();
             Designs d = new Designs();
 
@@ -44,8 +42,6 @@ namespace CadastroEscolar
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
             #endregion
 
-
-
             #region "Lógica"
             int decisao = 1, i = 0, N = 0;
 
@@ -53,27 +49,21 @@ namespace CadastroEscolar
             d.WriteLineCenter("                                           QUANTAS TURMAS DESEJA CADASTRAR?                                             ");
             Console.WriteLine("");
             d.MudarCores1();
-
+            //colhendo dados do usuario sobre as turmas
             while (N <= 0 || N > 5)
             {
                 try
                 {
                     Console.WriteLine("DIGITE UM NUMERO INTEIRO ENTRE 1 e 5"); N = int.Parse(Console.ReadLine());
                     Console.WriteLine("");
-
-
-
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("");
                     Console.WriteLine("  XXX    DIGITE APENAS NUMEROS INTEIROS    XXX  ");
                     Console.WriteLine("");
-
                 }
-
             }
-
             for (i = 0; i < N; i++)
             {
 
@@ -90,14 +80,11 @@ namespace CadastroEscolar
                     turma1.CadastrarTurma(c);
                     Console.WriteLine($"TURMA {c} CADASTRADA");
                     lstTurmas.Add(turma1);
-
-
                 }
                 else
                 {
                     Console.WriteLine("TURMA JA CADASTRADA, FAVOR ADICIONAR OUTRA");
                     i--;
-
                 }
                 if (lstTurmas.Count > 5)
                 {
@@ -105,22 +92,21 @@ namespace CadastroEscolar
                 }
 
             }
-
+        // menu de opçoes do sistema
         inicio:
-            while (decisao == 2 || decisao == 1 || decisao == 3 || decisao == 4)
+            while (decisao == 2 || decisao == 1 || decisao == 3 || decisao == 4 || decisao == 5 || decisao == 6 || decisao == 7)
             {
                 Console.WriteLine("");
                 d.MudarCores2();
                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------\n");
 
-                d.WriteLineCenter("                DIGITE 1 PARA ALUNO / DIGITE 2 PARA PROFESSOR  / 3 PARA CADASDASTRAR TURMA / 4 PARA SAIR               \n");
-
+                d.WriteLineCenter("                DIGITE 1 PARA ALUNO / DIGITE 2 PARA PROFESSOR  / 3 PARA CADASDASTRAR TURMA / 4 PARA EXIBIR PROFESSORES \n");
+                d.WriteLineCenter("                DIGITE 5 PARA EXIBIR ALUNOS / DIGITE 6 PARA EXIBIR TURMAS  / 7 PARA SAIR                              \n");
                 d.WriteLineCenter("------------------------------------------------------------------------------------------------------------------------");
                 d.WriteLineCenter("------------------------------------------------------------------------------------------------------------------------");
                 Console.WriteLine("");
-
-                {
+                { 
                     try
                     {
                         decisao = int.Parse(Console.ReadLine());
@@ -131,7 +117,6 @@ namespace CadastroEscolar
                         Console.WriteLine("OPCAO ERRADA, ABRA O PROGRAMA NOVAMENTE");
                         Console.ReadKey();
                         break;
-
                     }
 
 
@@ -151,15 +136,18 @@ namespace CadastroEscolar
 
 
 
+
+                    while (decisao >= 8 || decisao < 0)
+                    {
+                        Console.WriteLine("OPCAO INVÁLIDA, FAVOR DIGITAR NOVAMENTE!");
+                        decisao = int.Parse(Console.ReadLine());
+                    }
                     if (decisao == 1)
                     {
                         d.MudarCores();
-
                         Console.WriteLine("QUANTOS ALUNOS DESEJA CADASTRAR?");
-
                         Console.WriteLine("");
                         d.MudarCores1();
-
                         try
                         {
                             N = int.Parse(Console.ReadLine());
@@ -170,9 +158,6 @@ namespace CadastroEscolar
                             Console.WriteLine("ERRO, SERÁ FEITO O CADASTRO DE APENAS UM ALUNO");
                         }
 
-
-
-
                         for (i = 0; i < N; i++)
                         {
                             try
@@ -180,20 +165,15 @@ namespace CadastroEscolar
                                 Aluno aluno = new Aluno();
                                 aluno.Cadastrar(lstTurmas);
                                 turma.AddAlunos(aluno);
-
-
                             }
                             catch (Exception)
                             {
                                 Console.Clear();
                                 Console.WriteLine("Erro, insira informações validas!");
                                 i--;
-
                             }
-
                         }
                     }
-
                     else if (decisao == 2)
                     {
 
@@ -211,7 +191,6 @@ namespace CadastroEscolar
                             Console.WriteLine("ERRO, SERÁ FEITO O CADASTRO DE APENAS UM PROFESSOR");
                         }
 
-
                         for (i = 0; i < N; i++)
                         {
                             try
@@ -228,14 +207,10 @@ namespace CadastroEscolar
                                 Console.WriteLine("Erro, insira informações validas!");
                                 i--;
                             }
-
                         }
-
-
                     }
                     else if (decisao == 3)
                     {
-
                         d.MudarCores();
                         Console.WriteLine("QUANTAS TURMAS DESEJA CADASTRAR? ");
                         Console.WriteLine("");
@@ -256,16 +231,12 @@ namespace CadastroEscolar
                             N = int.Parse(Console.ReadLine());
 
                         }
-
-
                         while (N > 5)
                         {
                             Console.WriteLine("QUANTIDADE DE TURMAS INVALIDAS!");
                             N = int.Parse(Console.ReadLine());
 
                         }
-
-
                         for (i = 0; i < N; i++)
                         {
                             Console.WriteLine("QUAL TURMA DESEJA CADASTAR ? A,B,C,D OU E ?");
@@ -285,7 +256,6 @@ namespace CadastroEscolar
                                 lstTurmas.Add(turma1);
 
                             }
-
                             else if (lstTurmas.Count >= 5)
                             {
                                 Console.WriteLine("TODAS TURMAS JA FORAM REGISTRADAS,CONSULTE A DIRETORIA PARA ABERTURA DE NVOAS TURMAS !");
@@ -293,40 +263,48 @@ namespace CadastroEscolar
                                 Console.ReadLine();
                                 Console.Clear();
                                 goto inicio;
-
                             }
-
                             else
                             {
                                 Console.WriteLine("TURMA JA CADASTRADA, FAVOR ADICIONAR OUTRA");
                                 Console.WriteLine("");
                                 i--;
-
                             }
                         }
                     }
-
                     else if (decisao == 4)
                     {
-                        Console.WriteLine("ATÉ MAIS!");
-                        Environment.Exit(0);
+                        turma.MostrarProfessores();
+
+                    }
+                    else if (decisao == 5)
+                    {
+                        turma.MostrarAlunos();
                     }
 
+                    else if (decisao == 6)
+                    {
+                        // para exibir as turmas 
+                        foreach (Turma turmas in lstTurmas)
+                        {
+                            Console.WriteLine("LISTA DE TURMAS");
+                            Console.WriteLine($"TURMAS: {turmas.NomeTurma} Codigo {turmas.CodTurma} ");
+                        }
+                    }
+                    else if (decisao == 7)
+                    {
+                        Console.WriteLine("ATÉ MAIS!,PRESSIONE ENTER PARA FECHAR O PROGRAMA");
+                        Console.ReadLine();
+                        Environment.Exit(0);
+                    }
+                    // convertendo e escrevendo o json 
                     StreamWriter sw2 = new StreamWriter(@"C:\Users\Treinamento 5\Desktop\txtarquivo\txt");
                     string g2 = JsonConvert.SerializeObject(lstTurmas);
                     sw2.WriteLine($"LISTA DE TURMAS: { g2}  \n");
-
                     sw2.Close();
-
                 }
-
-
-
             }
-            #endregion
+        #endregion
         }
-
-
-
     }
 }

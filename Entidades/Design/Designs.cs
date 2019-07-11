@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CadastroEscolar.Entidades.Design
 {
+    // classe com metodos para manter o design
     class Designs
     {
         public void MudarCores()

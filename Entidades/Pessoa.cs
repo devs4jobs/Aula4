@@ -4,18 +4,14 @@ using System.Text;
 
 namespace CadastroEscolar.Entidades
 {
-   public abstract class Pessoa 
+    // classe abstrata contendo metodo abstrato
+    public abstract class Pessoa
     {
         public string Nome { get; set; }
-        public int Idade { get;  set; }
-        public string Sexo { get;  set; }
-        public long Cpf { get;  set; }
+        public int Idade { get; set; }
+        public string Sexo { get; set; }
+        public long Cpf { get; set; }
 
-
-        public Pessoa(List<Turma> lstTurmas, Turma turma)
-        {
-
-        }
         public Pessoa()
         {
 
@@ -27,10 +23,7 @@ namespace CadastroEscolar.Entidades
             Sexo = sexo;
             Cpf = cpf;
         }
-
         public abstract void Cadastrar(List<Turma> lstTurmas);
-
-     
     }
-    
+
 }
