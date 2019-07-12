@@ -66,7 +66,6 @@ namespace CadastroEscolar
             }
             for (i = 0; i < N; i++)
             {
-
                 d.WriteLineCenter("                                   QUAL TURMA DESEJA CADASTAR ? A,B,C,D OU E ?                                         ");
                 string c = Console.ReadLine().ToUpper();
                 Console.WriteLine("");
@@ -91,11 +90,10 @@ namespace CadastroEscolar
                 {
                     Console.WriteLine("TURMA JA REGISTADA");
                 }
-
             }
         // menu de opçoes do sistema
         inicio:
-            while (decisao != 7)
+            while (true)
             {
                 Console.WriteLine("");
                 d.MudarCores2();
@@ -114,8 +112,6 @@ namespace CadastroEscolar
                         {
                             Console.WriteLine("DIGITE UM NUMERO INTEIRO ENTRE 1 e 7");
                             decisao = int.Parse(Console.ReadLine());
-
-
                         }
                         catch (System.FormatException)
                         {
@@ -270,7 +266,7 @@ namespace CadastroEscolar
                         Environment.Exit(0);
                     }
                     // convertendo e escrevendo o json 
-                    StreamWriter sw2 = new StreamWriter(@"C:\Users\Treinamento 4\Desktop\Armazenamento\armazenagem");
+                    StreamWriter sw2 = new StreamWriter(@"C:\Users\Treinamento 5\Desktop\txtarquivo/txt");
                     string g2 = JsonConvert.SerializeObject(lstTurmas);
                     sw2.WriteLine(g2);
                     sw2.Close();

@@ -15,8 +15,6 @@ namespace CadastroEscolar.Entidades
         {
 
         }
-       
-
         // metodo para diicionar alunos e professores nas turmas
         public void AddAlunos(Aluno alunos)
         {
@@ -77,6 +75,5 @@ namespace CadastroEscolar.Entidades
                 Console.WriteLine($"TURMAS: {Turma.NomeTurma} Codigo {Turma.CodTurma} ");
             }
         }
-
     }
 }

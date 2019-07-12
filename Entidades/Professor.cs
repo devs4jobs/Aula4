@@ -12,7 +12,6 @@ namespace CadastroEscolar.Entidades
         public double Salario { get; set; }
         public List<Materias> LstMaterias { get; set; } = new List<Materias>();
 
-
         int i = 0;
         public Professor()
         {
@@ -30,7 +29,14 @@ namespace CadastroEscolar.Entidades
             Console.WriteLine("DIGITE O NOME DO PROFESSOR");
             Console.WriteLine("");
             d.MudarCores1();
-            Nome = Console.ReadLine();
+            Nome = Console.ReadLine().Trim();
+            while (Nome == "")
+            {
+                Console.WriteLine("DIGITO INCORRETO,ESCREVA NOVAMENTE");
+                Nome = Console.ReadLine().Trim();
+
+            }
+
 
             Console.WriteLine("");
             d.MudarCores();
@@ -228,7 +234,7 @@ namespace CadastroEscolar.Entidades
             d.MudarCores();
             Console.WriteLine("ESSE PROFESSOR DA AULA PARA QUANTAS TURMAS?");
             int turm = Convert.ToInt32(Console.ReadLine());
-            if (turm >5)
+            if (turm > 5)
             {
                 turm = 5;
             }

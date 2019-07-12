@@ -7,10 +7,7 @@ namespace CadastroEscolar.Entidades
 {
     public class Aluno : Pessoa
     {
-
         public int Ra { get; set; }
-
-
         public Aluno()
         {
 
@@ -19,15 +16,22 @@ namespace CadastroEscolar.Entidades
         // metodo de cadastro com diversas validações
         override public void Cadastrar(List<Turma> lstTurmas)
         {
-  
+
             Designs d = new Designs();
             Random rnd = new Random();
         inicio:
+
             Console.WriteLine("");
             Console.WriteLine("DIGITE O NOME DO ALUNO");
             Console.WriteLine("");
 
-            Nome = Console.ReadLine().ToUpper();
+            Nome = Console.ReadLine().Trim();
+            while (Nome == "")
+            {
+                Console.WriteLine("DIGITO INCORRETO,ESCREVA NOVAMENTE");
+                Nome = Console.ReadLine().Trim();
+
+            }
 
             Console.WriteLine("");
             d.MudarCores();
@@ -102,8 +106,6 @@ namespace CadastroEscolar.Entidades
                         Console.WriteLine("OPCAO INVÁLIDA, FAVOR DIGITAR NOVAMENTE!");
                         c = Console.ReadLine().ToUpper();
                     }
-
-
                     turma1.CadastrarTurma(c);
                     Console.WriteLine($"TURMA {c} CADASTRADA");
                     if (lstTurmas.Contains(turma1))
@@ -115,16 +117,12 @@ namespace CadastroEscolar.Entidades
                         Console.WriteLine("Turma Adicionada");
                         lstTurmas.Add(turma1);
                     }
-
-
                 }
                 else
                 {
                     Console.WriteLine("TURMA JA CADASTRADA, NÂO É POSSIVEL CRIAR ELA NOVAMENTE");
                     Console.WriteLine("");
                 }
-
-             
                 Console.WriteLine("POR GENTILEZA EFETUAR O CADASTRO DO ALUNO NOVAMENTE !");
                 Console.WriteLine("");
                 goto inicio;
