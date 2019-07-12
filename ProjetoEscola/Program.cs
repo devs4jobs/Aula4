@@ -27,7 +27,7 @@ namespace ProjetoEscola.Clasees
                     Console.WriteLine();
                     Console.WriteLine("\t\t\t\t\tDigite um Opção a ser feita ! :");
                     Console.WriteLine();
-                    Console.WriteLine("\t\t\t\t\t1 - Cadastrar Professores\n\t\t\t\t\t2 - Cadastrar Alunos\n\t\t\t\t\t3 - Cadastrar Turmas\n\t\t\t\t\t4 - Para Sair");
+                    Console.WriteLine("\t\t\t\t\t1 - Cadastrar Professores\n\t\t\t\t\t2 - Cadastrar Alunos\n\t\t\t\t\t3 - Cadastrar Turmas\n\t\t\t\t\t4 - Para Menu de Exibição \n\t\t\t\t\t5 - Para Sair");
                     Console.WriteLine();
                     op = Convert.ToInt32(Console.ReadLine());
 
@@ -37,11 +37,30 @@ namespace ProjetoEscola.Clasees
                         Console.Write("Digite quantos Professores você deseja cadastrar: \n");
                         int N = Convert.ToInt32(Console.ReadLine());
 
+                        if(N < 0 )
+                        {
+                            while(N < 0 || N > 999999)
+                            {
+
+                                Console.WriteLine("Número de professores a ser cadastrados inválido!");
+                                Console.Write("Digite quantos Professores você deseja cadastrar: \n");
+                                N = Convert.ToInt32(Console.ReadLine());
+
+                            }
+                        }
+
                         for (int i = 0; i < N; i++)
                         {
-                            Professor prof = new Professor();
-                            prof.Cadastrar(lstTurmas);
-
+                            try
+                            {
+                                Professor prof = new Professor();
+                                prof.Cadastrar(lstTurmas);
+                            }
+                            catch(Exception)
+                            {
+                                Console.WriteLine("Erro Professor não cadastrado!");
+                                i--;
+                            }
 
                         }//Repetição Para Adicionar Professores a Lista !!
                     }
@@ -50,28 +69,79 @@ namespace ProjetoEscola.Clasees
                         Console.Write("Digite quantos Alunos você deseja cadastrar:  \n");
                         int N = Convert.ToInt32(Console.ReadLine());
 
+                        if (N < 0)
+                        {
+                            while (N < 0 )
+                            {
+
+                                Console.WriteLine("Número de alunos a ser cadastrados inválido!");
+                                Console.Write("Digite quantos Alunos você deseja cadastrar: \n");
+                                N = Convert.ToInt32(Console.ReadLine());
+
+                            }
+                        }
+
                         for (int i = 0; i < N; i++)
                         {
                             Console.Clear();
-                            Aluno aluno = new Aluno();
-                            aluno.Cadastrar(lstTurmas);
-                        }//Repetição Para Adicionar Professores a Lista !!
+                            try
+                            {
+                                Aluno aluno = new Aluno();
+                                aluno.Cadastrar(lstTurmas);
+
+                            }
+                            catch(Exception )
+                            {
+                                Console.WriteLine("Erro Aluno não cadastrado");
+                                i--;
+                            }
+                                }//Repetição Para Adicionar Professores a Lista !!
                     }
                     else if (op == 3)
                     {
 
                         Console.WriteLine("Insira o código da turma a ser cadastrado. Ex : A, B, C");
                         string CodTurma1 = Console.ReadLine().ToUpper();
+
                         CadastrarTurma(CodTurma1, lstTurmas);
+
+                    }else if (op == 4)
+                    {
+                        if (lstTurmas.Count > 0)
+                            Console.WriteLine("DESEJA EXIBIR 1 - PARA PROFESSORES OU 2 - PARA ALUNOS \n");
+                        int opecao = Convert.ToInt32(Console.ReadLine());
+                        if (opecao == 1)
+                        {
+                            foreach (Turma turma in lstTurmas)
+                             {
+                                foreach (var prof in turma.lstProfessores)
+                                {
+                                    Console.WriteLine(prof);
+                                }  
+                             }
+                        }else if(opecao == 2)
+                        {
+                            foreach (Turma turma in lstTurmas)
+                            {
+                                foreach (var aluno in turma.lstAlunos)
+                                {
+                                    Console.WriteLine(aluno);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Existe nenhuma turma cadastrada ainda !");
+                        }
 
                     }
 
-                    else if (op == 4)
+                    else if (op == 5)
                     {
                         Console.WriteLine("RafaTheus agradece e volte sempre!");
                         Console.ReadKey();
                     }
-                } while (op != 4 || op > 4);
+                } while (op != 5 || op > 5);
 
 
                 JsonSelialize(lstTurmas);
@@ -146,7 +216,7 @@ namespace ProjetoEscola.Clasees
             {
                 try
                 {
-                    StreamWriter file = new StreamWriter(@"C:\Users\Treinamento 6\Desktop\teste\teste");
+                    StreamWriter file = new StreamWriter(@"C:\Users\Treinamento 6\Desktop\teste\teste1.txt");
 
                     string strResultadoJson = JsonConvert.SerializeObject(turmas);
                     file.Write($"Lista de Turmas: {strResultadoJson} \n");

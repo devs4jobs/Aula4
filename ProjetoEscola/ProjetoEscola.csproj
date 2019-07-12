@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Clasees\Aluno.cs" />
     <Compile Include="Clasees\Dicionario.cs" />
+    <Compile Include="Clasees\Excepitions\TypeException.cs" />
     <Compile Include="Clasees\Pessoa.cs" />
     <Compile Include="Clasees\Professor.cs" />
     <Compile Include="Clasees\Verbetes.cs" />

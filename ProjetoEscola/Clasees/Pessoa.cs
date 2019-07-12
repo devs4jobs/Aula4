@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ProjetoEscola.Clasees
 {
@@ -8,15 +9,15 @@ namespace ProjetoEscola.Clasees
         public string Nome { get; set; }
         public string Sexo { get; set; }
         public string Nacionaliddade { get; set; }
-        public string DataNasc { get; set; }
+        public DateTime DataNasc { get; set; }
         public string Pais { get; set; }
         public string Cidade { get; set; }
-        public int Idade { get; set; }
+        public uint Idade { get; set; }
 
         
 
         #region Construtores
-        public Pessoa(string nome, string sexo, string nacionaliddade, string dataNasc, string pais, string cidade, int idade)
+        public Pessoa(string nome, string sexo, string nacionaliddade, DateTime dataNasc, string pais, string cidade, uint idade)
         {
             Nome = nome;
             Sexo = sexo;
@@ -34,6 +35,8 @@ namespace ProjetoEscola.Clasees
 
         public abstract object Cadastrar(List<Turma> lstTurmas);
         public abstract void CadastrarCodigoTurma( List<Turma> lstTurma);
+
+     
 
     }
 }

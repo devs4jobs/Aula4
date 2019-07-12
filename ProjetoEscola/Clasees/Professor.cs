@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using ProjetoEscola.Clasees.Excepitions;
 
 namespace ProjetoEscola.Clasees
 {
@@ -14,16 +15,8 @@ namespace ProjetoEscola.Clasees
 
         #region MetodosConstrutores
 
-        public Professor(string nome, double salario, int id, string genero, string nacionalidade, string cidade, string dataNascimento, string pais, List<string> listamaterias, List<string> codigoTurma)
+        public Professor(string nome, string sexo, string nacionaliddade, DateTime dataNasc, string pais, string cidade, uint idade, List<string> listamaterias, List<string> codigoTurma ) : base(nome,sexo, nacionaliddade, dataNasc, pais, cidade, idade)
         {
-            Nome = nome;
-            Salario_ = salario;
-            Id_ = id;
-            Sexo = genero;
-            Nacionaliddade = nacionalidade;
-            DataNasc = dataNascimento;
-            Pais = pais;
-            Cidade = cidade;
             lstMaterias = listamaterias;
             lstCodTurma = codigoTurma;
 
@@ -62,43 +55,138 @@ namespace ProjetoEscola.Clasees
 
         public override object Cadastrar(List<Turma> lstTurmas)
         {
+            Random random = new Random();
+            Console.Beep();
+
+
+
+            //while( N < 0 || N > 5 )
+
+
+            Console.Write("Digite o nome do professor(a) : ");
+            Nome = Console.ReadLine().Trim();
+
+            while (Nome.Length == 0)
+            {
+                Console.WriteLine($"Insira um nome valido ! Nome não pode ser Vazio ! ");
+                Nome = Console.ReadLine().Trim();
+            }
+
+            Console.Write("\nDigite o Genero : (M/F) ");
+            Sexo = Console.ReadLine().ToUpper().Trim();
+
+            while (((!Sexo.Contains("M")) && (!Sexo.Contains("F"))) || Sexo.Length > 1)
+            {
+                Console.WriteLine($"Insira um Genero valido ! Genero não pode ser vazio e não pode ser diferente de (M/F)  ");
+                Sexo = Console.ReadLine().ToUpper().Trim();
+            }
+
+            Console.Write("\nDigite a Nacionalidade:  ");
+            Nacionaliddade = Console.ReadLine().Trim();
+            while (Nacionaliddade.Length == 0)
+            {
+                Console.WriteLine($"Insira uma Nacionaliddade valida ! Nacionalidade não pode ser vazia ! ");
+                Nacionaliddade = Console.ReadLine().Trim();
+            }
+
+            Console.Write("\nDigite o Pais : ");
+
+            Pais = Console.ReadLine().Trim();
+
+            while (Pais.Length == 0)
+            {
+                Console.WriteLine("Digite um Pais valido !");
+                Pais = Console.ReadLine().Trim();
+            }
+            Console.Write("\nDigite a Cidade: ");
+
+            Cidade = Console.ReadLine();
+
+            while (Cidade.Length == 0)
+            {
+                Console.WriteLine("Digite uma Cidade valida !");
+                Cidade = Console.ReadLine().Trim();
+            }
+
+           
+
+            int count = 1;
+            while (count == 1)
+            {
+                try
+                {
+                    Console.Write("\nDigite uma idade válida: ");
+                    Idade = Convert.ToUInt32(Console.ReadLine());
+                    if (Idade > 0 || Idade < 100)
+                    {
+                        count = 2;
+                    }
+                    else
+                    {
+                    } while (Idade < 0 || Idade >= 100)
+                    {
+
+                        bool parseOkay;
+                        Console.WriteLine("Insira uma idade válida \n");
+
+                        var valid = Console.ReadLine();
+                        uint valor;
+                        parseOkay = uint.TryParse(valid, out valor);
+
+                        if (parseOkay == true)
+                        {
+                            valor = uint.Parse(valid);
+                            Idade = valor;
+                            count = 2;
+                        }
+                        else
+                        {
+                            valor = 111;
+                            Idade = valor;
+                            count = 1;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("ERRO ");
+                    count = 1;
+                }
+            }
+         
+            Console.Write("\nDigite a Data de Nascimento: (DD/MM/YYYY)");
+            DataNasc = Convert.ToDateTime(Console.ReadLine());
+
+
+            ID = random.Next(1, 1000);
+            Console.Write($"\n O ID dele(a) é {ID} \n");
+
+
+            Console.Write("\nDigite o Salario: ");
             try
             {
-                Random random = new Random();
-                Console.Beep();
-                Console.Write("Digite o nome do professor(a) : ");
-                Nome = Console.ReadLine();
-                Console.Write("\nDigite o Genero :  ");
-                Sexo = Console.ReadLine();
-                Console.Write("\nDigite a Nacionalidade:  ");
-                Nacionaliddade = Console.ReadLine();
-                Console.Write("\nDigite o Pais : ");
-                Pais = Console.ReadLine();
-                Console.Write("\nDigite a Cidade: ");
-                Cidade = Console.ReadLine();
-                ID = random.Next(1, 1000);
-                Console.Write($"\n O ID dele(a) é {ID} \n");
-                Console.Write("\nDigite a idade : ");
-                Idade = Convert.ToInt32(Console.ReadLine());
-                Console.Write("\nDigite a Data de Nascimento: ");
-                DataNasc = Console.ReadLine();
-                Console.Write("\nDigite o Salario: ");
-                Salario = Convert.ToDouble(Console.ReadLine().ToString(), CultureInfo.InvariantCulture);
-                Console.Write("\nDigite quantas materias esse Professor(a)  terá :");
-                int QuantidadeDeMaterias = Convert.ToInt32(Console.ReadLine());
-                Cadastrarmaterias(QuantidadeDeMaterias);
-                CadastrarCodigoTurma(lstTurmas);
-                Console.Clear();
-                Console.BackgroundColor = ConsoleColor.DarkGray;
-                Console.ForegroundColor = ConsoleColor.Black;
-                return this;
-
+                Salario = Convert.ToDouble(Console.ReadLine());
+                while (Salario < 0.0)
+                {
+                    Console.Write("\nDigite um salário válido");
+                    Salario = Convert.ToUInt32(Console.ReadLine());
+                }
             }
-            catch (Exception e)
+            catch (Exception x)
             {
-                Console.WriteLine(e.Message);
-                return 0;
+                throw new Exception($"Insira um valor valido ! : {x.Message}");
             }
+
+
+
+            Console.Write("\nDigite quantas materias esse Professor(a)  terá :");
+            int QuantidadeDeMaterias = Convert.ToInt32(Console.ReadLine());
+            Cadastrarmaterias(QuantidadeDeMaterias);
+            CadastrarCodigoTurma(lstTurmas);
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            return this;
+
         }
 
         public override void CadastrarCodigoTurma(List<Turma> lstTurmas)
@@ -106,13 +194,12 @@ namespace ProjetoEscola.Clasees
             Console.WriteLine("\nPara quantas turmas você dará aula?");
             int quantidade = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("\nDigite qual o codigo da turma que o Professor dara aula : A ou B ou  C ");
-            string codTurma = Console.ReadLine().ToUpper();
-
             if (quantidade > 3) { quantidade = 3; }
             for (int i = 0; i < quantidade; i++)
             {
 
+                Console.WriteLine("\nDigite qual o codigo da turma que o Professor dara aula : A ou B ou  C ");
+                string codTurma = Console.ReadLine().ToUpper();
 
                 switch (codTurma)
                 {
@@ -126,22 +213,21 @@ namespace ProjetoEscola.Clasees
                             break;
                         }
                         else
+                            lstCodTurma.Add("A");
 
-                            foreach (var turma in lstTurmas)
+
+                        foreach (Turma turma in lstTurmas)
+                        {
+                            if (lstTurmas.Exists(X => X.CodTurma == "A"))
+                                turma.lstProfessores.Add(this);
+                            else
                             {
-                                if (turma.CodTurma == "A")
-                                {
-                                    lstCodTurma.Add("A");
-                                    turma.lstProfessores.Add(this);
-                                }
-                                else
-                                {
-                                    Turma A = new Turma();
-                                    A.CodTurma = "A";
-                                    A.lstProfessores.Add(this);
-                                    lstTurmas.Add(A);
-                                }
+                                Turma A = new Turma();
+                                A.CodTurma = "A";
+                                A.lstProfessores.Add(this);
+                                lstTurmas.Add(A);
                             }
+                        }
                         break;
 
 
@@ -155,23 +241,23 @@ namespace ProjetoEscola.Clasees
                             break;
                         }
                         else
-
-                            foreach (var turma in lstTurmas)
+                            lstCodTurma.Add("B");
+                        foreach (var turma in lstTurmas)
+                        {
+                            if (turma.CodTurma == "B")
                             {
-                                if (turma.CodTurma == "B")
-                                {
-                                    lstCodTurma.Add("B");
-                                    turma.lstProfessores.Add(this);
-                                }
-                                else
-                                {
-                                        Turma B = new Turma();
-                                        B.CodTurma = "B";
-                                        B.lstProfessores.Add(this);
-                                        lstTurmas.Add(B);
 
-                                }
+                                turma.lstProfessores.Add(this);
                             }
+                            else
+                            {
+                                Turma B = new Turma();
+                                B.CodTurma = "B";
+                                B.lstProfessores.Add(this);
+                                lstTurmas.Add(B);
+
+                            }
+                        }
                         break;
                     case "C":
                         if (this.lstCodTurma.Contains("C"))
@@ -183,26 +269,32 @@ namespace ProjetoEscola.Clasees
                             break;
                         }
                         else
-
-                            foreach (var turma in lstTurmas)
+                            lstCodTurma.Add("C");
+                        foreach (var turma in lstTurmas)
+                        {
+                            if (turma.CodTurma == "C")
                             {
-                                if (turma.CodTurma == "C")
-                                {
-                                    lstCodTurma.Add("C");
-                                    turma.lstProfessores.Add(this);
-                                }
-                                else
-                                {
-                                    Turma C = new Turma();
-                                    C.CodTurma = "C";
-                                    C.lstProfessores.Add(this);
-                                    lstTurmas.Add(C);
 
-                                }
+                                turma.lstProfessores.Add(this);
                             }
+                            else
+                            {
+                                Turma C = new Turma();
+                                C.CodTurma = "C";
+                                C.lstProfessores.Add(this);
+                                lstTurmas.Add(C);
+
+                            }
+                        }
                         break;
                     default:
                         Console.WriteLine("Codigo invalido insira o um codigo valido , entre eles : A ou B ou C !");
+                        codTurma = Console.ReadLine().ToUpper();
+                        while (codTurma != "A" || codTurma != "B" || codTurma != "C")
+                        {
+                            Console.WriteLine("Codigo invalido insira o um codigo valido , entre eles : A ou B ou C !");
+                            codTurma = Console.ReadLine().ToUpper();
+                        }
                         i--;
                         break;
                 }
@@ -213,7 +305,7 @@ namespace ProjetoEscola.Clasees
         public void Cadastrarmaterias(int QuantidadeDeMaterias)
         {
             lstMaterias = new List<string>();
-
+            if (QuantidadeDeMaterias > 7) { QuantidadeDeMaterias = 7; }
             for (int i = 0; i < QuantidadeDeMaterias; i++)
             {
                 Console.WriteLine();
@@ -331,10 +423,10 @@ namespace ProjetoEscola.Clasees
                         Console.WriteLine("Opção inválida! Digite um inteiro entre 1 e 7");
                         codMateria = Convert.ToInt32(Console.ReadLine());
 
-                        if (codMateria < 0 || codMateria > 7)
+                        if (codMateria < 0 || codMateria >= 7)
                         {
 
-                            while (codMateria < 0 || codMateria > 7)
+                            while (codMateria < 0 || codMateria >= 7)
                             {
 
                                 Console.WriteLine("Opção inválida! Digite um inteiro entre 1 e 7");
@@ -354,6 +446,7 @@ namespace ProjetoEscola.Clasees
         {
             return $"Nome do Professor: {Nome} , Idade: {Idade} , ID: {ID}";
         }
+
 
 
         #endregion

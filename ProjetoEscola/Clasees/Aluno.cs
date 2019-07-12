@@ -10,16 +10,9 @@ namespace ProjetoEscola.Clasees
 
 
         #region Construtores
-        public Aluno(string nome, string genero, string nacionalidade, Guid matricula, string dataNascimento, string pais, string cidade, Turma turma)
+        public Aluno(string nome, string sexo, string nacionaliddade, DateTime dataNasc, string pais, string cidade, uint idade, Guid matricula, Turma turma) : base(nome,sexo,nacionaliddade,dataNasc,pais,cidade,idade)
         {
-
-            Nome = nome;
-            Sexo = genero;
-            Nacionaliddade = nacionalidade;
             Matricula_ = matricula;
-            DataNasc = dataNascimento;
-            Pais = pais;
-            Cidade = cidade;
             Turma = turma;
         }
 
@@ -47,34 +40,107 @@ namespace ProjetoEscola.Clasees
 
         public override object Cadastrar(List<Turma> lstTurmas)
         {
-            try
-            {
+
                 Console.Beep();
                 Console.Write("Digite o nome do Aluno(a) : ");
-                Nome = Console.ReadLine();
-                Console.Write("\nDigite o Genero :  ");
-                Sexo = Console.ReadLine();
+                Nome = Console.ReadLine().Trim();
+
+                while (Nome.Length == 0)
+                {
+                    Console.WriteLine($"Insira um nome valido ! Nome não pode ser Vazio ! ");
+                    Nome = Console.ReadLine().Trim();
+                }
+
+                Console.Write("\nDigite o Genero : (M/F) ");
+                Sexo = Console.ReadLine().ToUpper().Trim();
+
+                while (((!Sexo.Contains("M")) && (!Sexo.Contains("F"))) || Sexo.Length > 1)
+                {
+                    Console.WriteLine($"Insira um Genero valido ! Genero não pode ser vazio e não pode ser diferente de (M/F)  ");
+                    Sexo = Console.ReadLine().ToUpper().Trim();
+                }
+
                 Console.Write("\nDigite a Nacionalidade:  ");
-                Nacionaliddade = Console.ReadLine();
+                Nacionaliddade = Console.ReadLine().Trim();
+                while (Nacionaliddade.Length == 0)
+                {
+                    Console.WriteLine($"Insira uma Nacionaliddade valida ! Nacionalidade não pode ser vazia ! ");
+                    Nacionaliddade = Console.ReadLine().Trim();
+                }
+
                 Console.Write("\nDigite o Pais : ");
-                Pais = Console.ReadLine();
+
+                Pais = Console.ReadLine().Trim();
+
+                while (Pais.Length == 0)
+                {
+                    Console.WriteLine("Digite um Pais valido !");
+                    Pais = Console.ReadLine().Trim();
+                }
                 Console.Write("\nDigite a Cidade: ");
+
                 Cidade = Console.ReadLine();
+
+                while (Cidade.Length == 0)
+                {
+                    Console.WriteLine("Digite uma Cidade valida !");
+                    Cidade = Console.ReadLine().Trim();
+                }
+
+
+
+                int count = 1;
+                while (count == 1)
+                {
+                    try
+                    {
+                        Console.Write("\nDigite uma idade válida: ");
+                        Idade = Convert.ToUInt32(Console.ReadLine());
+                        if (Idade > 0 || Idade < 100)
+                        {
+                            count = 2;
+                        }
+                        else
+                        {
+                        } while (Idade < 0 || Idade >= 100)
+                        {
+
+                            bool parseOkay;
+                            Console.WriteLine("Insira uma idade válida \n");
+
+                            var valid = Console.ReadLine();
+                            uint valor;
+                            parseOkay = uint.TryParse(valid, out valor);
+
+                            if (parseOkay == true)
+                            {
+                                valor = uint.Parse(valid);
+                                Idade = valor;
+                                count = 2;
+                            }
+                            else
+                            {
+                                valor = 111;
+                                Idade = valor;
+                                count = 1;
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("ERRO ");
+                        count = 1;
+                    }
+                }
+                Console.Write("\nDigite a Data de Nascimento: (DD/MM/YYYY)");
+                DataNasc = Convert.ToDateTime(Console.ReadLine());
+
                 Guid Matricula = Guid.NewGuid();
                 Console.Write($"\nA Matricula(a) dele(a) é {Matricula} \n");
-                Console.Write("\nDigite a idade : ");
-                Idade = Convert.ToInt32(Console.ReadLine());
-                Console.Write("\nDigite a Data de Nascimento: ");
-                DataNasc = Console.ReadLine();
                 CadastrarCodigoTurma(lstTurmas);
 
                 return this;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return 0;
-            }
+       
         }
         public override string ToString()
         {
@@ -133,9 +199,13 @@ namespace ProjetoEscola.Clasees
                         }
                     }
                     break;
+                default:
+
+                    break;
 
             }
         }
+
         #endregion
     }
 }
