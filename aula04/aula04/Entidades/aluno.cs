@@ -13,10 +13,17 @@ namespace aula04
         }
         public override void Registro(List<string> s)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            base.Registro(s);
-            Random R = new Random();
-            RA = R.Next(10000000, 99999999);
+            try
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                base.Registro(s);
+                Random R = new Random();
+                RA = R.Next(10000000, 99999999);
+            }catch(Exception)
+            {
+                Console.WriteLine("ERROR");
+                this.Registro(s);
+            }
         }
         //Registro de Turma para Aluno
         public void RegistrarT(List<Turma> turma, Aluno a)
@@ -51,5 +58,6 @@ namespace aula04
         {
             return base.ToString() + $"\nRA:{RA}";
         }
+        
     }
 }

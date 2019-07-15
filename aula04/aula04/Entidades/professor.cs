@@ -13,33 +13,40 @@ namespace aula04
         //Registro Professor 
         public override void Registro(List<string> s)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            base.Registro(s);
-            Random R = new Random();
-            NRProfessor = R.Next(10000000, 99999999);
-            //Materias professor
-            Console.WriteLine("Quantas materias o professor leciona:");
-            int QMateria = Convert.ToInt32(Console.ReadLine());
-            if (QMateria > 6) { QMateria = 6; }
-            int i = 0;
-            while (i < QMateria)
+            try
             {
-                Console.WriteLine("Materias Disponiveis:");
-                foreach (string v in s)
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                base.Registro(s);
+                Random R = new Random();
+                NRProfessor = R.Next(10000000, 99999999);
+                //Materias professor
+                Console.WriteLine("Quantas materias o professor leciona:");
+                int QMateria = Convert.ToInt32(Console.ReadLine());
+                if (QMateria > 6) { QMateria = 6; }
+                int i = 0;
+                while (i < QMateria)
                 {
-                    if (!Materias.Contains(v))
-                        Console.WriteLine(v);
-                }
-                Console.WriteLine("Digite a materia que o professor leciona:");
-                string Materia = Console.ReadLine().ToUpper();
-                if (s.Contains(Materia))
-                    if (!Materias.Contains(Materia))
+                    Console.WriteLine("Materias Disponiveis:");
+                    foreach (string v in s)
                     {
-                        Materias.Add(Materia);
-                        i++;
+                        if (!Materias.Contains(v))
+                            Console.WriteLine(v);
                     }
-                    else { Console.WriteLine("Informe uma materia valida."); }
-                Console.Clear();
+                    Console.WriteLine("Digite a materia que o professor leciona:");
+                    string Materia = Console.ReadLine().ToUpper().Replace("Á", "A").Replace("Ê", "E").Replace("É", "E").Replace("Ç", "C").Replace("Ã", "A");
+                    if (s.Contains(Materia))
+                        if (!Materias.Contains(Materia))
+                        {
+                            Materias.Add(Materia);
+                            i++;
+                        }
+                        else { Console.WriteLine("Informe uma materia valida."); }
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("ERROR");
+                this.Registro(s);
             }
         }
         public override string ToString()

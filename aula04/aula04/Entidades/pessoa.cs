@@ -13,6 +13,7 @@ namespace aula04
         }
         public virtual void Registro(List<string> s)
         {
+            Console.Clear();
             Console.WriteLine("Informe o nome:");
             Nome = Console.ReadLine().ToUpper();
             do
