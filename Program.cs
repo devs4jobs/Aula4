@@ -92,7 +92,7 @@ namespace CadastroEscolar
                 }
             }
         // menu de opçoes do sistema
-        inicio:
+        
             while (true)
             {
                 Console.WriteLine("");
@@ -120,7 +120,6 @@ namespace CadastroEscolar
 
                     } while (decisao <= 0 || decisao > 7);
 
-
                     if (decisao == 1)
                     {
                         d.MudarCores();
@@ -137,7 +136,6 @@ namespace CadastroEscolar
 
                             Console.WriteLine("ERRO, SERÁ FEITO O CADASTRO DE APENAS UM ALUNO");
                         }
-
                         for (i = 0; i < N; i++)
                         {
                             try
@@ -156,7 +154,6 @@ namespace CadastroEscolar
                     }
                     else if (decisao == 2)
                     {
-
                         d.MudarCores();
                         Console.WriteLine("QUANTOS PROFESSORES DESEJA CADASTRAR? ");
                         Console.WriteLine("");
@@ -170,7 +167,6 @@ namespace CadastroEscolar
 
                             Console.WriteLine("ERRO, SERÁ FEITO O CADASTRO DE APENAS UM PROFESSOR");
                         }
-
                         for (i = 0; i < N; i++)
                         {
                             try
@@ -232,11 +228,10 @@ namespace CadastroEscolar
                             }
                             else if (lstTurmas.Count >= 5)
                             {
-                                Console.WriteLine("TODAS TURMAS JA FORAM REGISTRADAS,CONSULTE A DIRETORIA PARA ABERTURA DE NVOAS TURMAS !");
-                                Console.WriteLine("DIGITE ENTER PARA VOLTAR AO INICIO");
+                             Console.WriteLine("TODAS TURMAS JA FORAM REGISTRADAS,CONSULTE A DIRETORIA PARA ABERTURA DE NVOAS TURMAS !");
                                 Console.ReadLine();
                                 Console.Clear();
-                               goto inicio;
+                                N = 0;
                             }
                             else
                             {
@@ -265,11 +260,14 @@ namespace CadastroEscolar
                         Console.ReadLine();
                         Environment.Exit(0);
                     }
+                    string path = @"C:\Users\Treinamento 5\Desktop\txtarquivo/txt";
                     // convertendo e escrevendo o json 
-                    StreamWriter sw2 = new StreamWriter(@"C:\Users\Treinamento 5\Desktop\txtarquivo/txt");
+                   StreamWriter sw2 = new StreamWriter(path);
                     string g2 = JsonConvert.SerializeObject(lstTurmas);
                     sw2.WriteLine(g2);
                     sw2.Close();
+
+                 
                 }
             }
             #endregion

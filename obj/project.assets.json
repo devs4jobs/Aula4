@@ -732,11 +732,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Treinamento 5\\Desktop\\Projeto Cadastro Escolar\\Aula4\\CadastroEscolar.csproj",
+      "projectUniqueName": "C:\\Users\\Treinamento 5\\Desktop\\Projeto Escolars\\Aula4\\Aula4\\CadastroEscolar.csproj",
       "projectName": "CadastroEscolar",
-      "projectPath": "C:\\Users\\Treinamento 5\\Desktop\\Projeto Cadastro Escolar\\Aula4\\CadastroEscolar.csproj",
+      "projectPath": "C:\\Users\\Treinamento 5\\Desktop\\Projeto Escolars\\Aula4\\Aula4\\CadastroEscolar.csproj",
       "packagesPath": "C:\\Users\\Treinamento 5\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Treinamento 5\\Desktop\\Projeto Cadastro Escolar\\Aula4\\obj\\",
+      "outputPath": "C:\\Users\\Treinamento 5\\Desktop\\Projeto Escolars\\Aula4\\Aula4\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
