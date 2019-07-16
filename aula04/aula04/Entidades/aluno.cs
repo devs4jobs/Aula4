@@ -18,11 +18,11 @@ namespace aula04
                 Console.ForegroundColor = ConsoleColor.Blue;
                 base.Registro(s);
                 Random R = new Random();
-                RA = R.Next(10000000, 99999999);
+                RA = R.Next(10000000, 999999999);
             }catch(Exception)
             {
                 Console.WriteLine("ERROR");
-                this.Registro(s);
+                Registro(s);
             }
         }
         //Registro de Turma para Aluno

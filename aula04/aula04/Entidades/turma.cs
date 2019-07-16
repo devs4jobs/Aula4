@@ -21,11 +21,7 @@ namespace aula04
                 int i = 0;
                 foreach (Professor P in professor)
                 {
-                    if (!professors.Contains(P))
-                    {
-                        i++;
-                        Console.WriteLine($"Nome:{P.Nome},N°:{P.NRProfessor}");
-                    }
+                    if (!professors.Contains(P)){i++; Console.WriteLine($"Nome:{P.Nome},N°:{P.NRProfessor}");}
                 }
                 if (i > 0)
                 {
@@ -37,12 +33,7 @@ namespace aula04
                         Professor a = professor.Find(x => x.NRProfessor == NP);
                         if (a != null)
                         {
-                            if (!professors.Contains(a))
-                            {
-                                professors.Add(a);
-                                i++;
-                            }
-                            else { Console.WriteLine("Professor ja esta na turma."); }
+                            if (!professors.Contains(a)) { professors.Add(a); i++; } else { Console.WriteLine("Professor ja esta na turma."); }
                         }
                         else { Console.WriteLine("Professor não existe."); }
                     } while (i < 1);

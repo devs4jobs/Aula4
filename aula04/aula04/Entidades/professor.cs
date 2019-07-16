@@ -34,19 +34,20 @@ namespace aula04
                     }
                     Console.WriteLine("Digite a materia que o professor leciona:");
                     string Materia = Console.ReadLine().ToUpper().Replace("Á", "A").Replace("Ê", "E").Replace("É", "E").Replace("Ç", "C").Replace("Ã", "A");
-                    if (s.Contains(Materia))
+                    if (s.Contains(Materia)) { 
                         if (!Materias.Contains(Materia))
                         {
                             Materias.Add(Materia);
                             i++;
                         }
-                        else { Console.WriteLine("Informe uma materia valida."); }
+                        else { Console.WriteLine("Esse professor ja leciona essa materia."); }
+                    }else { Console.WriteLine("Informe uma materia valida."); }
                 }
             }
             catch (Exception)
             {
                 Console.WriteLine("ERROR");
-                this.Registro(s);
+                Registro(s);
             }
         }
         public override string ToString()
@@ -70,8 +71,6 @@ namespace aula04
                     Console.WriteLine($"{v.Nome}");
                 }
             }
-            Console.ReadLine();
-            Console.Clear();
         }
     }
 }

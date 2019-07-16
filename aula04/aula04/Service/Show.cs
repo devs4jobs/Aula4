@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace aula04.Show
+namespace aula04.Service
 {
     class Show
     {
-        public Show()
-        {
-        }
         public void ShowRegistro(List<Aluno>Alu,List<Turma>Turmas)
         {
             Console.Clear();
@@ -15,25 +12,16 @@ namespace aula04.Show
             int Count=0;
             foreach (var g in Alu)
             {
-                if (!g.Validar)
-                {
-                    Console.WriteLine($"Nome do aluno:{g.Nome} RA:{g.RA}");
-                    Count++;
-                }
+                if (!g.Validar){ Console.WriteLine($"Nome do aluno:{g.Nome} RA:{g.RA}"); Count++;}
             }
-            if (Count == 0)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Registre mais alunos!");
-                Console.ReadLine();
-            }
+            if (Count == 0){ Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Registre mais alunos!");}
             else
             {
                 Console.WriteLine("Qual o RA do aluno?");
                 int c = Convert.ToInt32(Console.ReadLine());
                 Aluno v = Alu.Find(x => x.RA == c);
                 if (v != null) { v.RegistrarT(Turmas, v); }
-                else { Console.WriteLine("Aluno não existe"); }
+                else { Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Aluno não existe"); }
             }
         }
         public void ShowRegistro(List<Professor>Prof,List<Turma> Turmas)
@@ -68,6 +56,8 @@ namespace aula04.Show
                 Console.WriteLine(b.ToString());
             }
             else { Console.WriteLine("Aluno não existe."); }
+            Console.ReadLine();
+            Console.Clear();
         }
         public void ShowP(List<Professor> Prof,List<Turma>Turmas)
         {
@@ -83,12 +73,13 @@ namespace aula04.Show
             int g = Convert.ToInt32(Console.ReadLine());
             Professor a = Prof.Find(x => x.NRProfessor == g);
             if (a != null)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
+            {   Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(a.ToString());
                 a.Link(Turmas, a);
             }
             else { Console.WriteLine("Professor não existe"); }
+            Console.ReadLine();
+            Console.Clear();
         }
     }
 }

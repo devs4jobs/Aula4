@@ -7,7 +7,7 @@ namespace aula04
         public string Nome;
         public int Idade;
         public DateTime Nascimento;
-        public long RG;
+        public double RG;
         public Pessoa()
         {
         }
@@ -19,12 +19,15 @@ namespace aula04
             do
             {
                 Console.WriteLine("Informe a Idade");
-                Idade = Convert.ToInt32(Console.ReadLine());
+                int.TryParse(Console.ReadLine(),out Idade);
             } while (Idade <= 0 || Idade >= 110);
             Console.WriteLine("Informe a Data de nascimento(DD/MM/YYYY)");
             Nascimento = Convert.ToDateTime(Console.ReadLine());
-            Console.WriteLine("Informe o RG:");
-            RG = Convert.ToInt64(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("Informe o RG:");
+                double.TryParse(Console.ReadLine(), out RG);
+            } while (RG == 0);
         }
         public override string ToString()
         {

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using aula04.Service;
 namespace aula04
 {
     class Program
@@ -13,7 +14,7 @@ namespace aula04
             List<Professor> Prof = new List<Professor>();
             List<Aluno> Alu = new List<Aluno>();
             List<Turma> Turmas = new List<Turma>();
-            Show.Show show = new Show.Show();
+            Show show = new Show();
             string Path = @"C:\Users\Treinamento 2\Desktop\Aula4\aula04\CaminhoT";
             try
             {
@@ -50,7 +51,7 @@ namespace aula04
                     switch (Cadastro)
                     {
                         case "1":
-                            { 
+                            {
                                 Professor Professor = new Professor();
                                 Professor.Registro(Mat);
                                 Prof.Add(Professor);
@@ -70,33 +71,17 @@ namespace aula04
                                 Turmas.Add(Turma);
                                 break;
                             }
-                        case "4":
-                            {
-                                show.ShowRegistro(Prof, Turmas);
-                                break;
-                            }
-                        case "5":
-                            {
-                                show.ShowRegistro(Alu, Turmas);
-                                break;
-                            }
-                        case "6":
-                            {
-                                show.ShowP(Prof, Turmas);
-                                break;
-                            }
-                        case "7":
-                            {
-                                show.ShowA(Alu);
-                                break;
-                            }
+                        case "4": { show.ShowRegistro(Prof, Turmas); break; }
+                        case "5": { show.ShowRegistro(Alu, Turmas); break; }
+                        case "6": { show.ShowP(Prof, Turmas); break; }
+                        case "7": { show.ShowA(Alu); break; }
                         case "8":
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("Termino da registro");
                                 break;
-                            }
+                            }    
                         default:
                             {
                                 Console.Clear();
@@ -113,7 +98,6 @@ namespace aula04
                     Console.WriteLine("ERROR");
                     Console.WriteLine(e.Message);
                 }
-                Console.Clear();
             } while (Cadastro != "8");
             try
             {
