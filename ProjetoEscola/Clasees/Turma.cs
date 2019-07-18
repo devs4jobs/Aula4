@@ -61,5 +61,12 @@ namespace ProjetoEscola.Clasees
 
         }
         #endregion
+
+        #region ToString
+        public override string ToString()
+        {
+            return $"Turma {CodTurma} está na lista !";
+        }
+        #endregion
     }
 }

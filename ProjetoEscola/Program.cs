@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.IO;
-using System.Web.Script.Serialization;
+using ProjetoEscola.Tela;
 
 //04/0/2019  pesquisar dicionary e implementar no Codigo 
 namespace ProjetoEscola.Clasees
@@ -11,138 +11,52 @@ namespace ProjetoEscola.Clasees
     {
         static void Main(string[] args)
         {
-
-            int op;
+            TelaPrincipal TPrincipal = new TelaPrincipal();
             List<Turma> lstTurmas = new List<Turma>();
+            int op = 0;
             try
             {
                 do
                 {
-
-                    Console.BackgroundColor = ConsoleColor.DarkGray;
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Beep();
-                    Console.WriteLine();
-                    Console.WriteLine("\t\t============================== MENU DE REGISTRO ==============================\t\t");
-                    Console.WriteLine();
-                    Console.WriteLine("\t\t\t\t\tDigite um Opção a ser feita ! :");
-                    Console.WriteLine();
-                    Console.WriteLine("\t\t\t\t\t1 - Cadastrar Professores\n\t\t\t\t\t2 - Cadastrar Alunos\n\t\t\t\t\t3 - Cadastrar Turmas\n\t\t\t\t\t4 - Para Menu de Exibição \n\t\t\t\t\t5 - Para Sair");
-                    Console.WriteLine();
-                    op = Convert.ToInt32(Console.ReadLine());
-
+                     op = TPrincipal.MenuPrincipal();
                     if (op == 1)
                     {
                         Console.Clear();
-                        Console.Write("Digite quantos Professores você deseja cadastrar: \n");
-                        int N = Convert.ToInt32(Console.ReadLine());
-
-                        if(N < 0 )
-                        {
-                            while(N < 0 || N > 999999)
-                            {
-
-                                Console.WriteLine("Número de professores a ser cadastrados inválido!");
-                                Console.Write("Digite quantos Professores você deseja cadastrar: \n");
-                                N = Convert.ToInt32(Console.ReadLine());
-
-                            }
-                        }
-
-                        for (int i = 0; i < N; i++)
-                        {
-                            try
-                            {
-                                Professor prof = new Professor();
-                                prof.Cadastrar(lstTurmas);
-                            }
-                            catch(Exception)
-                            {
-                                Console.WriteLine("Erro Professor não cadastrado!");
-                                i--;
-                            }
-
-                        }//Repetição Para Adicionar Professores a Lista !!
+                        TPrincipal.MenuProfessor(lstTurmas);
                     }
                     else if (op == 2)
                     {
-                        Console.Write("Digite quantos Alunos você deseja cadastrar:  \n");
-                        int N = Convert.ToInt32(Console.ReadLine());
-
-                        if (N < 0)
-                        {
-                            while (N < 0 )
-                            {
-
-                                Console.WriteLine("Número de alunos a ser cadastrados inválido!");
-                                Console.Write("Digite quantos Alunos você deseja cadastrar: \n");
-                                N = Convert.ToInt32(Console.ReadLine());
-
-                            }
-                        }
-
-                        for (int i = 0; i < N; i++)
-                        {
-                            Console.Clear();
-                            try
-                            {
-                                Aluno aluno = new Aluno();
-                                aluno.Cadastrar(lstTurmas);
-
-                            }
-                            catch(Exception )
-                            {
-                                Console.WriteLine("Erro Aluno não cadastrado");
-                                i--;
-                            }
-                                }//Repetição Para Adicionar Professores a Lista !!
+                        Console.Clear();
+                        TPrincipal.MenuAluno(lstTurmas);
                     }
                     else if (op == 3)
                     {
-
-                        Console.WriteLine("Insira o código da turma a ser cadastrado. Ex : A, B, C");
-                        string CodTurma1 = Console.ReadLine().ToUpper();
-
-                        CadastrarTurma(CodTurma1, lstTurmas);
-
-                    }else if (op == 4)
-                    {
-                        if (lstTurmas.Count > 0)
-                            Console.WriteLine("DESEJA EXIBIR 1 - PARA PROFESSORES OU 2 - PARA ALUNOS \n");
-                        int opecao = Convert.ToInt32(Console.ReadLine());
-                        if (opecao == 1)
-                        {
-                            foreach (Turma turma in lstTurmas)
-                             {
-                                foreach (var prof in turma.lstProfessores)
-                                {
-                                    Console.WriteLine(prof);
-                                }  
-                             }
-                        }else if(opecao == 2)
-                        {
-                            foreach (Turma turma in lstTurmas)
-                            {
-                                foreach (var aluno in turma.lstAlunos)
-                                {
-                                    Console.WriteLine(aluno);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Existe nenhuma turma cadastrada ainda !");
-                        }
-
+                        Console.Clear();
+                        TPrincipal.MenuTurma(lstTurmas);
+                        Console.Clear();
                     }
-
+                    else if (op == 4)
+                    {
+                        Console.Clear();
+                        TPrincipal.ExbirTurmas(lstTurmas);
+                    }
                     else if (op == 5)
                     {
-                        Console.WriteLine("RafaTheus agradece e volte sempre!");
-                        Console.ReadKey();
+                        Console.Clear();
+                        TPrincipal.ExibirProfessores(lstTurmas);
                     }
-                } while (op != 5 || op > 5);
-
+                    else if (op == 6)
+                    {
+                        Console.Clear();
+                        TPrincipal.ExibirAlunos(lstTurmas);
+                    }
+                    else if (op == 7)
+                    {
+                        Console.Clear();
+                        TPrincipal.Despedida();
+                    }else
+                        Console.WriteLine("Opção invalida!");
+                } while (op != 7 || op > 7);
 
                 JsonSelialize(lstTurmas);
             }

@@ -100,9 +100,7 @@ namespace ProjetoEscola.Clasees
                         {
                             count = 2;
                         }
-                        else
-                        {
-                        } while (Idade < 0 || Idade >= 100)
+                        while (Idade < 0 || Idade >= 100)
                         {
 
                             bool parseOkay;
@@ -134,7 +132,7 @@ namespace ProjetoEscola.Clasees
                 }
                 Console.Write("\nDigite a Data de Nascimento: (DD/MM/YYYY)");
                 DataNasc = Convert.ToDateTime(Console.ReadLine());
-
+                
                 Guid Matricula = Guid.NewGuid();
                 Console.Write($"\nA Matricula(a) dele(a) é {Matricula} \n");
                 CadastrarCodigoTurma(lstTurmas);
@@ -200,7 +198,13 @@ namespace ProjetoEscola.Clasees
                     }
                     break;
                 default:
-
+                    Console.WriteLine("Turma inválida digite uma turma valida ! ");
+                    codTurma = Console.ReadLine().ToUpper();
+                    while(codTurma != "A" || codTurma != "B" || codTurma != "C")
+                    {
+                        Console.WriteLine("Turma inválida digite uma turma valida ! ");
+                        codTurma = Console.ReadLine().ToUpper();
+                    }
                     break;
 
             }

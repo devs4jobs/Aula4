@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using ProjetoEscola.Clasees.Excepitions;
+using ProjetoEscola.Tela;
 
 namespace ProjetoEscola.Clasees
 {
     class Professor : Pessoa
     {
+        TelaPrincipal TPrincipal = new TelaPrincipal();
         private double Salario_ { get; set; }
         private int Id_ { get; set; }
 
@@ -57,11 +57,6 @@ namespace ProjetoEscola.Clasees
         {
             Random random = new Random();
             Console.Beep();
-
-
-
-            //while( N < 0 || N > 5 )
-
 
             Console.Write("Digite o nome do professor(a) : ");
             Nome = Console.ReadLine().Trim();
@@ -214,8 +209,8 @@ namespace ProjetoEscola.Clasees
                         }
                         else
                             lstCodTurma.Add("A");
-
-
+                       
+      
                         foreach (Turma turma in lstTurmas)
                         {
                             if (lstTurmas.Exists(X => X.CodTurma == "A"))
@@ -288,13 +283,12 @@ namespace ProjetoEscola.Clasees
                         }
                         break;
                     default:
-                        Console.WriteLine("Codigo invalido insira o um codigo valido , entre eles : A ou B ou C !");
-                        codTurma = Console.ReadLine().ToUpper();
-                        while (codTurma != "A" || codTurma != "B" || codTurma != "C")
+                        do
                         {
                             Console.WriteLine("Codigo invalido insira o um codigo valido , entre eles : A ou B ou C !");
                             codTurma = Console.ReadLine().ToUpper();
-                        }
+
+                        } while (codTurma != "A" || codTurma != "B" || codTurma != "C");
                         i--;
                         break;
                 }
@@ -308,16 +302,7 @@ namespace ProjetoEscola.Clasees
             if (QuantidadeDeMaterias > 7) { QuantidadeDeMaterias = 7; }
             for (int i = 0; i < QuantidadeDeMaterias; i++)
             {
-                Console.WriteLine();
-                Console.BackgroundColor = ConsoleColor.DarkGray;
-                Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("\t\t============================ MENU DE MATÉRIAS ============================\t\t\n");
-                Console.WriteLine("\t\t\t\t\tDigite um Opção a ser feita ! : \n\n");
-                Console.WriteLine("\t\t\t\t\t1 - Português\n\t\t\t\t\t2 - Matemática\n\t\t\t\t\t3 - Ciências\n\t\t\t\t\t4 - Geografia\n\t\t\t\t\t5 - Artes\n\t\t\t\t\t6 - História\n\t\t\t\t\t7 - Ed.Física");
-                Console.WriteLine();
-                Console.Write("                                   "); int codMateria = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine();
-
+                int codMateria = TPrincipal.TelaCadastroMaterias(QuantidadeDeMaterias);
                 switch (codMateria)
                 {
 
